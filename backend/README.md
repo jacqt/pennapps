@@ -146,3 +146,11 @@
         }
       }
     }```
+
+`DELETE /v1/items/:id`
+  * email: `string` e.g. "dvdhsu@gmail.com"
+  * auth_token: `string` e.g. "3200e94ef5317fc12a743c4e15df07524ab4c03c55008ba65a35d0e351415cf4ed33ea175acbafefb0ef5272d7d1972acec6ceb63623625c22619a128284a23e1d9cd70fc4dbcb9fca5377da07a220aa3c9a3561301f5313fadbd4172581fb3c676b3dfe02f5bf3acaf0ed2e56b4351460c5888b5b06a7797e4c7b2f99cb1678a41738fadbb2c54d95b5a77f8c2b27a657fe907cceab39fc6de011e5adc9483b2f17e478fce2f577c2e1ef3fd855488c3f4eee2f4c27ef4f639344230c5cf8b336e747905b8e4bce8fff91581620a744a359caba9c0093a78f7cffa2e4a8c466c195952afa29e27cde9cd1c5bed54a457e6e9f887b9a538272f0536d67bd60ae",
+
+  ```{
+    "status": "success"
+  }```

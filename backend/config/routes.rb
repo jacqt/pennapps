@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post 'society' => 'societies#update'
     post 'items' => 'items#create'
     post 'items/:id' => 'items#update'
+    delete 'items/:id' => 'items#destroy'
     scope 'auth' do
       post 'sign_up' => 'societies#create'
       post 'login' => 'login#login'
