@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160123015233) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "nickname"
+    t.string   "auth_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["email"], name: "index_societies_on_email", unique: true, using: :btree
