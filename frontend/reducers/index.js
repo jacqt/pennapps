@@ -1,8 +1,16 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import { routeReducer } from 'redux-simple-router'
+
+import route from './route'
+import user from './user'
+import items from './items'
+
 
 const rootReducer = combineReducers({
-  counter
+  route,
+  user,
+  items,
+  routing: routeReducer,
 })
 
 export default rootReducer
