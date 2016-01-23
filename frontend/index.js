@@ -15,9 +15,13 @@ import LandingPage from './components/LandingPage'
 const history = createBrowserHistory()
 const reduxRouterMiddleware = syncHistory(history)
 
+import createLogger from 'redux-logger';
+const logger = createLogger();
+
 const createStoreWithMiddleware = applyMiddleware(
   thunk,
   reduxRouterMiddleware,
+  logger,
 )(createStore)
 
 const store = createStoreWithMiddleware(reducer)

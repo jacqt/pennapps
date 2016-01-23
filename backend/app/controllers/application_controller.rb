@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include ActionController::Serialization
   def authenticate_society
     @society = Society.where(email: params[:email]).first
     if @society.nil?

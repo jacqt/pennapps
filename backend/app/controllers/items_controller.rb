@@ -3,11 +3,11 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:update]
 
   def create
-    item = @society.items.build(item_params)
-    if item.save
-      render json: { status: "success", item: item }, status: 201
+    @item = @society.items.build(item_params)
+    if @item.save
+      render json: { data: { item: @item.as_json } }, status: 201
     else
-      render json: { status: "failure", errors: item.errors }
+      render json: { status: "failure", errors: @item.errors }
     end
   end
 
@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     else
       @item.attributes = item_params
       if @item.save
-        render json: { status: "success", item: @item }
+        render json: { data: { item: @item.as_json } }
       else
         render json: { status: "failure", errors: @item.errors }
       end

@@ -3,24 +3,24 @@ class SocietiesController < ApplicationController
   before_action :authenticate_society, only: [:edit]
 
   def create
-    society = Society.new(society_params)
-    society.auth_token = SecureRandom.hex(256)
+    @society = Society.new(society_params)
+    @society.auth_token = SecureRandom.hex(256)
 
-    if society.save
-      render json: { status: "success", society: society }, status: 201
+    if @society.save
+      render json: @society, status: 201, include: [:items]
     else
-      render json: { status: "failure", errors: society.errors }
+      render json: { status: "failure", errors: @society.errors }
     end
   end
 
   def show
-    render json: { status: "success", society: @society }
+      render json: @society, include: [:items]
   end
 
   def update
     @society.attributes = society_params
     if @society.save
-      render json: { status: "success", society: @society }
+      render json: @society, include: [:items]
     else
       render json: { status: "failure", errors: @society.errors }
     end

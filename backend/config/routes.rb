@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     scope 'auth' do
       post 'sign_up' => 'societies#create'
       post 'login' => 'login#login'
+      post 'login_with_token' => 'login#login_with_token'
     end
   end
 end

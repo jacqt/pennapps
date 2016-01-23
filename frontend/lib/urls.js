@@ -1,4 +1,7 @@
+const DOMAIN = 'http://pay.serious.engineering'
+const API_BASE = DOMAIN + '/v1'
+
 export default {
-  DOMAIN: 'http://melamine.serious.engineering/',
-  API_BASE: DOMAIN + 'api/',
+  DOMAIN,
+  API_BASE,
 }
