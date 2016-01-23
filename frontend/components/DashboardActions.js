@@ -1,4 +1,8 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+
+import * as A from '../actions/actions'
+
 
 class DashboardActions extends Component {
   render() {
@@ -7,10 +11,15 @@ class DashboardActions extends Component {
       	Withdraw Funds<br/>
       	Change Password<br/>
       	Change Nickname<br/>
-      	Change Name
+      	Change Name<br/>
+      	<span onClick={() => this.props.dispatch(A.logout())}>Log Out</span>
       </div>
     )
   }
 }
 
-export default DashboardActions
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(DashboardActions)

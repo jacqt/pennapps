@@ -25,6 +25,7 @@ class App extends Component {
   render() {
     const { dispatch } = this.props
     const me = this.props.user.me
+    console.log(me)
     if (me) {
     return (
       <div>
