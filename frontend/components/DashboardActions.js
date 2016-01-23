@@ -8,11 +8,11 @@ class DashboardActions extends Component {
   render() {
     return (
       <div className='dashboard-actions'>
+      	<a href={'/'+this.props.user.me.nickname+''}>View Page</a><br/>
       	Withdraw Funds<br/>
-      	Change Password<br/>
       	Change Nickname<br/>
       	Change Name<br/>
-      	<span onClick={() => this.props.dispatch(A.logout())}>Log Out</span>
+      	<a href='#' onClick={() => this.props.dispatch(A.logout())}>Log Out</a>
       </div>
     )
   }

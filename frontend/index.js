@@ -11,6 +11,7 @@ import reducer from './reducers'
 
 import App from './components/App'
 import LandingPage from './components/LandingPage'
+import ViewUser from './components/ViewUser'
 
 const history = createBrowserHistory()
 const reduxRouterMiddleware = syncHistory(history)
@@ -38,7 +39,7 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}/>
-      <Route path="/hi" component={LandingPage}/>
+      <Route path="/:nickname" component={ViewUser}/>
     </Router>
   </Provider>,
   document.getElementById('root')

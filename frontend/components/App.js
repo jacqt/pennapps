@@ -7,6 +7,7 @@ import Header from './Header'
 import DashboardItem from './DashboardItem'
 import DashboardActions from './DashboardActions'
 import LandingPage from './LandingPage'
+import NewItem from './NewItem'
 
 import * as A from '../actions/actions'
 
@@ -27,6 +28,9 @@ class App extends Component {
     const me = this.props.user.me
     console.log(me)
     if (me) {
+      const items = me.items.map(item => {
+        return (<DashboardItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id}/>)
+      })
     return (
       <div>
         <Header></Header>
@@ -44,9 +48,8 @@ class App extends Component {
           <div className='ui two column stackable grid'>
             <div className='twelve wide column left aligned'>
               <h1>Your Items</h1>
-              <DashboardItem name='Teddy Hall Formal' price='13.00' remaining='12' capacity='25'/>
-              <DashboardItem name='Teddy Hall Formal' price='13.00' remaining='12' capacity='25'/>
-              <DashboardItem name='Teddy Hall Formal' price='13.00' remaining='12' capacity='25'/>  
+              {items}
+              <NewItem onAdd={this.onAdd.bind(this)}/>
             </div>
             <div className='four wide column right aligned'>
               <h1>Actions</h1>
@@ -55,9 +58,6 @@ class App extends Component {
           </div>
         </div>
         <p>
-      <button onClick={() => this.add()}>landing</button>
-      <button onClick={() => this.props.dispatch(A.requestUser('sasdsdsasadsdsa'))}>req</button>
-      <button onClick={() => dispatch(A.logout())}>Logout</button>
       </p>
       </div>
       )
@@ -67,9 +67,8 @@ class App extends Component {
         )
     }
   }
-  add() {
-    const me = this.props.user.me
-    this.props.dispatch(A.addItem(me.email, me.auth_token, 'test', 10.0, 100, me.nickname))
+  onAdd(name,price,capacity) {
+    this.props.dispatch(A.addItem(name,price,capacity))
   }
   isLoggedIn() {
     const me = this.props.user.me

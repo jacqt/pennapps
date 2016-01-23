@@ -56,12 +56,23 @@ h2 {
 	font-family: 'Foundry';
 	color: rgb(95,95,95);
 	line-height: 1.5em;
-	font-size: 1.5em;
+	font-size: 1.4em;
+}
+
+.dashboard-actions a {
+	color: inherit;
+}
+
+.dashboard-actions a:hover {
+	border-right: 5px solid gray;
+	padding-right: 5px;
+	transition: 50ms;
 }
 
 .dashboard-item {
 	display: inline-block;
 	width:230px;
+	vertical-align: top;
 	height: 230px;
 	font-family: 'Foundry';
 	background:rgb(237,237,237);
@@ -207,6 +218,61 @@ hr {
 	color: white;
 }
 
+/*------------------------------------------------------- VIEW PAGE */
 
+.cover {
+	height: 250px;
+	padding-top: 100px;
+	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%);
+}
+
+.cover h1 {
+	color: white;
+	font-size: 2em;
+	text-transform: none;
+}
+
+.item-list {
+	text-align:center;
+	margin-top: 30px;
+}
+
+.view-item {
+	display: inline-block;
+	width:230px;
+	vertical-align: top;
+	height: 230px;
+	font-family: 'Foundry';
+	background:rgb(237,237,237);
+	border-radius: 7px;
+	text-align: center;
+	margin: 0 auto;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	padding: 15px;
+}
+
+.view-item .name {
+	color: rgb(95,95,95);
+	line-height: 1.2em;
+	font-size: 1.65em;
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 180px;
+}
+
+.view-item .price {
+	font-size: 2.2em;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: rgb(95,95,95);
+	-webkit-font-smoothing:antialiased;
+	letter-spacing: -2px;
+}
+
+.view-item .remaining {
+	font-size: 1.2em;
+	color: rgb(145,145,145);
+}
 
 </style>
