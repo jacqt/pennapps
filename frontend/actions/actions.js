@@ -2,6 +2,7 @@ import {
   REQUEST_SIGNUP,
   REQUEST_LOGIN,
   RECEIVE_LOGIN,
+  LOGOUT,
   REQUEST_USER,
   RECEIVE_USER,
   ADD_ITEM,
@@ -26,6 +27,9 @@ export function login(email, password) {
       .then(res => dispatch(receiveLogin(res.data.society)))
       .catch(console.log)
   }
+}
+export function logout(email, password) {
+  return { type: LOGOUT }
 }
 export function reLogin(email, authToken) {
   return dispatch => {
