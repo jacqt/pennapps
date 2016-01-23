@@ -11,20 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123015233) do
+ActiveRecord::Schema.define(version: 20160123034237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "price"
+    t.integer  "capacity"
+    t.integer  "society_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["society_id"], name: "index_items_on_society_id", using: :btree
+  end
 
   create_table "societies", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.string   "nickname"
+    t.string   "auth_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["email"], name: "index_societies_on_email", unique: true, using: :btree
     t.index ["nickname"], name: "index_societies_on_nickname", unique: true, using: :btree
   end
 
+  add_foreign_key "items", "societies"
 end

@@ -5,6 +5,7 @@ class CreateSocieties < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :password_digest
       t.string :nickname
+      t.string :auth_token
 
       t.timestamps
     end
