@@ -24,13 +24,15 @@ class App extends Component {
   }
   render() {
     const { dispatch } = this.props
+    const me = this.props.user.me
+    if (me) {
     return (
       <div>
         <Header></Header>
         <div className='ui container'>
           <div className='ui two column stackable grid bottom aligned'>
             <div className='twelve wide column left aligned'>
-              <div className='dashboard-name'>Oxford University Islamic Society</div>
+              <div className='dashboard-name'>{me.name}</div>
             </div>
             <div className='four wide column right aligned'>
               <h2>Balance</h2>
@@ -51,12 +53,18 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
-      <p>
+        <p>
       <button onClick={() => this.add()}>landing</button>
       <button onClick={() => this.props.dispatch(A.requestUser('sasdsdsasadsdsa'))}>req</button>
+      <button onClick={() => dispatch(A.logout())}>Logout</button>
       </p>
-    )
+      </div>
+      )
+    } else {
+      return(
+        <LandingPage/>
+        )
+    }
   }
   add() {
     const me = this.props.user.me
@@ -64,7 +72,7 @@ class App extends Component {
   }
   isLoggedIn() {
     const me = this.props.user.me
-    return me !== null
+    return me.email
   }
 }
 
