@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'items/:id' => 'items#update'
     scope 'auth' do
       post 'sign_up' => 'societies#create'
+      post 'login' => 'login#login'
     end
   end
 end
