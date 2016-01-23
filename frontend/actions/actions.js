@@ -28,7 +28,7 @@ export function login(email, password) {
       .catch(console.log)
   }
 }
-export function logout(email, password) {
+export function logout() {
   return { type: LOGOUT }
 }
 export function reLogin(email, authToken) {
@@ -49,31 +49,31 @@ export function requestUser(nickname) {
   }
 }
 
-export function addItem(email, authToken, name, price, capacity) {
+export function addItem(name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: ADD_ITEM })
-    return ajax.addItem(email, authToken, name, price, capacity)
+    return ajax.addItem(state.user.me.email, state.user.me.auth_token, name, price, capacity)
       .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)
   }
 }
 
-export function removeItem(email, authToken, id) {
+export function removeItem(id) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: REMOVE_ITEM })
-    return ajax.removeItem(email, authToken, id)
+    return ajax.removeItem(state.user.me.email, state.user.me.auth_token, id)
       .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)
   }
 }
 
-export function updateItem(email, authToken, id, name, price, capacity) {
+export function updateItem(id, name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: REMOVE_ITEM })
-    return ajax.updateItem(email, authToken, id, name, price, capacity)
+    return ajax.updateItem(state.user.me.email, state.user.me.auth_token, id, name, price, capacity)
       .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)
   }
