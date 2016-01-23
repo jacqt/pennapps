@@ -117,7 +117,7 @@ export function removeItem(email, authToken, id) {
   const requestUrl = API_BASE + '/items/' + id
 
   return processResponse(fetch(requestUrl, {
-    method: 'destroy',
+    method: 'delete',
     body: f,
   }))
 }

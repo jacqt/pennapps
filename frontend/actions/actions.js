@@ -49,29 +49,32 @@ export function requestUser(nickname) {
   }
 }
 
-export function addItem(email, authToken, name, price, capacity, nickname) {
-  return dispatch => {
+export function addItem(email, authToken, name, price, capacity) {
+  return (dispatch, getState) => {
+    const state = getState()
     dispatch({ type: ADD_ITEM })
     return ajax.addItem(email, authToken, name, price, capacity)
-      .then(res => dispatch(requestUser(nickname)))
+      .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)
   }
 }
 
-export function removeItem(email, authToken, id, nickname) {
-  return dispatch => {
+export function removeItem(email, authToken, id) {
+  return (dispatch, getState) => {
+    const state = getState()
     dispatch({ type: REMOVE_ITEM })
     return ajax.removeItem(email, authToken, id)
-      .then(res => dispatch(requestUser(nickname)))
+      .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)
   }
 }
 
-export function updateItem(email, authToken, id, name, price, capacity, nickname) {
-  return dispatch => {
+export function updateItem(email, authToken, id, name, price, capacity) {
+  return (dispatch, getState) => {
+    const state = getState()
     dispatch({ type: REMOVE_ITEM })
     return ajax.updateItem(email, authToken, id, name, price, capacity)
-      .then(res => dispatch(requestUser(nickname)))
+      .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)
   }
 }
