@@ -33,7 +33,7 @@ class SocietiesController < ApplicationController
   end
 
   def set_society
-    @society = Society.where(name: params[:name]).first
+    @society = Society.where(nickname: params[:nickname]).first
     if @society.nil?
       render json: { status: "failure" }, status: 404 and return
     end
