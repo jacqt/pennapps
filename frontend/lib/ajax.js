@@ -87,9 +87,7 @@ export function requestUser(nickname) {
       nickname: nickname,
     }
   })
-  return processResponse(
-    fetch(requestUrl)
-  )
+  return processResponse(fetch(requestUrl))
 }
 
 export function addItem(email, authToken, name, price, capacity) {

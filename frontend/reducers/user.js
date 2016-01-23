@@ -18,6 +18,12 @@ const defaultUserState = {
   watching: null,
 };
 
+function combine(data) {
+  return Object.assign(data.society, {
+    items: data.items
+  })
+}
+
 export default function user(state = defaultUserState, action) {
   switch (action.type) {
     case REQUEST_SIGNUP:
@@ -31,11 +37,18 @@ export default function user(state = defaultUserState, action) {
         me: null,
       })
     case RECEIVE_LOGIN:
-      cookie.set('email', action.user.email)
-      cookie.set('auth_token', action.user.auth_token)
+      if (action.res.error) {
+        return Object.assign({}, state, {
+          isFetching: false,
+          me: action.res,
+        })
+      }
+      const user = action.res.data.society
+      cookie.set('email', user.email)
+      cookie.set('auth_token', user.auth_token)
       return Object.assign({}, state, {
         isFetching: false,
-        me: action.user,
+        me: user,
       })
     case LOGOUT:
       cookie.remove('email')
@@ -49,13 +62,31 @@ export default function user(state = defaultUserState, action) {
         isFetching: true,
       })
     case RECEIVE_USER:
-      const newMe = (state.user.me.id === action.user.id) ? action.user : state.user.me
-      const newWatching = (state.user.watching.id === action.user.id) ? action.user : state.user.watching
-      return Object.assign({}, state, {
-        isFetching: false,
-        me: newMe,
-        watching: newWatching,
-      })
+      const isMe = state.me && state.me.nickname === action.nickname
+      if (isMe) {
+        if (action.res.error) {
+          return Object.assign({}, state, {
+            isFetching: false,
+            me: action.res,
+          })
+        }
+        return Object.assign({}, state, {
+          isFetching: false,
+          me: action.res.data.society,
+        })
+      }
+      else {
+        if (action.res.error) {
+          return Object.assign({}, state, {
+            isFetching: false,
+            watching: action.res,
+          })
+        }
+        return Object.assign({}, state, {
+          isFetching: false,
+          watching: action.res.data.society,
+        })
+      }
     default:
       return state
   }

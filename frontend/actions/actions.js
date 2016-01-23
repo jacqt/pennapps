@@ -15,7 +15,7 @@ export function signup(email, password, passwordConfirmation, name, nickName) {
   return dispatch => {
     dispatch({ type: REQUEST_SIGNUP })
     return ajax.signup(email, password, passwordConfirmation, name, nickName)
-      .then(res => dispatch(receiveLogin(res.data.society)))
+      .then(res => dispatch(receiveLogin(res)))
       .catch(console.log)
   }
 }
@@ -24,7 +24,7 @@ export function login(email, password) {
   return dispatch => {
     dispatch({ type: REQUEST_LOGIN })
     return ajax.login(email, password)
-      .then(res => dispatch(receiveLogin(res.data.society)))
+      .then(res => dispatch(receiveLogin(res)))
       .catch(console.log)
   }
 }
@@ -35,7 +35,7 @@ export function reLogin(email, authToken) {
   return dispatch => {
     dispatch({ type: REQUEST_LOGIN })
     return ajax.reLogin(email, authToken)
-      .then(res => dispatch(receiveLogin(res.data.society)))
+      .then(res => dispatch(receiveLogin(res)))
       .catch(console.log)
   }
 }
@@ -44,7 +44,7 @@ export function requestUser(nickname) {
   return dispatch => {
     dispatch({ type: REQUEST_USER })
     return ajax.requestUser(nickname)
-      .then(res => dispatch(receiveUser(res.data.society)))
+      .then(res => dispatch(receiveUser(res, nickname)))
       .catch(console.log)
   }
 }
@@ -77,15 +77,16 @@ export function updateItem(email, authToken, id, name, price, capacity, nickname
 }
 
 /* action helpers */
-function receiveLogin(user) {
+function receiveLogin(res) {
   return {
     type: RECEIVE_LOGIN,
-    user,
+    res,
   }
 }
-function receiveUser(user) {
+function receiveUser(res, nickname) {
   return {
-    type: RECEIVE_SIGNUP,
-    user,
+    type: RECEIVE_USER,
+    res,
+    nickname
   }
 }
