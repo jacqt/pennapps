@@ -5,11 +5,11 @@ class LoginController < ApplicationController
     if @society.nil? or not @society.authenticate(params[:password])
       render json: { status: "failure" }, status: 404 and return
     else
-      render json: { status: "success", society: @society }
+      render json: @society, include: [:items]
     end
   end
 
   def login_with_token
-    render json: { status: "success", society: @society }
+    render json: @society, include: [:items]
   end
 end
