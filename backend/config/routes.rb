@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  # Serve websocket cable requests in-process
-  # mount ActionCable.server => '/cable'
+  scope 'v1' do
+    get 'society' => 'societies#show'
+    post 'society' => 'societies#update'
+    scope 'auth' do
+      scope 'societies' do
+        post 'sign_up' => 'societies#create'
+      end
+    end
+  end
 end
