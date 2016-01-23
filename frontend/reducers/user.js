@@ -43,7 +43,7 @@ export default function user(state = defaultUserState, action) {
           me: action.res,
         })
       }
-      const user = action.res.data.society
+      const user = combine(action.res.data)
       cookie.set('email', user.email)
       cookie.set('auth_token', user.auth_token)
       return Object.assign({}, state, {
@@ -70,9 +70,10 @@ export default function user(state = defaultUserState, action) {
             me: action.res,
           })
         }
+        const user = combine(action.res.data)
         return Object.assign({}, state, {
           isFetching: false,
-          me: action.res.data.society,
+          me: user,
         })
       }
       else {
@@ -82,9 +83,10 @@ export default function user(state = defaultUserState, action) {
             watching: action.res,
           })
         }
+        const user = combine(action.res.data)
         return Object.assign({}, state, {
           isFetching: false,
-          watching: action.res.data.society,
+          watching: user,
         })
       }
     default:
