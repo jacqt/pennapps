@@ -1,6 +1,6 @@
 class SocietiesController < ApplicationController
   before_action :set_society, only: [:show, :update]
-  before_action :authenticate_society, only: [:edit]
+  before_action :authenticate_society, only: [:update]
 
   def create
     @society = Society.new(society_params)
