@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'client_token' => 'payments#client_token'
   scope 'v1' do
+    get 'client_token' => 'payments#client_token'
     get 'society' => 'societies#show'
     post 'society' => 'societies#update'
     post 'items' => 'items#create'
