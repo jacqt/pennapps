@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ViewItem from './ViewItem'
-
+import PaymentForm from './PaymentForm'
 
 import * as A from '../actions/actions'
 
-
 class ViewUser extends Component {
   componentDidMount() {
+    $('.paymentform').modal();
     this.props.dispatch(A.requestUser(this.props.params.nickname))
   }
   render() {
@@ -28,9 +28,13 @@ class ViewUser extends Component {
       <div className='ui container centered item-list'>
       {items}
       </div>
+      <PaymentForm/>
       </div>
       )
     }
+  }
+  buy(item,price,user) {
+
   }
 }
 

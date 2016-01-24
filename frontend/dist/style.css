@@ -84,7 +84,7 @@ h2 {
 }
 
 .dashboard-item input {
-	padding: 10px;
+	padding: 9px;
 	padding-left: 14px;
 	padding-right: 14px;
 	border-radius: 5px;
@@ -93,7 +93,7 @@ h2 {
 }
 
 .dashboard-item button {
-	height: 36px;
+	height: 34px;
 	border: 0;
 	background: rgb(126,211,33);
 	color: white;
@@ -294,6 +294,11 @@ hr {
 .view-item .remaining {
 	font-size: 1.2em;
 	color: rgb(145,145,145);
+}
+
+.paymentform {
+	width: 300px;
+	background: white;
 }
 
 </style>

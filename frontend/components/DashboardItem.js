@@ -11,10 +11,9 @@ class DashboardItem extends Component {
 	    		<div className='remaining'>{this.props.remaining} of {this.props.capacity}<br/>remaining</div>
 	    	</div>
   			<hr/>
-  			<div className='item-action'>Edit Item</div>
+  			<div className='item-action' onClick={() => this.props.onEdit()}>Edit Item</div>
   			</div>
   		</div>
-
     )
   }
 }
