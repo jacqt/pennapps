@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123034237) do
+ActiveRecord::Schema.define(version: 20160124021715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20160123034237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["society_id"], name: "index_items_on_society_id", using: :btree
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_payments_on_email", using: :btree
+    t.index ["item_id"], name: "index_payments_on_item_id", using: :btree
   end
 
   create_table "societies", force: :cascade do |t|
@@ -39,4 +50,5 @@ ActiveRecord::Schema.define(version: 20160123034237) do
   end
 
   add_foreign_key "items", "societies"
+  add_foreign_key "payments", "items"
 end

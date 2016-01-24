@@ -14,6 +14,8 @@ class PaymentsController < ApplicationController
 
     @payment = @item.payments.build(payment_params)
 
+    puts result
+
     if result.success? and @payment.valid?
       @payment.save
       render json: { data: { payment: @payment } }
