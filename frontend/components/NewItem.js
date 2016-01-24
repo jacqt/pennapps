@@ -5,10 +5,11 @@ class NewItem extends Component {
     return (
     	<div className='dashboard-item'>
         <div className='top'>
+        New Item
     		<input type='text' name='name' placeholder='Item name'/>
         <input type='number' name='price' placeholder='Item price'/>
         <input type='number' name='capacity' placeholder='Capacity'/>
-        <button onClick={() => this.props.onAdd($('input[name="name"]').val(),$('input[name="price"]').val(),$('input[name="capacity"]').val())}>Add Item</button>
+        <button onClick={() => this.props.onAdd($('input[name="name"]').val(),$('input[name="price"]').val(),$('input[name="capacity"]').val())}>+ Add Item</button>
   		  </div>
       </div>
     )
