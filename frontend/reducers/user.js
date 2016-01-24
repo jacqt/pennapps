@@ -29,12 +29,10 @@ export default function user(state = defaultUserState, action) {
     case REQUEST_SIGNUP:
       return Object.assign({}, state, {
         isFetching: true,
-        me: null,
       })
     case REQUEST_LOGIN:
       return Object.assign({}, state, {
         isFetching: true,
-        me: null,
       })
     case RECEIVE_LOGIN:
       if (action.res.error) {
