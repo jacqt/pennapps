@@ -111,7 +111,7 @@ export function removeItem(email, authToken, id) {
   }))
 }
 
-export function editItem(email, authToken, id, name, price, capacity) {
+export function updateItem(email, authToken, id, name, price, capacity) {
   const f = objectToFormData({
     email,
     auth_token: authToken,
