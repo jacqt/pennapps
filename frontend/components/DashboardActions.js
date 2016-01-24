@@ -22,7 +22,7 @@ class DashboardActions extends Component {
 }
 
 function mapStateToProps(state) {
-  return state;
+  return state.user;
 }
 
 export default connect(mapStateToProps)(DashboardActions)

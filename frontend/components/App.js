@@ -8,7 +8,7 @@ import LandingPage from './LandingPage'
 import * as Actions from '../actions/actions'
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const { dispatch } = this.props
 
     const email = cookie.get('email')
@@ -22,6 +22,8 @@ class App extends Component {
     }
   }
   render() {
+    if (this.props.isFetching) return <div/>
+    
     const me = this.props.me
     if (me) {
       return <AdminPanel/>
