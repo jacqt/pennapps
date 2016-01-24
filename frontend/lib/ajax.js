@@ -136,12 +136,16 @@ export function getClientToken() {
   return processResponse(fetch(requestUrl))
 }
 
-export function pay(firstName, lastName, itemId, token) {
-  const f = new FormData()
-  f.append('first_name', firstName)
-  f.append('last_name', lastName)
-  f.append('id', itemId)
-  f.append('token', token)
+export function pay(firstName, lastName, email, itemId, nonce) {
+  const f = objectToFormData({
+    payment: {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+    },
+    id: itemId,
+    payment_method_nonce: nonce,
+  })
 
   const requestUrl = API_BASE + '/payments/'
 

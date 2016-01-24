@@ -7,7 +7,6 @@ import * as A from '../actions/actions'
 
 class ViewUser extends Component {
   componentDidMount() {
-    $('.paymentform').modal();
     this.props.dispatch(A.requestUser(this.props.params.nickname))
   }
   render() {
