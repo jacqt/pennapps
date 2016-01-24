@@ -130,6 +130,12 @@ export function updateItem(email, authToken, id, name, price, capacity) {
   }))
 }
 
+export function getClientToken() {
+  const requestUrl = API_BASE + '/client_token/'
+
+  return processResponse(fetch(requestUrl))
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
