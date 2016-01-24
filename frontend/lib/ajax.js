@@ -1,6 +1,6 @@
 import { API_BASE } from './urls'
 
-//const fetch = require('whatwg-fetch') // TODO?
+//const fetch = require('whatwg-fetch') // TODO
 const url = require('url')
 
 function objectToFormData(obj, form, namespace) {

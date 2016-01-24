@@ -37,7 +37,6 @@ export default function user(state = defaultUserState, action) {
         me: null,
       })
     case RECEIVE_LOGIN:
-      console.log(action.res.error)
       if (action.res.error) {
         return Object.assign({}, state, {
           isFetching: false,

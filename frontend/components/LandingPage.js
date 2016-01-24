@@ -9,7 +9,7 @@ class LandingPage extends Component {
 		const nickname = name.replace(/\s+/g, '')
 
 		$('.signup').addClass('loading');
-		window.setTimeout(dispatch(Actions.signup(email,password,password,name,nickname)), 2000);
+		window.setTimeout(() => dispatch(Actions.signup(email,password,password,name,nickname)), 2000);
 	}
 
   render() {
