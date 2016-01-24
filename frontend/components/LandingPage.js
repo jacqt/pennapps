@@ -38,6 +38,7 @@ class LandingPage extends Component {
       			<button className="ui button" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
       			Get Started
       			</button>
+						{this.props.error ? 'ERROR (TODO)' : null}
       		</div>
       	</div>
       </div>
@@ -45,4 +46,9 @@ class LandingPage extends Component {
   }
 }
 
-export default connect()(LandingPage)
+function mapStateToProps(state) {
+	if (state.user.me) return state.user.me
+	else return {}
+}
+
+export default connect(mapStateToProps)(LandingPage)

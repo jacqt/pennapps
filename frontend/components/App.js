@@ -23,9 +23,9 @@ class App extends Component {
   }
   render() {
     if (this.props.isFetching) return <div/>
-    
+
     const me = this.props.me
-    if (me) {
+    if (me && !me.error) {
       return <AdminPanel/>
     }
     else {
