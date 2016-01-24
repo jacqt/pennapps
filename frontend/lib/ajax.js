@@ -136,6 +136,20 @@ export function getClientToken() {
   return processResponse(fetch(requestUrl))
 }
 
+export function reportSuccessfulPayment(firstName, lastName, itemId) {
+  const f = new FormData()
+  f.append('first_name', firstName)
+  f.append('last_name', lastName)
+  f.append('id', itemId)
+
+  const requestUrl = API_BASE + '/payments/'
+
+  return processResponse(fetch(requestUrl, {
+    method: 'post',
+    body: f,
+  }))
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
