@@ -1,0 +1,14 @@
+train tomorrow
+
+Taimur
+	* landing page + login
+	* payments
+Lukas
+	* passing stuff around in React (id, modal, shit)
+	* DELTE button
+	* login
+David
+	* implement delete
+	* stop revealing auth_token
+	* money stuff
+	* remaining items and crap
