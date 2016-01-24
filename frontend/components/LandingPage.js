@@ -1,13 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as A from '../actions/actions'
+import * as Actions from '../actions/actions'
 
 class LandingPage extends Component {
-	signup(name,email,password){
-		var nickname = name.replace(/\s+/g, '');
+	signup(name, email, password) {
+		const { dispatch } = this.props
+		const nickname = name.replace(/\s+/g, '')
+
 		$('.signup').addClass('loading');
-		window.setTimeout(this.props.dispatch(A.signup(email,password,password,name,nickname)), 2000);
+		window.setTimeout(dispatch(Actions.signup(email,password,password,name,nickname)), 2000);
 	}
 
   render() {
@@ -43,8 +45,4 @@ class LandingPage extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state;
-}
-
-export default connect(mapStateToProps)(LandingPage)
+export default connect()(LandingPage)
