@@ -14,6 +14,7 @@ class LandingPage extends Component {
 
   render() {
     return (
+      <div>
       <div className='masthead ui'>
       	<div className='ui large top menu'>
       		<div className='ui container'>
@@ -41,6 +42,10 @@ class LandingPage extends Component {
 						{this.props.error ? 'ERROR (TODO)' : null}
       		</div>
       	</div>
+      </div>
+      <div className='ui row row2'>
+      <h2>Payspace lets you accept online payments for your society events.</h2>
+      </div>
       </div>
     )
   }

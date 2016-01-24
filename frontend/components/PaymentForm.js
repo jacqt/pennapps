@@ -26,13 +26,13 @@ class PaymentForm extends Component {
     return (
     	<form className='ui modal paymentform' id='paymentform'>
       <label htmlFor="card-number">Card Number</label>
-      <div id="card-number" className='field'></div>
+      <div id="card-number"></div>
 
       <label htmlFor="cvv">CVV</label>
-      <div id="cvv" className='field'></div>
+      <div id="cvv"></div>
 
       <label htmlFor="expiration-date">Expiration Date</label>
-      <div id="expiration-date" className='field'></div>
+      <div id="expiration-date"></div>
 
       <input type="submit" value="Pay"/>
     </form>

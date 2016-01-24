@@ -13,9 +13,6 @@ class DashboardActions extends Component {
       <div className='dashboard-actions'>
       	<a href={'/'+me.nickname}>View Page</a><br/>
       	Withdraw Funds<br/>
-      	Change Nickname<br/>
-      	Change Name<br/>
-      	<a href='#' onClick={() => dispatch(Actions.logout())}>Log Out</a>
       </div>
     )
   }
