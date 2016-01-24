@@ -136,11 +136,12 @@ export function getClientToken() {
   return processResponse(fetch(requestUrl))
 }
 
-export function reportSuccessfulPayment(firstName, lastName, itemId) {
+export function pay(firstName, lastName, itemId, token) {
   const f = new FormData()
   f.append('first_name', firstName)
   f.append('last_name', lastName)
   f.append('id', itemId)
+  f.append('token', token)
 
   const requestUrl = API_BASE + '/payments/'
 
