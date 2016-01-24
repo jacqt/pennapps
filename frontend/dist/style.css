@@ -83,6 +83,27 @@ h2 {
 	padding: 15px;
 }
 
+.dashboard-item input {
+	padding: 10px;
+	padding-left: 14px;
+	padding-right: 14px;
+	border-radius: 5px;
+	border: 0;
+	margin-top: 10px;
+}
+
+.dashboard-item button {
+	height: 36px;
+	border: 0;
+	background: rgb(126,211,33);
+	color: white;
+	border-radius: 5px;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	-webkkit-font-smoothing:antialiased;
+}
+
 .dashboard-item .name {
 	color: rgb(95,95,95);
 	line-height: 1.2em;
