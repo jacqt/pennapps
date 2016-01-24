@@ -152,5 +152,5 @@ function parseJson(response) {
   return response.json()
 }
 function processResponse(promise) {
-  return promise.then(checkStatus).then(parseJson)
+  return promise/*.then(checkStatus)*/.then(parseJson)
 }

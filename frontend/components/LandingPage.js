@@ -1,13 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as A from '../actions/actions'
+import * as Actions from '../actions/actions'
 
 class LandingPage extends Component {
-	signup(name,email,password){
-		var nickname = name.replace(/\s+/g, '');
+	signup(name, email, password) {
+		const { dispatch } = this.props
+		const nickname = name.replace(/\s+/g, '')
+
 		$('.signup').addClass('loading');
-		window.setTimeout(this.props.dispatch(A.signup(email,password,password,name,nickname)), 2000);
+		window.setTimeout(dispatch(Actions.signup(email,password,password,name,nickname)), 2000);
 	}
 
   render() {
@@ -36,6 +38,7 @@ class LandingPage extends Component {
       			<button className="ui button" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
       			Get Started
       			</button>
+						{this.props.error ? 'ERROR (TODO)' : null}
       		</div>
       	</div>
       </div>
@@ -44,7 +47,8 @@ class LandingPage extends Component {
 }
 
 function mapStateToProps(state) {
-  return state;
+	if (state.user.me) return state.user.me
+	else return {}
 }
 
 export default connect(mapStateToProps)(LandingPage)
