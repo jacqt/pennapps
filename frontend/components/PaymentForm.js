@@ -42,7 +42,7 @@ class PaymentForm extends Component {
       </div>
     ), this.node, () => {
       $('.paymentModal').modal({
-        onHide: () => {
+        onHidden: () => {
           this.props.onClose()
         }
       }).modal('show')
