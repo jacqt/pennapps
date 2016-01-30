@@ -8,18 +8,49 @@ class PaymentForm extends Component {
       braintree.setup(res.client_token, "custom", {
         id: "paymentForm",
         hostedFields: {
+          styles: {
+            "input": {
+              "font-family": "Lato, sans-serif"
+            },
+
+            // Styling a specific field
+            ".number": {
+            },
+
+            // Styling element state
+            ":focus": {
+              "color": "blue"
+            },
+            ".valid": {
+              "color": "green"
+            },
+            ".invalid": {
+              "color": "red"
+            },
+
+            // Media queries
+            // Note that these apply to the iframe, not the root window.
+            "@media screen and (max-width: 700px)": {
+              "input": {
+                "font-size": "11pt"
+              }
+            }
+          },
           number: {
-            selector: "#card-number"
+            selector: "#card-number",
+            placeholder: 'Card number'
           },
           cvv: {
-            selector: "#cvv"
+            selector: "#cvv",
+            placeholder: 'CVV'
           },
           expirationDate: {
-            selector: "#expiration-date"
+            selector: "#expiration-date",
+            placeholder: 'MM/YY'
           },
         },
         onPaymentMethodReceived: (nonce, type, details) => {
-          ajax.pay($('#first-name').val(), $('#last-name').val(), $('#email').val(), 1, nonce.nonce)
+          ajax.pay($('#name').val(), $('#email').val(), 1, nonce.nonce)
         }
       });
     });
@@ -27,28 +58,29 @@ class PaymentForm extends Component {
 
   render() {
     return (
+      <div>
       <div className="ui paymentModal">
+            <h2>Oxford University Islamic Society</h2>
+      <h1>Teddy Hall Formal</h1>
+      <hr/>
         <form id="paymentForm">
-            <label for="card-number">Card Number</label>
+            <input id="name" placeholder='Name'/>
+
+            <input id="email" placeholder='Email'/>
+
+            <hr/>
+
             <div id="card-number"></div>
 
-            <label for="cvv">CVV</label>
+            <div id="expiration-date"></div>
             <div id="cvv"></div>
 
-            <label for="expiration-date">Expiration Date</label>
-            <div id="expiration-date"></div>
-
-            <label for="first-name">First name</label>
-            <input id="first-name"/>
-
-            <label for="last-name">Last name</label>
-            <input id="last-name"/>
-
-            <label for="email">Email</label>
-            <input id="email"/>
             
-            <input type="submit" value="Pay" />
+
+            <input type="submit" value="Pay £8.00" />
           </form>
+
+      </div>
       </div>
     )
   }

@@ -343,4 +343,110 @@ hr {
 	background: white;
 }
 
+/* -----------------------------------------------   PAYMENT FORM */
+
+.paymentModal {
+	text-align: center;
+	max-width: 320px;
+	border-radius: 10px;
+	border: 1px solid rgba(0,0,0,0.2);
+	padding:30px;
+	margin: 30px;
+}
+
+.paymentModal h1 {
+	text-transform: none;
+	color: rgb(60,60,60);
+	font-size: 24px;
+	margin:8px;
+	margin-bottom: 25px;
+}
+
+.paymentModal h2 {
+	margin: 5px;
+	color: gray;
+	text-transform: none;
+}
+
+.paymentModal hr {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	max-width: 270px;
+	border-color: rgba(0,0,0,0.2);
+}
+
+#card-number, #cvv, #expiration-date, #name, #email {
+	background: rgb(230,230,230);
+	padding-left: 14px;
+	padding-right: 14px;
+	height: 38px;
+	width: 100%;
+	max-width: 270px;
+	margin: 0 auto;
+	border: 0;
+	font-size: 15px;
+}
+
+#card-number {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom: 1px solid rgba(0,0,0,0.15);
+	padding-left: 34px;
+	background: rgb(230,230,230) url('card.png') no-repeat 10px 11px;
+}
+
+#cvv, #expiration-date {
+	display: inline-block;
+	width: 50%;
+}
+
+#cvv {
+	border-bottom-right-radius: 5px;
+	padding-left: 34px;
+	background: rgb(230,230,230) url('cvv.png') no-repeat 10px 11px;
+}
+
+#expiration-date {
+	border-bottom-left-radius: 5px;
+	border-right: 1px solid rgba(0,0,0,0.15);
+	padding-left: 34px;
+	background: rgb(230,230,230) url('expiry.png') no-repeat 10px 11px;
+}
+
+#name {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding-left: 34px;
+	background: rgb(230,230,230) url('name.png') no-repeat 10px 11px;
+}
+
+#email {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px; 
+	border-top: 1px solid rgba(0,0,0,0.15);
+	padding-left: 34px;
+	background: rgb(230,230,230) url('email.png') no-repeat 10px 11px;
+}
+
+#name, #email {
+	display: block;
+	max-width: 350px;
+}
+
+input:focus {outline:none;}
+
+.paymentModal input[type='submit'] {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 270px;
+	border: 0;
+	background: rgb(126,211,33);
+	height: 38px;
+	color: white;
+	font-size: 15px;
+	border-radius: 5px;
+	margin-top: 15px;
+}
+
 </style>
