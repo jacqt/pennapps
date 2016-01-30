@@ -22,6 +22,15 @@ dog {}
 	border: 0 !important;
 	margin-bottom: 20px !important;
 	box-shadow: none !important;
+	color: white;
+}
+
+.ui.menu .item:before {
+	background: none;
+}
+
+.logo {
+	border: 0 !important;
 }
 
 h1,h2 {
@@ -139,7 +148,26 @@ h2 {
 .dashboard-item .item-action {
 	color: rgb(149,149,149);
 	text-transform: uppercase;
+	display: inline-block;
+	margin-left: 10px;
+	float: right;
 	text-align: right !important;
+}
+
+.dashboard-item .delete {
+	color: rgb(185,0,0);
+}
+
+.dashboard-item .item-action a {
+	color: inherit;
+}
+
+.dashboard-item .item-action.edit:hover {
+	color: gray;
+}
+
+.dashboard-item .item-action.delete:hover {
+	color: rgb(230,0,0) !important;
 }
 
 hr {
@@ -154,7 +182,7 @@ hr {
 /*------------------------------------------------------- LANDING PAGE */
 
 .masthead {
-	height: 600px;
+	height: 500px;
 	background: blue;
 	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%);
 }
@@ -237,6 +265,20 @@ hr {
 	padding-bottom: 14px;
 	background: rgb(126,211,33);
 	color: white;
+}
+
+.row2 {
+	background: rgb(230,230,230);
+	text-align:center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.row2 h2 {
+	font-size: 1.6em;
+	text-transform: none;
+	color: rgba(0,0,0,0.7);
+	font-weight: normal;
 }
 
 /*------------------------------------------------------- VIEW PAGE */
