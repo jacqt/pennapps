@@ -177,6 +177,23 @@ hr {
 	margin-bottom: 20px;
 }
 
+button.cancel {
+	background: rgba(0,0,0,0.35);
+	margin: 6px;
+	margin-top: 30px;
+}
+
+button.danger {
+	margin: 6px;
+	margin-top: 30px;
+	background: rgb(208,2,27);
+}
+
+.warning {
+	padding: 7px;
+	margin-top: 30px;
+}
+
 
 
 /*------------------------------------------------------- LANDING PAGE */
@@ -211,6 +228,61 @@ hr {
 .masthead .menu .item {
 	color: white;
 	border: none !important;
+}
+
+.masthead .login {
+	margin-top: 12px;
+}
+
+.masthead .login .field {
+	display: inline-block !important;
+	clear: none !important;
+	margin: none !important;
+	float:right;
+	margin-left:1px;
+}
+
+.masthead .login .field input {
+	border: none !important;
+	box-shadow: none !important;
+	margin:0 !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.masthead .login .field:nth-child(3) input {
+	border-radius: 0;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.masthead .login .field:nth-child(2) input {
+	border-radius: 0;
+}
+
+.masthead .login .field:nth-child(4) {
+	border-radius:0;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+.masthead .login button {
+	font-family: 'Foundry';
+	float: right;
+	font-size: 1em;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	border-radius: 0;
+	border-bottom-right-radius: 7px;
+	border-top-right-radius: 7px;
+	padding-top: 12px;
+	padding-bottom: 11px;
+	background: rgb(126,211,33);
+	color: white;
+	width: 100px;
+	margin-left: 1px;
+	display: inline-block;
 }
 
 .masthead .signup {
@@ -316,19 +388,19 @@ hr {
 }
 
 .view-item .name {
-	color: rgb(95,95,95);
+	color: rgb(55,55,55);
 	line-height: 1.2em;
-	font-size: 1.65em;
+	font-size: 1.6em;
 	margin: 0 auto;
 	margin-top: 20px;
 	width: 180px;
 }
 
 .view-item .price {
-	font-size: 2.2em;
-	margin-top: 20px;
+	font-size: 2em;
+	margin-top: 40px;
 	margin-bottom: 20px;
-	color: rgb(95,95,95);
+	color: rgb(55,55,55);
 	-webkit-font-smoothing:antialiased;
 	letter-spacing: -2px;
 }
@@ -343,15 +415,43 @@ hr {
 	background: white;
 }
 
+.tick {
+	height: 12px;
+	margin-right: 8px;
+}
+
+.buy:focus {outline:none;}
+
+.buy {
+	display: block;
+	margin: 0 auto;
+	border: 0;
+	background: rgb(126,211,33);
+	padding: 9px;
+	color: white;
+	font-size: 15px;
+	border-radius: 5px;
+	margin-top: 45px;
+	padding-left: 20px;
+	padding-right: 30px;
+}
+
 /* -----------------------------------------------   PAYMENT FORM */
+
+.modal {
+	background: none !important;
+	border: 0 !important;
+	box-shadow: none !important;
+}
 
 .paymentModal {
 	text-align: center;
-	max-width: 320px;
+	margin: 0 auto;
+	width: 320px;
+	background:white;
 	border-radius: 10px;
 	border: 1px solid rgba(0,0,0,0.2);
 	padding:30px;
-	margin: 30px;
 }
 
 .paymentModal h1 {
@@ -392,7 +492,7 @@ hr {
 	border-top-right-radius: 5px;
 	border-bottom: 1px solid rgba(0,0,0,0.15);
 	padding-left: 34px;
-	background: rgb(230,230,230) url('card.png') no-repeat 10px 11px;
+	background: rgb(230,230,230) url('img/card.png') no-repeat 10px 11px;
 }
 
 #cvv, #expiration-date {
@@ -403,21 +503,21 @@ hr {
 #cvv {
 	border-bottom-right-radius: 5px;
 	padding-left: 34px;
-	background: rgb(230,230,230) url('cvv.png') no-repeat 10px 11px;
+	background: rgb(230,230,230) url('img/secure.png') no-repeat 10px 11px;
 }
 
 #expiration-date {
 	border-bottom-left-radius: 5px;
 	border-right: 1px solid rgba(0,0,0,0.15);
 	padding-left: 34px;
-	background: rgb(230,230,230) url('expiry.png') no-repeat 10px 11px;
+	background: rgb(230,230,230) url('img/date.png') no-repeat 10px 11px;
 }
 
 #name {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding-left: 34px;
-	background: rgb(230,230,230) url('name.png') no-repeat 10px 11px;
+	background: rgb(230,230,230) url('img/name.png') no-repeat 10px 11px;
 }
 
 #email {
@@ -425,7 +525,7 @@ hr {
 	border-bottom-left-radius: 5px; 
 	border-top: 1px solid rgba(0,0,0,0.15);
 	padding-left: 34px;
-	background: rgb(230,230,230) url('email.png') no-repeat 10px 11px;
+	background: rgb(230,230,230) url('img/email.png') no-repeat 10px 11px;
 }
 
 #name, #email {

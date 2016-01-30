@@ -20,7 +20,18 @@ class LandingPage extends Component {
       		<div className='ui container'>
       			<div className='logo item'>PaySpace</div>
       			<div className='right item'>
-      				<a className='item'>Login</a>
+              <div className='ui form login'>
+            <button className="ui button" onClick={() => this.login($('input[name="login-email"]').val(),$('input[name="login-password"]').val())}>
+            Login
+            </button>
+            <div className='field'>
+              <input type="password" name="login-password" placeholder="Password"/>
+            </div>
+            <div className='field'>
+              <input type="text" name="login-email" placeholder="Email address"/>
+            </div>
+            {this.props.error ? 'ERROR (TODO)' : null}
+          </div>
       			</div>
       		</div>
       	</div>

@@ -4,8 +4,9 @@ class DeleteItem extends Component {
   render() {
     return (
     	<div className='dashboard-item'>
-        <button onClick={() => this.props.abort()}>NO</button>
-        <button onClick={() => this.props.confirm()}>YES</button>
+    	<div className="warning">Are you sure you want to delete this item? This cannot be undone.</div>
+        <button className="cancel" onClick={() => this.props.abort()}>Cancel</button>
+        <button className="danger" onClick={() => this.props.confirm()}>Delete</button>
       </div>
     )
   }

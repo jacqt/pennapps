@@ -17,7 +17,8 @@ class PaymentForm extends Component {
     this.node = ReactDOM.findDOMNode(this)
 
     ReactDOM.render((
-      <div className="ui paymentModal">
+      <div className="ui modal">
+        <div className="paymentModal">
             <h2>{user.name}</h2>
             <h1>{item.name}</h1>
             <hr/>
@@ -35,11 +36,12 @@ class PaymentForm extends Component {
 
 
 
-                <input type="submit" value="Pay £8.00" />
+                <input type="submit" value={"Pay £"+item.price}/>
               </form>
+            </div>
       </div>
     ), this.node, () => {
-      $('.paymentModal').modal({
+      $('.modal').modal({
         onHidden: () => {
           this.props.onClose()
         }
