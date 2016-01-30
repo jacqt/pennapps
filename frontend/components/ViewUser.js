@@ -6,6 +6,14 @@ import PaymentForm from './PaymentForm'
 import * as A from '../actions/actions'
 
 class ViewUser extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loadedModal: false,
+      showModal: true,
+      itemId: null,
+    }
+  }
   componentDidMount() {
     this.props.dispatch(A.requestUser(this.props.params.nickname))
   }
@@ -15,7 +23,7 @@ class ViewUser extends Component {
       return (<div/>)
     } else {
       const items = user.items.map(item => {
-      return (<ViewItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id}/>)
+      return (<ViewItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id} onPayClicked={() => this.onPayClicked(item.id)}/>)
     })
     return (
       <div>
@@ -27,10 +35,16 @@ class ViewUser extends Component {
       <div className='ui container centered item-list'>
       {items}
       </div>
-      <PaymentForm/>
+        { this.state.isModalOpen ? <PaymentForm itemId={this.state.itemId} onClose={() => this.onModalClose()}/> : null}
       </div>
       )
     }
+  }
+  onPayClicked(id) {
+    this.setState({ isModalOpen: true, itemId: id })
+  }
+  onModalClose() {
+    this.setState({ isModalOpen: false, itemId: null })
   }
   buy(item,price,user) {
 

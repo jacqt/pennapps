@@ -8,7 +8,6 @@ Lukas
 	* DELTE button
 	* login
 David
-	* implement delete
 	* stop revealing auth_token
 	* money stuff
 	* remaining items and crap

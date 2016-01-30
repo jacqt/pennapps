@@ -9,7 +9,7 @@ class ViewItem extends Component {
     	<div className='view-item'>
 	    	<div className='name'>{this.props.name}</div>
 	    	<div className='price'>£{this.props.price}</div>
-          <button onClick={() => $('.paymentModal').modal('show')}>BUY</button>
+          <button onClick={() => this.props.onPayClicked()}>BUY</button>
   		</div>
     )
   }
