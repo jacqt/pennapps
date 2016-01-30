@@ -11,34 +11,32 @@ class PaymentForm extends Component {
   }
 
   componentDidMount() {
+    const user = this.props.user
+    const item = this.props.item
+
     this.node = ReactDOM.findDOMNode(this)
 
     ReactDOM.render((
-      <div>
-      <div className="ui modal paymentModal">
-        But item {this.props.itemId}
-        <form id="paymentForm">
-          <label htmlFor="card-number">Card Number</label>
-          <div id="card-number"></div>
+      <div className="ui paymentModal">
+            <h2>{user.name}</h2>
+            <h1>{item.name}</h1>
+            <hr/>
+            <form id="paymentForm">
+                <input id="name" placeholder='Name'/>
 
-          <label htmlFor="cvv">CVV</label>
-          <div id="cvv"></div>
+                <input id="email" placeholder='Email'/>
 
-          <label htmlFor="expiration-date">Expiration Date</label>
-          <div id="expiration-date"></div>
+                <hr/>
 
-          <label htmlFor="first-name">First name</label>
-          <input id="first-name"/>
+                <div id="card-number"></div>
 
-          <label htmlFor="last-name">Last name</label>
-          <input id="last-name"/>
+                <div id="expiration-date"></div>
+                <div id="cvv"></div>
 
-          <label htmlFor="email">Email</label>
-          <input id="email"/>
 
-          <input type="submit" value="Pay" />
-        </form>
-      </div>
+
+                <input type="submit" value="Pay £8.00" />
+              </form>
       </div>
     ), this.node, () => {
       $('.paymentModal').modal({
@@ -52,25 +50,55 @@ class PaymentForm extends Component {
         braintree.setup(res.client_token, "custom", {
           id: "paymentForm",
           hostedFields: {
+            styles: {
+              "input": {
+                "font-family": "Lato, sans-serif"
+              },
+
+              // Styling a specific field
+              ".number": {
+              },
+
+              // Styling element state
+              ":focus": {
+                "color": "blue"
+              },
+              ".valid": {
+                "color": "green"
+              },
+              ".invalid": {
+                "color": "red"
+              },
+
+              // Media queries
+              // Note that these apply to the iframe, not the root window.
+              "@media screen and (max-width: 700px)": {
+                "input": {
+                  "font-size": "11pt"
+                }
+              }
+            },
             number: {
-              selector: "#card-number"
+              selector: "#card-number",
+              placeholder: 'Card number'
             },
             cvv: {
-              selector: "#cvv"
+              selector: "#cvv",
+              placeholder: 'CVV'
             },
             expirationDate: {
-              selector: "#expiration-date"
+              selector: "#expiration-date",
+              placeholder: 'MM/YY'
             },
           },
           onReady: (integration) => {
             that.integration = integration
           },
           onPaymentMethodReceived: (nonce, type, details) => {
-            ajax.pay($('#first-name').val(), $('#last-name').val(), $('#email').val(), 1, nonce.nonce)
+            ajax.pay($('#name').val(), $('#email').val(), item.id, nonce.nonce)
           }
         });
       });
-
     })
   }
 
