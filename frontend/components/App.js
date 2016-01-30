@@ -22,7 +22,8 @@ class App extends Component {
     }
   }
   render() {
-    if (this.props.isFetching) return <div/>
+    // don't render landing page before login
+    if (this.props.isFetching && this.props.me === null) return <div/>
 
     const me = this.props.me
     if (me && !me.error) {

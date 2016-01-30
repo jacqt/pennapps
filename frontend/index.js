@@ -27,13 +27,13 @@ const createStoreWithMiddleware = applyMiddleware(
 
 const store = createStoreWithMiddleware(reducer)
 
-if (module.hot) {
+/*if (module.hot) {
   // Enable Webpack hot module replacement for reducers
   module.hot.accept('./reducers', () => {
     const nextReducer = require('./reducers')
     store.replaceReducer(nextReducer)
   })
-}
+}*/
 
 render(
   <Provider store={store}>

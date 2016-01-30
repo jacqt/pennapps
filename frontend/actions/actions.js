@@ -72,7 +72,7 @@ export function removeItem(id) {
 export function updateItem(id, name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
-    dispatch({ type: REMOVE_ITEM })
+    dispatch({ type: EDIT_ITEM })
     return ajax.updateItem(state.user.me.email, state.user.me.auth_token, id, name, price, capacity)
       .then(res => dispatch(requestUser(state.user.me.nickname)))
       .catch(console.log)

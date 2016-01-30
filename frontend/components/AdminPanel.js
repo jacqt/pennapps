@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import * as _ from 'underscore'
 
 import Header from './Header'
 import DashboardItem from './DashboardItem'
 import DashboardActions from './DashboardActions'
 import NewItem from './NewItem'
+import DeleteItem from './DeleteItem'
 
 import * as Actions from '../actions/actions'
 
@@ -12,7 +14,8 @@ class AdminPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      editing: []
+      editing: [],
+      askForDelete: [],
     }
   }
   render() {
@@ -20,10 +23,13 @@ class AdminPanel extends Component {
 
     const items = me.items.map(item => {
       if (this.state.editing.indexOf(item.id) > -1) {
-        return <NewItem title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
+        return <NewItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
+      }
+      else if (this.state.askForDelete.indexOf(item.id) > -1) {
+        return <DeleteItem key={item.id} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
       }
       else {
-       return <DashboardItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id} onEdit={() => this.onEdit(item.id)}/>
+       return <DashboardItem item={item} price={item.price} key={item.id} onEdit={() => this.onEditClicked(item.id)} onDelete={() => this.onDeleteClicked(item.id)}/>
       }
     })
     return (
@@ -62,11 +68,20 @@ class AdminPanel extends Component {
   onUpdate(name, price, capacity, id) {
     const { dispatch } = this.props
     dispatch(Actions.updateItem(id, name, price, capacity))
+    this.setState({editing: _.without(this.state.editing, id)})
   }
-  onEdit(id) {
-    let editing = this.state.editing.slice()
-    editing.push(id)
-    this.setState({editing: editing})
+  onDelete(id) {
+    const { dispatch } = this.props
+    dispatch(Actions.removeItem(id))
+  }
+  onEditClicked(id) {
+    this.setState({editing: _.union(this.state.editing, [id])})
+  }
+  onDeleteClicked(id) {
+    this.setState({askForDelete: _.union(this.state.askForDelete, [id])})
+  }
+  onAbortDeleteClicked(id) {
+    this.setState({askForDelete: _.without(this.state.askForDelete, id)})
   }
 }
 
