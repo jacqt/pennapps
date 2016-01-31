@@ -14,7 +14,11 @@ class SocietiesController < ApplicationController
   end
 
   def show
+    if @society.email == params[:email] and @society.auth_token == params[:auth_token]
+      render json: @society, include: [:items], admin: true
+    else
       render json: @society, include: [:items]
+    end
   end
 
   def update
