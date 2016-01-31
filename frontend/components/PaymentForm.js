@@ -19,26 +19,24 @@ class PaymentForm extends Component {
     ReactDOM.render((
       <div className="ui modal">
         <div className="paymentModal">
-            <h2>{user.name}</h2>
-            <h1>{item.name}</h1>
+          <h2>{user.name}</h2>
+          <h1>{item.name}</h1>
+          <hr/>
+          <form id="paymentForm">
+            <input id="name" placeholder='Name'/>
+
+            <input id="email" placeholder='Email'/>
+
             <hr/>
-            <form id="paymentForm">
-                <input id="name" placeholder='Name'/>
 
-                <input id="email" placeholder='Email'/>
+            <div id="card-number"></div>
 
-                <hr/>
+            <div id="expiration-date"></div>
+            <div id="cvv"></div>
 
-                <div id="card-number"></div>
-
-                <div id="expiration-date"></div>
-                <div id="cvv"></div>
-
-
-
-                <input type="submit" value={"Pay £"+item.price}/>
-              </form>
-            </div>
+            <input type="submit" value={"Pay £"+item.price}/>
+          </form>
+        </div>
       </div>
     ), this.node, () => {
       $('.modal').modal({
@@ -97,7 +95,15 @@ class PaymentForm extends Component {
             that.integration = integration
           },
           onPaymentMethodReceived: (nonce, type, details) => {
+            // TODO show loading action
             ajax.pay($('#name').val(), $('#email').val(), item.id, nonce.nonce)
+            .then(res => {
+              console.log(res)
+              if (res.data && res.data.payment) {
+                $('.modal').modal('hide')
+                that.props.onSuccess()
+              }
+            })
           }
         });
       });

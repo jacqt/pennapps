@@ -10,6 +10,7 @@ class ViewUser extends Component {
     super(props)
     this.state = {
       openedItem: null,
+      success: false,
     }
   }
   componentDidMount() {
@@ -23,9 +24,16 @@ class ViewUser extends Component {
       const items = user.items.map(item => {
       return (<ViewItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
     })
+    let success = null
+    if (this.state.success) {
+      success = (
+        <p>SUCCESS</p>
+      )
+    }
     const openedItem = this.state.openedItem
     return (
       <div>
+      {success}
     	<div className='ui cover'>
         <div className='ui text container center aligned middle'>
           <h1>{user.name}</h1>
@@ -34,7 +42,7 @@ class ViewUser extends Component {
       <div className='ui container centered item-list'>
       {items}
       </div>
-        { openedItem ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()}/> : null}
+        { openedItem ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()} onSuccess={() => this.setState({success: true})}/> : null}
       </div>
       )
     }
