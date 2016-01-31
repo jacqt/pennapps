@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = @society.items.build(item_params)
+    # convert price to cents
+    @item.price *= 100
+
     if @item.save
       render json: { data: { item: @item.as_json } }, status: 201
     else
