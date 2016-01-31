@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import * as Actions from '../actions/actions'
@@ -11,7 +12,7 @@ class DashboardActions extends Component {
     const me = this.props.me
     return (
       <div className='dashboard-actions'>
-      	<a href={'/'+me.nickname}>View Page</a><br/>
+        <Link to={`/${me.nickname}`}>View Page</Link><br/>
       	Withdraw Funds<br/>
       </div>
     )

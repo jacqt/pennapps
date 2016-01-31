@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import ViewItem from './ViewItem'
 import PaymentForm from './PaymentForm'
@@ -16,12 +17,19 @@ class ViewUser extends Component {
   componentDidMount() {
     this.props.dispatch(A.requestUser(this.props.params.nickname))
   }
+  isAdmin() {
+    return this.props.user.me && this.props.user.me.nickname === this.props.params.nickname
+  }
   render() {
-    const user = this.props.user.watching
+    let user = this.props.user.watching
+    if (this.isAdmin()) {
+      user = this.props.user.me
+    }
+
     if(!user){
       return (<div/>)
-    } else {
-      const items = user.items.map(item => {
+    }
+    const items = user.items.map(item => {
       return (<ViewItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
     })
     let success = null
@@ -33,19 +41,21 @@ class ViewUser extends Component {
     const openedItem = this.state.openedItem
     return (
       <div>
-      {success}
-    	<div className='ui cover'>
-        <div className='ui text container center aligned middle'>
-          <h1>{user.name}</h1>
+        {success}
+      	<div className='ui cover'>
+          <div className='ui text container center aligned middle'>
+            <h1>{user.name}</h1>
+          </div>
+          <div>
+            {this.isAdmin() ? <Link to={'/'}>TODO BACK</Link> : null}
+          </div>
         </div>
-      </div>
-      <div className='ui container centered item-list'>
-      {items}
-      </div>
+        <div className='ui container centered item-list'>
+        {items}
+        </div>
         { openedItem ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()} onSuccess={() => this.setState({success: true})}/> : null}
       </div>
-      )
-    }
+    )
   }
   onPayClicked(item) {
     this.setState({ openedItem: item })
@@ -53,13 +63,10 @@ class ViewUser extends Component {
   onModalClose() {
     this.setState({ openedItem: null })
   }
-  buy(item,price,user) {
-
-  }
 }
 
 function mapStateToProps(state) {
-  return state;
+  return state
 }
 
 export default connect(mapStateToProps)(ViewUser)

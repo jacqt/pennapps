@@ -35,11 +35,27 @@ export default function user(state = defaultUserState, action) {
         isFetching: true,
       })
     case RECEIVE_LOGIN:
-      if (action.res.error) {
-        return Object.assign({}, state, {
-          isFetching: false,
-          me: action.res,
-        })
+      if (action.res.error || action.res.status === 'failure') {
+        if (cookie.get('email')) {
+          // delete old cookie
+          cookie.remove('email')
+          cookie.remove('auth_token')
+          return Object.assign({}, state, {
+            isFetching: false,
+          })
+        }
+        if (action.login) {
+          return Object.assign({}, state, {
+            isFetching: false,
+            me: {login_error: true},
+          })
+        }
+        else { // action.signup === true
+          return Object.assign({}, state, {
+            isFetching: false,
+            me: {signup_error: true},
+          })
+        }
       }
       const user = combine(action.res.data)
       cookie.set('email', user.email)
@@ -65,7 +81,7 @@ export default function user(state = defaultUserState, action) {
         if (action.res.error) {
           return Object.assign({}, state, {
             isFetching: false,
-            me: action.res,
+            me: {error: true},
           })
         }
         const user = combine(action.res.data)
@@ -78,7 +94,7 @@ export default function user(state = defaultUserState, action) {
         if (action.res.error) {
           return Object.assign({}, state, {
             isFetching: false,
-            watching: action.res,
+            watching: {error: true},
           })
         }
         const user = combine(action.res.data)

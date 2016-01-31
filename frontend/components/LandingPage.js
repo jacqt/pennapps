@@ -4,14 +4,23 @@ import { connect } from 'react-redux'
 import * as Actions from '../actions/actions'
 
 class LandingPage extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			signupLoading: false,
+		}
+	}
 	signup(name, email, password) {
 		const { dispatch } = this.props
 		const nickname = name.replace(/\s+/g, '')
 
-		$('.signup').addClass('loading');
-		window.setTimeout(() => dispatch(Actions.signup(email,password,password,name,nickname)), 2000);
+		this.setState({signupLoading: true})
+		window.setTimeout(() => dispatch(Actions.signup(email,password,password,name,nickname)), 2000)
 	}
-
+	login(email, password) {
+		const { dispatch } = this.props
+		dispatch(Actions.login(email,password))
+	}
   render() {
     return (
       <div>
@@ -30,14 +39,14 @@ class LandingPage extends Component {
             <div className='field'>
               <input type="text" name="login-email" placeholder="Email address"/>
             </div>
-            {this.props.error ? 'ERROR (TODO)' : null}
+            {this.props.login_error ? 'ERROR (TODO)' : null}
           </div>
       			</div>
       		</div>
       	</div>
       	<div className='ui text container centered'>
       		<h1>Start accepting online payments in 60 seconds.</h1>
-      		<div className='ui form signup'>
+      		<div className={'ui form signup ' + (this.state.signupLoading ? 'loading' : '')}>
       			<div className='field'>
       				<input type="text" name="name" placeholder="Society name"/>
       			</div>
@@ -50,7 +59,7 @@ class LandingPage extends Component {
       			<button className="ui button" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
       			Get Started
       			</button>
-						{this.props.error ? 'ERROR (TODO)' : null}
+						{this.props.signup_error ? 'ERROR (TODO)' : null}
       		</div>
       	</div>
       </div>

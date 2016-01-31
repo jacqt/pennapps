@@ -17,16 +17,13 @@ class App extends Component {
       console.log('logged in already')
       dispatch(Actions.reLogin(email, authToken))
     }
-    else {
-      dispatch(Actions.login('lukdsasasdadsddsdsssasadaddsasaddsdsasasas@de24.de', '123'))
-    }
   }
   render() {
     // don't render landing page before login
     if (this.props.isFetching && this.props.me === null) return <div/>
 
     const me = this.props.me
-    if (me && !me.error) {
+    if (me && !me.login_error && !me.signup_error) {
       return <AdminPanel/>
     }
     else {

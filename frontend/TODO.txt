@@ -1,13 +1,5 @@
-train tomorrow
-
 Taimur
-	* landing page + login
-	* payments
-Lukas
-	* passing stuff around in React (id, modal, shit)
-	* DELTE button
-	* login
-David
-	* stop revealing auth_token
-	* money stuff
-	* remaining items and crap
+	* Modal: doesn't close if you click on the white bg
+	* tab on login email doesn't go to password
+	* login/signup with enter
+	* item price divide by 100?

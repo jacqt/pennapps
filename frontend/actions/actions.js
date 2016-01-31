@@ -15,7 +15,7 @@ export function signup(email, password, passwordConfirmation, name, nickName) {
   return dispatch => {
     dispatch({ type: REQUEST_SIGNUP })
     return ajax.signup(email, password, passwordConfirmation, name, nickName)
-      .then(res => dispatch(receiveLogin(res)))
+      .then(res => dispatch(receiveSignup(res)))
       .catch(console.log)
   }
 }
@@ -84,6 +84,14 @@ function receiveLogin(res) {
   return {
     type: RECEIVE_LOGIN,
     res,
+    login: true,
+  }
+}
+function receiveSignup(res) {
+  return {
+    type: RECEIVE_LOGIN,
+    res,
+    signup: true,
   }
 }
 function receiveUser(res, nickname) {
