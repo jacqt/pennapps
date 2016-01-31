@@ -1,5 +1,9 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :capacity, :payments
+  attributes :id, :name, :price, :capacity, :payments, :remaining
+
+  def remaining
+    object.capacity - object.payments.count
+  end
 
   def payments
     if serialization_options[:admin]
