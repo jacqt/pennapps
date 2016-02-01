@@ -1,5 +1,2 @@
 Taimur
 	* Modal: doesn't close if you click on the white bg
-	* tab on login email doesn't go to password
-	* login/signup with enter
-	* item price divide by 100?

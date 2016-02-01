@@ -8,7 +8,7 @@ class ViewItem extends Component {
     return (
     	<div className='view-item'>
 	    	<div className='name'>{this.props.name}</div>
-	    	<div className='price'>£{this.props.price}</div>
+	    	<div className='price'>£{(this.props.price/100).toFixed(2)}</div>
           <button onClick={() => this.props.onPayClicked()} className="buy"><img src="img/done.png" className="tick"/>Pay Now</button>
   		</div>
     )
