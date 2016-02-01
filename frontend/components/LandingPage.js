@@ -21,6 +21,18 @@ class LandingPage extends Component {
 		const { dispatch } = this.props
 		dispatch(Actions.login(email,password))
 	}
+  componentDidMount() {
+    $(".loginfield").keyup(function(event){
+    if(event.keyCode == 13){
+        $(".loginbutton").click();
+    }
+  });
+  $(".signupfield").keyup(function(event){
+    if(event.keyCode == 13){
+        $(".signupbutton").click();
+    }
+  });
+  }
   render() {
     return (
       <div>
@@ -30,17 +42,17 @@ class LandingPage extends Component {
       			<div className='logo item'>PaySpace</div>
       			<div className='right item'>
               <div className='ui form login'>
-            <button className="ui button" onClick={() => this.login($('input[name="login-email"]').val(),$('input[name="login-password"]').val())}>
-            Login
-            </button>
-            <div className='field'>
-              <input type="password" name="login-password" placeholder="Password"/>
-            </div>
-            <div className='field'>
-              <input type="text" name="login-email" placeholder="Email address"/>
-            </div>
-            {this.props.login_error ? 'ERROR (TODO)' : null}
-          </div>
+                <button tabIndex='7' className="ui button loginbutton" onClick={() => this.login($('input[name="login-email"]').val(),$('input[name="login-password"]').val())}>
+                Login
+                </button>
+                <div className='field'>
+                  <input type="password" className='loginfield' tabIndex='6' name="login-password" placeholder="Password"/>
+                </div>
+                <div className='field'>
+                  <input type="text" tabIndex='5' className='loginfield' name="login-email" placeholder="Email address"/>
+                </div>
+                {this.props.login_error ? 'ERROR (TODO)' : null}
+              </div>
       			</div>
       		</div>
       	</div>
@@ -48,15 +60,15 @@ class LandingPage extends Component {
       		<h1>Start accepting online payments in 60 seconds.</h1>
       		<div className={'ui form signup ' + (this.state.signupLoading ? 'loading' : '')}>
       			<div className='field'>
-      				<input type="text" name="name" placeholder="Society name"/>
+      				<input type="text" name="name" className='signupfield' placeholder="Society name" tabIndex='1'/>
       			</div>
       			<div className='field'>
-      				<input type="text" name="email" placeholder="Email address"/>
+      				<input type="text" name="email" className='signupfield' placeholder="Email address" tabIndex='2'/>
       			</div>
       			<div className='field'>
-      				<input type="password" name="password" placeholder="Password"/>
+      				<input type="password" className='signupfield' name="password" placeholder="Password" tabIndex='3'/>
       			</div>
-      			<button className="ui button" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
+      			<button tabIndex='4' className="ui button signupbutton" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
       			Get Started
       			</button>
 						{this.props.signup_error ? 'ERROR (TODO)' : null}
