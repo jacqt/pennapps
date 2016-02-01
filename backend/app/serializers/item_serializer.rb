@@ -1,5 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :capacity, :payments, :remaining
+  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining,
 
   def remaining
     object.capacity - object.payments.count
