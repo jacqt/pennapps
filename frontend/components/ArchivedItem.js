@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class DashboardItem extends Component {
+class ArchivedItem extends Component {
   render() {
     const item = this.props.item
     return (
@@ -12,12 +12,12 @@ class DashboardItem extends Component {
 	    		<div className='remaining'>Capacity: {item.capacity}</div>
 	    	</div>
   			<hr/>
-        <div className='item-action delete' onClick={() => this.props.onArchive()}><a href='#'>Archive</a></div>
-  			<div className='item-action edit' onClick={() => this.props.onEdit()}><a href='#'>Edit Item</a></div>
+        <div className='item-action edit' onClick={() => this.props.onUnarchive()}><a href='#'>Un-archive</a></div>
+  			<div className='item-action delete' onClick={() => this.props.onDelete()}><a href='#'>Delete</a></div>
   			</div>
   		</div>
     )
   }
 }
 
-export default DashboardItem
+export default ArchivedItem

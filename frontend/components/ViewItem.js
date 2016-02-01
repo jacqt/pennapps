@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
 class ViewItem extends Component {
-
-
-
+	
   render() {
     return (
     	<div className='view-item'>

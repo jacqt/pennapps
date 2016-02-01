@@ -79,7 +79,7 @@ export function updateItem(id, name, price, capacity) {
   }
 }
 
-export function archieveItem(id, archived) {
+export function archiveItem(id, archived) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: EDIT_ITEM })

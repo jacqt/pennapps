@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 import * as _ from 'underscore'
 
 import Header from './Header'
-import DashboardItem from './DashboardItem'
 import DashboardActions from './DashboardActions'
-import NewItem from './NewItem'
 import DialogItem from './DialogItem'
 import ArchivedItem from './ArchivedItem'
 
@@ -15,32 +13,18 @@ class AdminPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      editing: [],
-      askForArchive: [],
       askForDelete: [],
     }
   }
   render() {
     const me = this.props.me
-
-    const items = me.items.filter(item => !item.archived).map(item => {
-      if (this.state.editing.indexOf(item.id) > -1) {
-        return <NewItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
-      }
-      else if (this.state.askForArchive.indexOf(item.id) > -1) {
-        return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirm={() => this.onArchive(item.id,true)} abort={() => this.onAbortArchiveClicked(item.id)}/>
-      } 
-      else {
-       return <DashboardItem item={item} price={item.price} key={item.id} onEdit={() => this.onEditClicked(item.id)} onArchive={() => this.onArchiveClicked(item.id)}/>
-      }
-    })
     const archivedItems = me.items.filter(item => item.archived).map(item => {
       console.log(item)
       if (this.state.askForDelete.indexOf(item.id) > -1) {
-        return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirmTitle={'Archive'} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
+        return <DialogItem key={item.id} question={'Are you sure you want to delete this item? This can\'t be undone.'} confirmTitle={'Delete'} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
       }
       else {
-        return <ArchivedItem oldItem={item} key={item.id} onDelete={() => this.onDelete(item.id)} onUnarchive={() => this.onArchive(item.id,false)}/>
+        return <ArchivedItem item={item} key={item.id} onDelete={() => this.onDeleteClicked(item.id)} onUnarchive={() => this.onArchive(item.id,false)}/>
       }
     })
     return (
@@ -59,27 +43,17 @@ class AdminPanel extends Component {
           <hr/>
           <div className='ui two column stackable grid'>
             <div className='twelve wide column left aligned'>
-              <h1>Your Items</h1>
-              {items}
-              <NewItem title={'Add Item'} action={this.onAdd.bind(this)}/>
+              <h1>Archived Items</h1>
+              {archivedItems}
             </div>
             <div className='four wide column right aligned'>
               <h1>Actions</h1>
-              <DashboardActions from='admin'/>
+              <DashboardActions from='archive'/>
             </div>
           </div>
         </div>
       </div>
     )
-  }
-  onAdd(name, price, capacity) {
-    const { dispatch } = this.props
-    dispatch(Actions.addItem(name, price, capacity))
-  }
-  onUpdate(name, price, capacity, id) {
-    const { dispatch } = this.props
-    dispatch(Actions.updateItem(id, name, price, capacity))
-    this.setState({editing: _.without(this.state.editing, id)})
   }
   onArchive(id,archived){
     const { dispatch } = this.props
@@ -90,17 +64,11 @@ class AdminPanel extends Component {
     const { dispatch } = this.props
     dispatch(Actions.removeItem(id))
   }
-  onEditClicked(id) {
-    this.setState({editing: _.union(this.state.editing, [id])})
-  }
   onDeleteClicked(id) {
     this.setState({askForDelete: _.union(this.state.askForDelete, [id])})
   }
   onAbortDeleteClicked(id) {
     this.setState({askForDelete: _.without(this.state.askForDelete, [id])})
-  }
-  onArchiveClicked(id) {
-    this.setState({askForArchive: _.union(this.state.askForArchive, [id])})
   }
   onAbortArchiveClicked(id) {
     this.setState({askForArchive: _.without(this.state.askForArchive, [id])})
