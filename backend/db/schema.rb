@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20160124021715) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
+    t.boolean  "archived",   default: false
     t.integer  "price"
-    t.integer  "capacity"
+    t.integer  "capacity",   default: 0
     t.integer  "society_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["society_id"], name: "index_items_on_society_id", using: :btree
   end
 
