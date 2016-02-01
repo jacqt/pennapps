@@ -130,6 +130,23 @@ export function updateItem(email, authToken, id, name, price, capacity) {
   }))
 }
 
+export function archiveItem(email, authToken, id, archived) {
+  const f = objectToFormData({
+    email,
+    auth_token: authToken,
+    item: {
+      archived
+    }
+  })
+
+  const requestUrl = API_BASE + '/items/' + id
+
+  return processResponse(fetch(requestUrl, {
+    method: 'post',
+    body: f,
+  }))
+}
+
 export function getClientToken() {
   const requestUrl = API_BASE + '/client_token/'
 

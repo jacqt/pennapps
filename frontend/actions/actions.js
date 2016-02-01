@@ -79,6 +79,16 @@ export function updateItem(id, name, price, capacity) {
   }
 }
 
+export function archieveItem(id, archived) {
+  return (dispatch, getState) => {
+    const state = getState()
+    dispatch({ type: EDIT_ITEM })
+    return ajax.archiveItem(state.user.me.email, state.user.me.auth_token, id, archived)
+      .then(res => dispatch(requestUser(state.user.me.nickname)))
+      .catch(console.log)
+  }
+}
+
 /* action helpers */
 function receiveLogin(res) {
   return {
