@@ -3,10 +3,8 @@ class ItemSerializer < ActiveModel::Serializer
 
   def price
     {
-      "price": {
-        "price_cents": object.price.fractional,
-        "price_formatted": object.price.format,
-      }
+      "price_cents": object.price.fractional,
+      "price_formatted": object.price.format,
     }
   end
 
