@@ -7,7 +7,7 @@ class SocietiesController < ApplicationController
     @society.auth_token = SecureRandom.hex(256)
 
     if @society.save
-      render json: @society, status: 201, include: [:items]
+      render json: @society, status: 201, include: [:items], admin: true
     else
       render json: { status: "failure", errors: @society.errors }
     end
@@ -24,7 +24,7 @@ class SocietiesController < ApplicationController
   def update
     @society.attributes = society_params
     if @society.save
-      render json: @society, include: [:items]
+      render json: @society, include: [:items], admin: true
     else
       render json: { status: "failure", errors: @society.errors }
     end
