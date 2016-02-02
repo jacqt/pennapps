@@ -6,6 +6,7 @@ import Header from './Header'
 import DashboardItem from './DashboardItem'
 import DashboardActions from './DashboardActions'
 import NewItem from './NewItem'
+import EditItem from './EditItem'
 import DialogItem from './DialogItem'
 import ArchivedItem from './ArchivedItem'
 
@@ -24,7 +25,7 @@ class AdminPanel extends Component {
 
     const items = me.items.filter(item => !item.archived).map(item => {
       if (this.state.editing.indexOf(item.id) > -1) {
-        return <NewItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
+        return <EditItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
       }
       else if (this.state.askForArchive.indexOf(item.id) > -1) {
         return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirm={() => this.onArchive(item.id,true)} abort={() => this.onAbortArchiveClicked(item.id)} confirmTitle={'Archive'}/>
