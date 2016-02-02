@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 20160124021715) do
     t.string   "password_digest"
     t.string   "nickname"
     t.string   "auth_token"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "balance",         default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["balance"], name: "index_societies_on_balance", using: :btree
     t.index ["email"], name: "index_societies_on_email", unique: true, using: :btree
     t.index ["nickname"], name: "index_societies_on_nickname", unique: true, using: :btree
   end
