@@ -103,6 +103,16 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    monetize (1.4.0)
+      money (~> 6.7)
+    money (6.7.0)
+      i18n (>= 0.6.4, <= 0.7.0)
+      sixarm_ruby_unaccent (>= 1.1.1, < 2)
+    money-rails (1.6.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.4.0)
+      money (~> 6.7)
+      railties (>= 3.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
@@ -140,6 +150,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
     redis (3.2.2)
+    sixarm_ruby_unaccent (1.1.1)
     spring (1.6.2)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -167,6 +178,7 @@ DEPENDENCIES
   braintree
   byebug
   figaro
+  money-rails
   pg (~> 0.18)
   puma
   rack-cors
