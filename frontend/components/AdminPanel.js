@@ -17,7 +17,6 @@ class AdminPanel extends Component {
     this.state = {
       editing: [],
       askForArchive: [],
-      askForDelete: [],
     }
   }
   render() {
@@ -28,19 +27,10 @@ class AdminPanel extends Component {
         return <NewItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
       }
       else if (this.state.askForArchive.indexOf(item.id) > -1) {
-        return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirm={() => this.onArchive(item.id,true)} abort={() => this.onAbortArchiveClicked(item.id)}/>
-      } 
+        return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirm={() => this.onArchive(item.id,true)} abort={() => this.onAbortArchiveClicked(item.id)} confirmTitle={'Archive'}/>
+      }
       else {
        return <DashboardItem item={item} price={item.price} key={item.id} onEdit={() => this.onEditClicked(item.id)} onArchive={() => this.onArchiveClicked(item.id)}/>
-      }
-    })
-    const archivedItems = me.items.filter(item => item.archived).map(item => {
-      console.log(item)
-      if (this.state.askForDelete.indexOf(item.id) > -1) {
-        return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirmTitle={'Archive'} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
-      }
-      else {
-        return <ArchivedItem oldItem={item} key={item.id} onDelete={() => this.onDelete(item.id)} onUnarchive={() => this.onArchive(item.id,false)}/>
       }
     })
     return (
@@ -86,24 +76,15 @@ class AdminPanel extends Component {
     dispatch(Actions.archiveItem(id,archived))
     this.setState({askForArchive: _.without(this.state.askForArchive, id)})
   }
-  onDelete(id) {
-    const { dispatch } = this.props
-    dispatch(Actions.removeItem(id))
-  }
+
   onEditClicked(id) {
     this.setState({editing: _.union(this.state.editing, [id])})
-  }
-  onDeleteClicked(id) {
-    this.setState({askForDelete: _.union(this.state.askForDelete, [id])})
-  }
-  onAbortDeleteClicked(id) {
-    this.setState({askForDelete: _.without(this.state.askForDelete, [id])})
   }
   onArchiveClicked(id) {
     this.setState({askForArchive: _.union(this.state.askForArchive, [id])})
   }
   onAbortArchiveClicked(id) {
-    this.setState({askForArchive: _.without(this.state.askForArchive, [id])})
+    this.setState({askForArchive: _.without(this.state.askForArchive, id)})
   }
 }
 

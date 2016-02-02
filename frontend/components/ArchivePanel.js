@@ -19,7 +19,6 @@ class AdminPanel extends Component {
   render() {
     const me = this.props.me
     const archivedItems = me.items.filter(item => item.archived).map(item => {
-      console.log(item)
       if (this.state.askForDelete.indexOf(item.id) > -1) {
         return <DialogItem key={item.id} question={'Are you sure you want to delete this item? This can\'t be undone.'} confirmTitle={'Delete'} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
       }
@@ -58,20 +57,17 @@ class AdminPanel extends Component {
   onArchive(id,archived){
     const { dispatch } = this.props
     dispatch(Actions.archiveItem(id,archived))
-    this.setState({askForArchive: _.without(this.state.askForArchive, id)})
   }
   onDelete(id) {
     const { dispatch } = this.props
     dispatch(Actions.removeItem(id))
   }
+  
   onDeleteClicked(id) {
     this.setState({askForDelete: _.union(this.state.askForDelete, [id])})
   }
   onAbortDeleteClicked(id) {
-    this.setState({askForDelete: _.without(this.state.askForDelete, [id])})
-  }
-  onAbortArchiveClicked(id) {
-    this.setState({askForArchive: _.without(this.state.askForArchive, [id])})
+    this.setState({askForDelete: _.without(this.state.askForDelete, id)})
   }
 }
 
