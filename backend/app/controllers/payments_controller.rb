@@ -6,9 +6,9 @@ class PaymentsController < ApplicationController
   def purchase
     @item = Item.find(params[:id])
     nonce = params[:payment_method_nonce]
-    # fix the amount
+
     result = Braintree::Transaction.sale(
-      :amount => "100.00",
+      :amount => @item.price.format(symbol: false),
       :payment_method_nonce => nonce
     )
 
