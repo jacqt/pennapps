@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 class DashboardItem extends Component {
   render() {
@@ -13,7 +14,8 @@ class DashboardItem extends Component {
 	    	</div>
   			<hr/>
         <div className='item-action delete' onClick={() => this.props.onArchive()}><a href='#'>Archive</a></div>
-  			<div className='item-action edit' onClick={() => this.props.onEdit()}><a href='#'>Edit Item</a></div>
+  			<div className='item-action edit' onClick={() => this.props.onEdit()}><a href='#'>Edit</a></div>
+        <div className='item-action edit'><Link to={'/'} query={{itemId : item.id}}>Payments</Link></div>
   			</div>
   		</div>
     )

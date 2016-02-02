@@ -5,6 +5,8 @@ import * as cookie from 'js-cookie'
 import AdminPanel from './AdminPanel'
 import LandingPage from './LandingPage'
 import ArchivePanel from './ArchivePanel'
+import PaymentsPanel from './PaymentsPanel'
+
 
 import * as Actions from '../actions/actions'
 
@@ -25,6 +27,9 @@ class App extends Component {
 
     const me = this.props.me
     if (me && !me.login_error && !me.signup_error) {
+      if (this.props.location.query.itemId) {
+        return <PaymentsPanel itemId={this.props.location.query.itemId}/>
+      }
       if (this.props.location.query.archive) {
         return <ArchivePanel/>
       } else {
