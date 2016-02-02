@@ -5,9 +5,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = @society.items.build(item_params)
+    @item.price = Money.new(item_params[:price])
 
     if @item.save
-      render json: { data: { item: @item.as_json } }, status: 201
+      render json: { data: { item: ItemSerializer.new(@item, admin: true).as_json } }, status: 201
     else
       render json: { status: "failure", errors: @item.errors }
     end
@@ -15,8 +16,10 @@ class ItemsController < ApplicationController
 
   def update
     @item.attributes = item_params
+    @item.price = Money.new(item_params[:price])
+
     if @item.save
-      render json: { data: { item: @item.as_json } }
+      render json: { data: { item: ItemSerializer.new(@item, admin: true).as_json } }
     else
       render json: { status: "failure", errors: @item.errors }
     end
