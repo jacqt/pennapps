@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
 class ViewItem extends Component {
-	
+
   render() {
+		const item = this.props.item
+		// TODO(Taimur) add remaining???
     return (
     	<div className='view-item'>
-	    	<div className='name'>{this.props.name}</div>
-	    	<div className='price'>£{(this.props.price/100).toFixed(2)}</div>
+	    	<div className='name'>{item.name}</div>
+	    	<div className='price'>£{(item.price/100).toFixed(2)}</div>
           <button onClick={() => this.props.onPayClicked()} className="buy"><img src="img/done.png" className="tick"/>Pay Now</button>
   		</div>
     )

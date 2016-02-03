@@ -5,7 +5,7 @@ import * as _ from 'underscore'
 import Header from './Header'
 import DashboardActions from './DashboardActions'
 
-import * as Actions from '../actions/actions'
+import * as Actions from '../actions/userActions'
 
 class AdminPanel extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class AdminPanel extends Component {
     }
   }
   render() {
-    const me = this.props.me
+    const me = this.props.user
     const index = _.findIndex(me.items, (item) => item.id == this.props.itemId)
     if (index === -1) return <div/>
     const item = me.items[index]
@@ -57,24 +57,6 @@ class AdminPanel extends Component {
         </div>
       </div>
     )
-  }
-  onArchive(id,archived){
-    const { dispatch } = this.props
-    dispatch(Actions.archiveItem(id,archived))
-    this.setState({askForArchive: _.without(this.state.askForArchive, id)})
-  }
-  onDelete(id) {
-    const { dispatch } = this.props
-    dispatch(Actions.removeItem(id))
-  }
-  onDeleteClicked(id) {
-    this.setState({askForDelete: _.union(this.state.askForDelete, [id])})
-  }
-  onAbortDeleteClicked(id) {
-    this.setState({askForDelete: _.without(this.state.askForDelete, [id])})
-  }
-  onAbortArchiveClicked(id) {
-    this.setState({askForArchive: _.without(this.state.askForArchive, [id])})
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as Actions from '../actions/actions'
+import * as Actions from '../actions/userActions'
 
 class LandingPage extends Component {
 	constructor(props) {
@@ -14,24 +14,24 @@ class LandingPage extends Component {
 		const { dispatch } = this.props
 		const nickname = name.replace(/\s+/g, '')
 
-		this.setState({signupLoading: true})
-		window.setTimeout(() => dispatch(Actions.signup(email,password,password,name,nickname)), 2000)
+		this.setState({ signupLoading: true })
+		window.setTimeout(() => dispatch(Actions.signup(email, password, password, name, nickname)), 2000)
 	}
 	login(email, password) {
 		const { dispatch } = this.props
 		dispatch(Actions.login(email,password))
 	}
   componentDidMount() {
-    $(".loginfield").keyup(function(event){
-    if(event.keyCode == 13){
-        $(".loginbutton").click();
-    }
-  });
-  $(".signupfield").keyup(function(event){
-    if(event.keyCode == 13){
-        $(".signupbutton").click();
-    }
-  });
+    $(".loginfield").keyup(e => {
+	    if(event.keyCode == 13) {
+	      $(".loginbutton").click()
+	    }
+	  })
+	  $(".signupfield").keyup(e => {
+	    if(event.keyCode == 13){
+	        $(".signupbutton").click()
+	    }
+	  })
   }
   render() {
     return (
@@ -84,8 +84,7 @@ class LandingPage extends Component {
 }
 
 function mapStateToProps(state) {
-	if (state.user.me) return state.user.me
-	else return {}
+	return {}
 }
 
 export default connect(mapStateToProps)(LandingPage)

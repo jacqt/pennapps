@@ -10,7 +10,7 @@ import EditItem from './EditItem'
 import DialogItem from './DialogItem'
 import ArchivedItem from './ArchivedItem'
 
-import * as Actions from '../actions/actions'
+import * as Actions from '../actions/userActions'
 
 class AdminPanel extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class AdminPanel extends Component {
     }
   }
   render() {
-    const me = this.props.me
+    const me = this.props.user
 
     const items = me.items.filter(item => !item.archived).map(item => {
       if (this.state.editing.indexOf(item.id) > -1) {

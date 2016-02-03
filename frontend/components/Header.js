@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as Actions from '../actions/actions'
+import * as Actions from '../actions/userActions'
 
 class Header extends Component {
   render() {
   	const { dispatch } = this.props
 
-    // const me = this.props.me
     return (
       <div className='ui top menu header'>
       		<div className='ui container'>
@@ -23,7 +22,7 @@ class Header extends Component {
 
 
 function mapStateToProps(state) {
-  return state.user;
+  return {}
 }
 
 export default connect(mapStateToProps)(Header)

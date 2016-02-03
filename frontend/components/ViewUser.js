@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ViewItem from './ViewItem'
 import PaymentForm from './PaymentForm'
 
-import * as A from '../actions/actions'
+import * as Actions from '../actions/publicUserActions'
 
 class ViewUser extends Component {
   constructor(props) {
@@ -15,22 +15,25 @@ class ViewUser extends Component {
     }
   }
   componentDidMount() {
-    this.props.dispatch(A.requestUser(this.props.params.nickname))
+    this.props.dispatch(Actions.requestUser(this.props.params.nickname))
   }
   isAdmin() {
     return this.props.user.me && this.props.user.me.nickname === this.props.params.nickname
   }
   render() {
-    let user = this.props.user.watching
-    if (this.isAdmin()) {
-      user = this.props.user.me
-    }
+    const user = this.props.user
 
-    if(!user){
-      return (<div/>)
+    if (this.props.isFetching){
+      return <div/>
+    }
+    if (!user) {
+      // TODO(Taimur)
+      return (
+        <p>invalid URL</p>
+      )
     }
     const items = user.items.map(item => {
-      return (<ViewItem name={item.name} price={item.price} remaining='12' capacity={item.capacity} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
+      return (<ViewItem item={item} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
     })
     let success = null
     if (this.state.success) {
@@ -45,9 +48,6 @@ class ViewUser extends Component {
       	<div className='ui cover'>
           <div className='ui text container center aligned middle'>
             <h1>{user.name}</h1>
-          </div>
-          <div>
-            {this.isAdmin() ? <Link to={'/'}>TODO BACK</Link> : null}
           </div>
         </div>
         <div className='ui container centered item-list'>
@@ -66,7 +66,7 @@ class ViewUser extends Component {
 }
 
 function mapStateToProps(state) {
-  return state
+  return state.publicUser
 }
 
 export default connect(mapStateToProps)(ViewUser)

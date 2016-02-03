@@ -7,9 +7,9 @@ import DashboardActions from './DashboardActions'
 import DialogItem from './DialogItem'
 import ArchivedItem from './ArchivedItem'
 
-import * as Actions from '../actions/actions'
+import * as Actions from '../actions/userActions'
 
-class AdminPanel extends Component {
+class ArchivePanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -17,7 +17,7 @@ class AdminPanel extends Component {
     }
   }
   render() {
-    const me = this.props.me
+    const me = this.props.user
     const archivedItems = me.items.filter(item => item.archived).map(item => {
       if (this.state.askForDelete.indexOf(item.id) > -1) {
         return <DialogItem key={item.id} question={'Are you sure you want to delete this item? This can\'t be undone.'} confirmTitle={'Delete'} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
@@ -54,15 +54,15 @@ class AdminPanel extends Component {
       </div>
     )
   }
-  onArchive(id,archived){
+  onArchive(id, archived){
     const { dispatch } = this.props
-    dispatch(Actions.archiveItem(id,archived))
+    dispatch(Actions.archiveItem(id, archived))
   }
   onDelete(id) {
     const { dispatch } = this.props
     dispatch(Actions.removeItem(id))
   }
-  
+
   onDeleteClicked(id) {
     this.setState({askForDelete: _.union(this.state.askForDelete, [id])})
   }
@@ -75,4 +75,4 @@ function mapStateToProps(state) {
   return state.user;
 }
 
-export default connect(mapStateToProps)(AdminPanel)
+export default connect(mapStateToProps)(ArchivePanel)

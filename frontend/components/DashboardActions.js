@@ -17,7 +17,8 @@ class DashboardActions extends Component {
   }
 
   withdraw() {
-    withdraw(this.props.me.email, this.props.me.auth_token)
+    const me = this.props.user
+    withdraw(me.email, me.auth_token)
     .then(res => {
       console.log(res) // TODO(Taimur)
     })

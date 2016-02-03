@@ -3,12 +3,11 @@ import {
   REQUEST_LOGIN,
   RECEIVE_LOGIN,
   LOGOUT,
-  REQUEST_USER,
-  RECEIVE_USER,
   ADD_ITEM,
   EDIT_ITEM,
   REMOVE_ITEM,
 } from '../constants/actionTypes.js'
+
 import * as ajax from '../lib/ajax.js'
 
 export function signup(email, password, passwordConfirmation, name, nickName) {
@@ -40,21 +39,14 @@ export function reLogin(email, authToken) {
   }
 }
 
-export function requestUser(nickname) {
-  return dispatch => {
-    dispatch({ type: REQUEST_USER })
-    return ajax.requestUser(nickname)
-      .then(res => dispatch(receiveUser(res, nickname)))
-      .catch(console.log)
-  }
-}
-
 export function addItem(name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: ADD_ITEM })
-    return ajax.addItem(state.user.me.email, state.user.me.auth_token, name, price, capacity)
-      .then(res => dispatch(requestUser(state.user.me.nickname)))
+    const email = state.user.me.email
+    const authToken = state.user.me.auth_token
+    return ajax.addItem(email, authToken, name, price, capacity)
+      .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
   }
 }
@@ -63,8 +55,10 @@ export function removeItem(id) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: REMOVE_ITEM })
-    return ajax.removeItem(state.user.me.email, state.user.me.auth_token, id)
-      .then(res => dispatch(requestUser(state.user.me.nickname)))
+    const email = state.user.me.email
+    const authToken = state.user.me.auth_token
+    return ajax.removeItem(email, authToken, id)
+      .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
   }
 }
@@ -73,8 +67,10 @@ export function updateItem(id, name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: EDIT_ITEM })
-    return ajax.updateItem(state.user.me.email, state.user.me.auth_token, id, name, price, capacity)
-      .then(res => dispatch(requestUser(state.user.me.nickname)))
+    const email = state.user.me.email
+    const authToken = state.user.me.auth_token
+    return ajax.updateItem(email, authToken, id, name, price, capacity)
+      .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
   }
 }
@@ -83,8 +79,10 @@ export function archiveItem(id, archived) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: EDIT_ITEM })
-    return ajax.archiveItem(state.user.me.email, state.user.me.auth_token, id, archived)
-      .then(res => dispatch(requestUser(state.user.me.nickname)))
+    const email = state.user.me.email
+    const authToken = state.user.me.auth_token
+    return ajax.archiveItem(email, authToken, id, archived)
+      .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
   }
 }
@@ -102,12 +100,5 @@ function receiveSignup(res) {
     type: RECEIVE_LOGIN,
     res,
     signup: true,
-  }
-}
-function receiveUser(res, nickname) {
-  return {
-    type: RECEIVE_USER,
-    res,
-    nickname
   }
 }

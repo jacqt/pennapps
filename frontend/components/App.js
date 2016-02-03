@@ -7,8 +7,7 @@ import LandingPage from './LandingPage'
 import ArchivePanel from './ArchivePanel'
 import PaymentsPanel from './PaymentsPanel'
 
-
-import * as Actions from '../actions/actions'
+import * as Actions from '../actions/userActions'
 
 class App extends Component {
   componentWillMount() {
@@ -22,28 +21,29 @@ class App extends Component {
     }
   }
   render() {
-    // don't render landing page before login
-    if (this.props.isFetching && this.props.me === null) return <div/>
+    const me = this.props.user
 
-    const me = this.props.me
-    if (me && !me.login_error && !me.signup_error) {
-      if (this.props.location.query.itemId) {
+    if (me) {
+      const query = this.props.location.query
+      if (query.itemId) {
         return <PaymentsPanel itemId={this.props.location.query.itemId}/>
       }
-      if (this.props.location.query.archive) {
+      if (query.archive) {
         return <ArchivePanel/>
       } else {
         return <AdminPanel/>
       }
     }
     else {
-      return <LandingPage/>
+      // don't render landing page before login
+      if (this.props.isFetching) return <div/>
+      else return <LandingPage/>
     }
   }
 }
 
 function mapStateToProps(state) {
-  return state.user;
+  return state.user
 }
 
 export default connect(mapStateToProps)(App)
