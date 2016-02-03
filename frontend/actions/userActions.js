@@ -43,8 +43,8 @@ export function addItem(name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: ADD_ITEM })
-    const email = state.user.me.email
-    const authToken = state.user.me.auth_token
+    const email = state.user.user.email
+    const authToken = state.user.user.auth_token
     return ajax.addItem(email, authToken, name, price, capacity)
       .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
@@ -55,8 +55,8 @@ export function removeItem(id) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: REMOVE_ITEM })
-    const email = state.user.me.email
-    const authToken = state.user.me.auth_token
+    const email = state.user.user.email
+    const authToken = state.user.user.auth_token
     return ajax.removeItem(email, authToken, id)
       .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
@@ -67,8 +67,8 @@ export function updateItem(id, name, price, capacity) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: EDIT_ITEM })
-    const email = state.user.me.email
-    const authToken = state.user.me.auth_token
+    const email = state.user.user.email
+    const authToken = state.user.user.auth_token
     return ajax.updateItem(email, authToken, id, name, price, capacity)
       .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)
@@ -79,8 +79,8 @@ export function archiveItem(id, archived) {
   return (dispatch, getState) => {
     const state = getState()
     dispatch({ type: EDIT_ITEM })
-    const email = state.user.me.email
-    const authToken = state.user.me.auth_token
+    const email = state.user.user.email
+    const authToken = state.user.user.auth_token
     return ajax.archiveItem(email, authToken, id, archived)
       .then(res => dispatch(reLogin(email, authToken)))
       .catch(console.log)

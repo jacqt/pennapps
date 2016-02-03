@@ -44,7 +44,7 @@ class AdminPanel extends Component {
             </div>
             <div className='four wide column right aligned'>
               <h2>Balance</h2>
-              <div className='dashboard-balance'>£315.00</div>
+              <div className='dashboard-balance'>{me.balance.balance_formatted}</div>
             </div>
           </div>
           <hr/>

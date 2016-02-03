@@ -6,7 +6,7 @@ import { withdraw } from '../lib/ajax'
 
 class DashboardActions extends Component {
   render() {
-    const me = this.props.me
+    const me = this.props.user
     return (
       <div className='dashboard-actions'>
         <Link to={`/${me.nickname}`} target="_blank">View Page</Link><br/>

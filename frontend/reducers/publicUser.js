@@ -7,7 +7,7 @@ import { getUserFromData } from '../lib/utils'
 
 const defaultUserState = {
   isFetching: false,
-  user,
+  user: null,
 }
 
 function combine(data) {
