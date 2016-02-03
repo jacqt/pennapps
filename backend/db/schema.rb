@@ -18,12 +18,14 @@ ActiveRecord::Schema.define(version: 20160124021715) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "archived",   default: false
-    t.integer  "price"
-    t.integer  "capacity",   default: 0
+    t.boolean  "archived",    default: false
+    t.integer  "price_cents"
+    t.integer  "capacity",    default: 0
     t.integer  "society_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["archived"], name: "index_items_on_archived", using: :btree
+    t.index ["price_cents"], name: "index_items_on_price_cents", using: :btree
     t.index ["society_id"], name: "index_items_on_society_id", using: :btree
   end
 
@@ -43,8 +45,10 @@ ActiveRecord::Schema.define(version: 20160124021715) do
     t.string   "password_digest"
     t.string   "nickname"
     t.string   "auth_token"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "balance_cents",   default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["balance_cents"], name: "index_societies_on_balance_cents", using: :btree
     t.index ["email"], name: "index_societies_on_email", unique: true, using: :btree
     t.index ["nickname"], name: "index_societies_on_nickname", unique: true, using: :btree
   end

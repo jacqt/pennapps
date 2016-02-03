@@ -6,16 +6,18 @@ class PaymentsController < ApplicationController
   def purchase
     @item = Item.find(params[:id])
     nonce = params[:payment_method_nonce]
-    # fix the amount
+
     result = Braintree::Transaction.sale(
-      :amount => "100.00",
+      :amount => @item.price.format(symbol: false),
       :payment_method_nonce => nonce
     )
 
     @payment = @item.payments.build(payment_params)
 
     if result.success? and @payment.valid?
-      @payment.save
+      @payment.save!
+      @item.society.balance += @item.price
+      @item.society.save!
       render json: { data: { payment: @payment } }
     else
       render json: { status: "failure" }, status: 400
