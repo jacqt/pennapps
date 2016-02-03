@@ -18,6 +18,9 @@ class AdminPanel extends Component {
     const index = _.findIndex(me.items, (item) => item.id == this.props.itemId)
     if (index === -1) return <div/>
     const item = me.items[index]
+    const payments = item.payments.transactions.map(transaction => {
+      return <tr><td>{transaction.name}</td><td>{transaction.email}</td><td>{transaction.created_at}</td></tr>
+    })
     return (
       <div>
         <Header/>
@@ -37,28 +40,12 @@ class AdminPanel extends Component {
               <h1>Item Payments</h1>
               <table className="ui celled table">
               <thead>
-                <tr><th>Payee Name</th>
-                <th>Payee Email</th>
+                <tr><th>Name</th>
+                <th>Email</th>
                 <th>Payment Date</th>
               </tr></thead>
               <tbody>
-                <tr>
-                  <td>
-                    Name
-                  </td>
-                  <td>Email</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                </tr>
-                <tr>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                </tr>
+              {payments}
               </tbody>
               </table>
             </div>
