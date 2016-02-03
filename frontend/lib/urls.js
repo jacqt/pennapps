@@ -1,4 +1,4 @@
-const DOMAIN = 'http://pay.serious.engineering'
+const DOMAIN = 'https://api.oatpay.com'
 const API_BASE = DOMAIN + '/v1'
 
 export default {
