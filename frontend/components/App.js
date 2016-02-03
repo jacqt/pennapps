@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as cookie from 'js-cookie'
 
-import AdminPanel from './AdminPanel'
-import LandingPage from './LandingPage'
-import ArchivePanel from './ArchivePanel'
-import PaymentsPanel from './PaymentsPanel'
+import LandingPage from './public/LandingPage'
+import AdminPanel from './admin/AdminPanel'
+import ArchivePanel from './admin/ArchivePanel'
+import PaymentsPanel from './admin/PaymentsPanel'
 
 import * as Actions from '../actions/userActions'
 

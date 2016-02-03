@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
-import { withdraw } from '../lib/ajax'
+import { withdraw } from '../../lib/ajax'
 
 class DashboardActions extends Component {
   render() {

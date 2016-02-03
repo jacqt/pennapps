@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import * as ajax from '../lib/ajax'
+import * as ajax from '../../lib/ajax'
 
 class PaymentForm extends Component {
   constructor(props) {

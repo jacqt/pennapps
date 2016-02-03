@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-class DashboardItem extends Component {
+class ViewItem extends Component {
   render() {
     const item = this.props.item
     return (
@@ -22,4 +22,4 @@ class DashboardItem extends Component {
   }
 }
 
-export default DashboardItem
+export default ViewItem

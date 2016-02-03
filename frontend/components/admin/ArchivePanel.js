@@ -4,10 +4,10 @@ import * as _ from 'underscore'
 
 import Header from './Header'
 import DashboardActions from './DashboardActions'
-import DialogItem from './DialogItem'
-import ArchivedItem from './ArchivedItem'
+import DialogItem from './itemStates/DialogItem'
+import ArchivedItem from './itemStates/ArchivedItem'
 
-import * as Actions from '../actions/userActions'
+import * as Actions from '../../actions/userActions'
 
 class ArchivePanel extends Component {
   constructor(props) {

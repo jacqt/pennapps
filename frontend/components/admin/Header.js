@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as Actions from '../actions/userActions'
+import * as Actions from '../../actions/userActions'
 
 class Header extends Component {
   render() {

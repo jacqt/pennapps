@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
+import * as _ from 'underscore'
+
 import ViewItem from './ViewItem'
 import PaymentForm from './PaymentForm'
 
-import * as Actions from '../actions/publicUserActions'
+import * as Actions from '../../actions/publicUserActions'
 
 class ViewUser extends Component {
   constructor(props) {
@@ -16,6 +18,16 @@ class ViewUser extends Component {
   }
   componentDidMount() {
     this.props.dispatch(Actions.requestUser(this.props.params.nickname))
+  }
+  componentWillReceiveProps(nextProps) {
+    const itemId = this.props.params.itemId
+    if (!itemId) return
+    const user = this.props.user
+    if (!user) return
+    const items = user.items
+    const index = _.findIndex(items, (item) => item.id == itemId)
+    if (index === -1) return
+    this.setState({ openedItem: items[index] })
   }
   isAdmin() {
     return this.props.user.me && this.props.user.me.nickname === this.props.params.nickname

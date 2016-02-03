@@ -5,7 +5,7 @@ import * as _ from 'underscore'
 import Header from './Header'
 import DashboardActions from './DashboardActions'
 
-import * as Actions from '../actions/userActions'
+import * as Actions from '../../actions/userActions'
 
 class AdminPanel extends Component {
   constructor(props) {

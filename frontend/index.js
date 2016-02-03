@@ -10,8 +10,8 @@ import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 
 import App from './components/App'
-import LandingPage from './components/LandingPage'
-import ViewUser from './components/ViewUser'
+import LandingPage from './components/public/LandingPage'
+import ViewUser from './components/public/ViewUser'
 
 const history = createBrowserHistory()
 const logger = createLogger()
@@ -28,6 +28,7 @@ render(
     <Router history={history}>
       <Route path="/" component={App}/>
       <Route path="/:nickname" component={ViewUser}/>
+      <Route path="/:nickname/:itemId" component={ViewUser}/>
     </Router>
   </Provider>,
   document.getElementById('root')
