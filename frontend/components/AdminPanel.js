@@ -25,7 +25,7 @@ class AdminPanel extends Component {
 
     const items = me.items.filter(item => !item.archived).map(item => {
       if (this.state.editing.indexOf(item.id) > -1) {
-        return <EditItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)}/>
+        return <EditItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)} abort={() => this.onAbortEditClicked(item.id)}/>
       }
       else if (this.state.askForArchive.indexOf(item.id) > -1) {
         return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirm={() => this.onArchive(item.id,true)} abort={() => this.onAbortArchiveClicked(item.id)} confirmTitle={'Archive'}/>
@@ -80,6 +80,9 @@ class AdminPanel extends Component {
 
   onEditClicked(id) {
     this.setState({editing: _.union(this.state.editing, [id])})
+  }
+  onAbortEditClicked(id) {
+    this.setState({editing: _.without(this.state.editing, id)})
   }
   onArchiveClicked(id) {
     this.setState({askForArchive: _.union(this.state.askForArchive, [id])})

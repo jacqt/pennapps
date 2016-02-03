@@ -1,5 +1,12 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining,
+  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining
+
+  def price
+    {
+      "price_cents": object.price.fractional,
+      "price_formatted": object.price.format,
+    }
+  end
 
   def remaining
     object.capacity - object.payments.count

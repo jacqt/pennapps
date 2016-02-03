@@ -1,13 +1,15 @@
 class SocietiesController < ApplicationController
+  require 'slack-notifier'
+
   before_action :set_society, only: [:show, :update]
-  before_action :authenticate_society, only: [:update]
+  before_action :authenticate_society, only: [:update, :request_withdrawal]
 
   def create
     @society = Society.new(society_params)
     @society.auth_token = SecureRandom.hex(256)
 
     if @society.save
-      render json: @society, status: 201, include: [:items]
+      render json: @society, status: 201, include: [:items], admin: true
     else
       render json: { status: "failure", errors: @society.errors }
     end
@@ -24,10 +26,16 @@ class SocietiesController < ApplicationController
   def update
     @society.attributes = society_params
     if @society.save
-      render json: @society, include: [:items]
+      render json: @society, include: [:items], admin: true
     else
       render json: { status: "failure", errors: @society.errors }
     end
+  end
+
+  def request_withdrawal
+    notifier = Slack::Notifier.new ENV["SLACK_WEBHOOK_URL"]
+    notifier.ping "<!channel>: #{@society.name} has requested a withdrawal, and they have #{@society.balance.format}"
+    render json: { status: "success" }
   end
 
   private

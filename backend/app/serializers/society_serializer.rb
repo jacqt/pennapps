@@ -8,8 +8,24 @@ class SocietySerializer < ActiveModel::Serializer
       "id": object.id,
       "name": object.name,
       "nickname": object.nickname,
-      "auth_token": object.auth_token,
+      "auth_token": auth_token,
       "email": object.email,
+      "balance": balance,
     }
+  end
+
+  def auth_token
+    serialization_options[:admin] ? object.auth_token : nil
+  end
+
+  def balance
+    if serialization_options[:admin]
+      {
+        "balance_cents": object.balance.fractional,
+        "balance_formatted": object.balance.format,
+      }
+    else
+      nil
+    end
   end
 end

@@ -1,6 +1,5 @@
 import { API_BASE } from './urls'
 
-//const fetch = require('whatwg-fetch') // TODO
 import * as url from 'url'
 
 function objectToFormData(obj, form, namespace) {
@@ -164,6 +163,20 @@ export function pay(name, email, itemId, nonce) {
   })
 
   const requestUrl = API_BASE + '/payments/'
+
+  return processResponse(fetch(requestUrl, {
+    method: 'post',
+    body: f,
+  }))
+}
+
+export function withdraw(email, authToken) {
+  const f = objectToFormData({
+    email,
+    auth_token: authToken,
+  })
+
+  const requestUrl = API_BASE + '/request_withdrawal/'
 
   return processResponse(fetch(requestUrl, {
     method: 'post',
