@@ -17,10 +17,11 @@ class DashboardActions extends Component {
   }
 
   withdraw() {
+    // TODO(Taimur): get bank details
     const me = this.props.user
     withdraw(me.email, me.auth_token)
     .then(res => {
-      console.log(res) // TODO(Taimur)
+      console.log(res) // TODO(Taimur): show success
     })
     .catch(console.log)
   }

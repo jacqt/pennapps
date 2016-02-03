@@ -16,6 +16,7 @@ class PaymentForm extends Component {
 
     this.node = ReactDOM.findDOMNode(this)
 
+    // TODO(Taimur): make model close if you click on white background
     ReactDOM.render((
       <div className="ui modal">
         <div className="paymentModal">
@@ -39,6 +40,7 @@ class PaymentForm extends Component {
         </div>
       </div>
     ), this.node, () => {
+      // TODO(Taimur): start waiting animation
       $('.modal').modal({
         onHidden: () => {
           this.props.onClose()
@@ -93,6 +95,7 @@ class PaymentForm extends Component {
           },
           onReady: (integration) => {
             that.integration = integration
+            // TODO(Taimur): end waiting animation
           },
           onPaymentMethodReceived: (nonce, type, details) => {
             // TODO show loading action
@@ -101,7 +104,10 @@ class PaymentForm extends Component {
               console.log(res)
               if (res.data && res.data.payment) {
                 $('.modal').modal('hide')
-              that.props.onSuccess()
+                that.props.onSuccess()
+              }
+              else {
+                // TODO(Taimur): show error
               }
             })
           }
