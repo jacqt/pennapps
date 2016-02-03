@@ -35,7 +35,7 @@ class ViewUser extends Component {
     let success = null
     if (this.state.success) {
       success = (
-        <p>SUCCESS</p>
+        <div className='paymentnotice paymentsuccess'>Success! Your payment has been accepted.</div>
       )
     }
     const openedItem = this.state.openedItem

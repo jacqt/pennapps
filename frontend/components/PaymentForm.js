@@ -34,7 +34,7 @@ class PaymentForm extends Component {
             <div id="expiration-date"></div>
             <div id="cvv"></div>
 
-            <input type="submit" value={"Pay £"+item.price}/>
+            <input type="submit" value={"Pay "+item.price.price_formatted}/>
           </form>
         </div>
       </div>
@@ -101,7 +101,7 @@ class PaymentForm extends Component {
               console.log(res)
               if (res.data && res.data.payment) {
                 $('.modal').modal('hide')
-                that.props.onSuccess()
+              that.props.onSuccess()
               }
             })
           }
