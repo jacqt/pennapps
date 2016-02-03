@@ -194,6 +194,16 @@ button.danger {
 	margin-top: 30px;
 }
 
+.cancelEdit {
+	background: rgba(0,0,0,0.35) !important;
+	margin: 6px;
+}
+
+.saveEdit {
+	background: rgb(126,211,33);
+	margin: 6px;
+}
+
 
 
 /*------------------------------------------------------- LANDING PAGE */
@@ -354,6 +364,22 @@ button.danger {
 }
 
 /*------------------------------------------------------- VIEW PAGE */
+
+.paymentnotice {
+	width: 100%;
+	text-align:center;
+	padding-top: 10px;
+	color: white;
+	padding-bottom: 10px;
+}
+
+.paymentsuccess {
+	background: rgb(126,211,33);
+}
+
+.paymentfailure {
+	background: rgb(208,2,27);
+}
 
 .cover {
 	height: 250px;

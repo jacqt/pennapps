@@ -9,8 +9,8 @@ class DashboardActions extends Component {
     const me = this.props.me
     return (
       <div className='dashboard-actions'>
-        <Link to={`/${me.nickname}`}>View Page</Link><br/>
-        {this.props.from === 'admin' ? <Link to={'/'} query={ {archive: true} }>Archived Items</Link> : <Link to={'/'}>Your Items</Link>} <br/>
+        <Link to={`/${me.nickname}`} target="_blank">View Page</Link><br/>
+        {this.props.from === 'admin' ? <Link to={'/'} query={ {archive: true} }>Archived Items</Link>:<Link to={'/'}>Your Items</Link>}<br/>
       	<a href='#' onClick={() => this.withdraw()}>Withdraw Funds</a><br/>
       </div>
     )

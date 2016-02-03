@@ -8,7 +8,7 @@ class ArchivedItem extends Component {
     		<div className='inner'>
     		<div className='top'>
 	    		<div className='name'>{item.name}</div>
-	    		<div className='price'>£{(item.price/100).toFixed(2)}</div>
+	    		<div className='price'>{item.price.price_formatted}</div>
 	    		<div className='remaining'>Capacity: {item.capacity}</div>
 	    	</div>
   			<hr/>
