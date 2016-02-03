@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
   	const { dispatch } = this.props
 
-    const me = this.props.me
+    // const me = this.props.me
     return (
       <div className='ui top menu header'>
       		<div className='ui container'>

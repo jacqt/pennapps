@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
-import * as Actions from '../actions/actions'
 import { withdraw } from '../lib/ajax'
 
 class DashboardActions extends Component {
   render() {
-    const { dispatch } = this.props
-
     const me = this.props.me
     return (
       <div className='dashboard-actions'>
