@@ -171,6 +171,20 @@ export function pay(name, email, itemId, nonce) {
   }))
 }
 
+export function withdraw(email, authToken) {
+  const f = objectToFormData({
+    email,
+    auth_token: authToken,
+  })
+
+  const requestUrl = API_BASE + '/request_withdrawal/'
+
+  return processResponse(fetch(requestUrl, {
+    method: 'post',
+    body: f,
+  }))
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
