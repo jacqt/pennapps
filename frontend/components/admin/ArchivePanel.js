@@ -4,10 +4,10 @@ import * as _ from 'underscore'
 
 import Header from './Header'
 import DashboardActions from './DashboardActions'
-import DialogItem from './DialogItem'
-import ArchivedItem from './ArchivedItem'
+import DialogItem from './itemStates/DialogItem'
+import ArchivedItem from './itemStates/ArchivedItem'
 
-import * as Actions from '../actions/userActions'
+import * as Actions from '../../actions/userActions'
 
 class ArchivePanel extends Component {
   constructor(props) {
@@ -26,6 +26,12 @@ class ArchivePanel extends Component {
         return <ArchivedItem item={item} key={item.id} onDelete={() => this.onDeleteClicked(item.id)} onUnarchive={() => this.onArchive(item.id,false)}/>
       }
     })
+    // TODO(Taimur): style emty view
+    const emptyView = (
+      <div>
+        <p>No archived items. You can archive items in the 'Your items' section.</p>
+      </div>
+    )
     return (
       <div>
         <Header/>
@@ -43,7 +49,7 @@ class ArchivePanel extends Component {
           <div className='ui two column stackable grid'>
             <div className='twelve wide column left aligned'>
               <h1>Archived Items</h1>
-              {archivedItems}
+              {archivedItems.length === 0 ? emptyView : archivedItems}
             </div>
             <div className='four wide column right aligned'>
               <h1>Actions</h1>

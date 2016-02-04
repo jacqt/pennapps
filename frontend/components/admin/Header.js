@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as Actions from '../actions/userActions'
+import * as Actions from '../../actions/userActions'
 
 class Header extends Component {
   render() {
@@ -10,7 +10,7 @@ class Header extends Component {
     return (
       <div className='ui top menu header'>
       		<div className='ui container'>
-      			<div className='logo item'>PaySpace</div>
+      			<div className='logo item'>oatpay</div>
       			<div className='right item'>
       				<a href='#' className='item' onClick={() => dispatch(Actions.logout())}>Log Out</a>
       			</div>
