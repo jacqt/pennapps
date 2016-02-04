@@ -30,9 +30,6 @@ class ViewUser extends Component {
     delete this.props.params.itemId
     this.setState({ openedItem: items[index] })
   }
-  isAdmin() {
-    return this.props.user.me && this.props.user.me.nickname === this.props.params.nickname
-  }
   render() {
     const user = this.props.user
 
