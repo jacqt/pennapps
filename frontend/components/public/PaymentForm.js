@@ -42,7 +42,9 @@ class PaymentForm extends Component {
     ), this.node, () => {
       // TODO(Taimur): start waiting animation
       $('#paymentForm').addClass('loading')
-      $('#close').click(() => this.props.onClose())
+      $('#close').click(() => {
+        $('.modal').modal('hide')
+      })
       $('.modal').modal({
         onHidden: () => {
           this.props.onClose()

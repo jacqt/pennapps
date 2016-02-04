@@ -22,12 +22,12 @@ class ViewUser extends Component {
   componentWillReceiveProps(nextProps) {
     const itemId = this.props.params.itemId
     if (!itemId) return
-    delete this.props.params.itemId
     const user = nextProps.user
     if (!user) return
     const items = user.items
     const index = _.findIndex(items, (item) => item.id == itemId)
     if (index === -1) return
+    delete this.props.params.itemId
     this.setState({ openedItem: items[index] })
   }
   isAdmin() {
