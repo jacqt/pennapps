@@ -63,9 +63,13 @@ class ViewUser extends Component {
         <div className='ui container centered item-list'>
         {items}
         </div>
-        { openedItem ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()} onSuccess={() => this.setState({success: true})}/> : null}
+        { openedItem ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()} onSuccess={() => this.paymentSuccessful()}/> : null}
       </div>
     )
+  }
+  paymentSuccessful() {
+    this.setState({success: true})
+    document.setTimeout(() => this.setState({success: false}), 5000)
   }
   onPayClicked(item) {
     this.setState({ openedItem: item })

@@ -6,6 +6,7 @@ import LandingPage from './public/LandingPage'
 import AdminPanel from './admin/AdminPanel'
 import ArchivePanel from './admin/ArchivePanel'
 import PaymentsPanel from './admin/PaymentsPanel'
+import WithdrawPanel from './admin/WithdrawPanel'
 
 import * as Actions from '../actions/userActions'
 
@@ -30,7 +31,11 @@ class App extends Component {
       }
       if (query.archive) {
         return <ArchivePanel/>
-      } else {
+      }
+      if (query.withdraw) {
+        return <WithdrawPanel/>
+      }
+      else {
         return <AdminPanel/>
       }
     }
