@@ -582,6 +582,7 @@ button.cancel:hover {
 }
 
 #name {
+	border-radius: 0;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding-left: 34px;
@@ -589,6 +590,7 @@ button.cancel:hover {
 }
 
 #email {
+	border-radius: 0;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px; 
 	border-top: 1px solid rgba(0,0,0,0.15);
