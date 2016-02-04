@@ -18,6 +18,10 @@ class SocietySerializer < ActiveModel::Serializer
     serialization_options[:admin] ? object.auth_token : nil
   end
 
+  def email
+    serialization_options[:admin] ? object.email : nil
+  end
+
   def balance
     if serialization_options[:admin]
       {
