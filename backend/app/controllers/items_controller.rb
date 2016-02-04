@@ -16,7 +16,10 @@ class ItemsController < ApplicationController
 
   def update
     @item.attributes = item_params
-    @item.price = Money.new(item_params[:price])
+
+    if item_params[:price]
+      @item.price = Money.new(item_params[:price])
+    end
 
     if @item.save
       render json: { data: { item: ItemSerializer.new(@item, admin: true).as_json } }
