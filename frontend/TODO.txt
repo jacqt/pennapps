@@ -1,2 +1,0 @@
-Taimur
-	* Modal: doesn't close if you click on the white bg
