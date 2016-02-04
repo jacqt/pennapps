@@ -37,6 +37,19 @@ class AdminPanel extends Component {
           <hr/>
           <div className='ui two column stackable grid'>
             <div className='twelve wide column left aligned'>
+            <h1>Item Details</h1>
+            <table className="ui celled table">
+              <thead>
+                <tr><th>Name</th>
+                <th>Price</th>
+                <th>Capacity</th>
+                <th>Remaining</th>
+              </tr></thead>
+              <tbody>
+              <tr><td>{item.name}</td><td>{item.price.price_formatted}</td><td>{item.capacity}</td><td>{item.remaining}</td></tr>
+              </tbody>
+              </table>
+            
               <h1>Item Payments</h1>
               <table className="ui celled table">
               <thead>
