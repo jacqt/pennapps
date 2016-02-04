@@ -29,7 +29,9 @@ class ArchivePanel extends Component {
     // TODO(Taimur): style emty view
     const emptyView = (
       <div>
-        <p>No archived items. You can archive items in the 'Your items' section.</p>
+        <p>No archived items. You can archive items in the 'Your items' section. This removes them from your page
+        but still allows you to see a record of payments. If you delete an archived item, it is lost forever along with
+        its payment record.</p>
       </div>
     )
     return (

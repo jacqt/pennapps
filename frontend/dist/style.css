@@ -484,6 +484,22 @@ button.cancel:hover {
 
 /* -----------------------------------------------   PAYMENT FORM */
 
+.close {
+	position: relative;
+	top: -12px;
+	right: 12px;
+	width: 16px;
+	height: 16px;
+	background: url('img/cross.png');
+	background-size: 16px auto;
+	opacity: 0.4;
+	cursor: pointer;
+}
+
+.close:hover {
+	opacity: 0.8;
+}
+
 .modal {
 	background: none !important;
 	border: 0 !important;
