@@ -22,7 +22,7 @@ class ViewUser extends Component {
   componentWillReceiveProps(nextProps) {
     const itemId = this.props.params.itemId
     if (!itemId) return
-    const user = this.props.user
+    const user = nextProps.user
     if (!user) return
     const items = user.items
     const index = _.findIndex(items, (item) => item.id == itemId)

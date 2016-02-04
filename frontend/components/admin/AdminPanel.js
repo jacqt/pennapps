@@ -30,7 +30,7 @@ class AdminPanel extends Component {
         return <DialogItem key={item.id} question={'Are you sure you want to archive this item?'} confirm={() => this.onArchive(item.id,true)} abort={() => this.onAbortArchiveClicked(item.id)} confirmTitle={'Archive'}/>
       }
       else {
-       return <ViewItem item={item} onEdit={() => this.onEditClicked(item.id)} onArchive={() => this.onArchiveClicked(item.id)}/>
+       return <ViewItem item={item} key={item.id} onEdit={() => this.onEditClicked(item.id)} onArchive={() => this.onArchiveClicked(item.id)}/>
       }
     })
     return (
