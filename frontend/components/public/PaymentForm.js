@@ -40,7 +40,6 @@ class PaymentForm extends Component {
         </div>
       </div>
     ), this.node, () => {
-      // TODO(Taimur): start waiting animation
       $('#paymentForm').addClass('loading')
       $('#close').click(() => {
         $('.modal').modal('hide')
@@ -98,7 +97,6 @@ class PaymentForm extends Component {
           },
           onReady: (integration) => {
             that.integration = integration
-            // TODO(Taimur): end waiting animation
             $('#paymentForm').removeClass('loading')
           },
           onPaymentMethodReceived: (nonce, type, details) => {
