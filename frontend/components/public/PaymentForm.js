@@ -35,7 +35,7 @@ class PaymentForm extends Component {
             <div id="expiration-date"></div>
             <div id="cvv"></div>
 
-            <input type="submit" value={"Pay "+item.price.price_formatted}/>
+            <input type="submit" className='paybutton' value={"Pay "+item.price.price_formatted}/>
           </form>
         </div>
       </div>
@@ -63,13 +63,12 @@ class PaymentForm extends Component {
 
               // Styling element state
               ":focus": {
-                "color": "blue"
               },
               ".valid": {
-                "color": "green"
+                "color": "rgb(106,191,13)"
               },
               ".invalid": {
-                "color": "red"
+                "color": "rgb(208,2,27)"
               },
 
               // Media queries
