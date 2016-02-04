@@ -9,7 +9,7 @@ class ViewItem extends Component {
     	<div className='view-item'>
 	    	<div className='name'>{item.name}</div>
 	    	<div className='price'>{item.price.price_formatted}</div>
-          <button onClick={() => this.props.onPayClicked()} className="buy"><img src="img/done.png" className="tick"/>Pay Now</button>
+          <button onClick={() => this.props.onPayClicked()} className="buy"><img src="/img/done.png" className="tick"/>Pay Now</button>
   		</div>
     )
   }
