@@ -101,6 +101,12 @@ h2 {
 	margin-top: 10px;
 }
 
+.dashboard-item .link {
+	font-size: 1.2em;
+	margin-top: 14px;
+	display: inline-block;
+}
+
 .dashboard-item button {
 	height: 34px;
 	border: 0;

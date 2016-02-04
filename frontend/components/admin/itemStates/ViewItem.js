@@ -13,8 +13,8 @@ class ViewItem extends Component {
     		<div className='top'>
 	    		<div className='name'>{item.name}</div>
 	    		<div className='price'>{item.price.price_formatted}</div>
-	    		<div className='remaining'>Capacity: {item.capacity}</div>
-          <a href={link} target="_blank">LINK TODO(Taimur)</a>
+	    		<div className='remaining'>Remaining: {item.remaining}/{item.capacity}</div>
+          <a href={link} target="_blank" className='link'>Link to item</a>
 	    	</div>
   			<hr/>
         <div className='item-action delete' onClick={() => this.props.onArchive()}><a href='#'>Archive</a></div>
