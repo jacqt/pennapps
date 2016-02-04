@@ -15,6 +15,12 @@ dog {}
 
 }
 
+p {
+	font-size: 1.1em;
+	line-height: 150%;
+	-webkit-font-smoothing:antialiased;
+}
+
 .header {
 	height: 70px;
 	border-radius: 0 !important;
