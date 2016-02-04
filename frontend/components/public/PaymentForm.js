@@ -19,7 +19,7 @@ class PaymentForm extends Component {
     ReactDOM.render((
       <div className="ui modal">
         <div className="paymentModal">
-          <div className="close" onClick={() => console.log('close')}></div>
+          <div className="close" id="close"></div>
           <h2>{user.name}</h2>
           <h1>{item.name}</h1>
           <hr/>
@@ -42,6 +42,7 @@ class PaymentForm extends Component {
     ), this.node, () => {
       // TODO(Taimur): start waiting animation
       $('#paymentForm').addClass('loading')
+      $('#close').click(() => this.props.onClose())
       $('.modal').modal({
         onHidden: () => {
           this.props.onClose()
