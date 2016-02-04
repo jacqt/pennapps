@@ -26,7 +26,6 @@ class ArchivePanel extends Component {
         return <ArchivedItem item={item} key={item.id} onDelete={() => this.onDeleteClicked(item.id)} onUnarchive={() => this.onArchive(item.id,false)}/>
       }
     })
-    // TODO(Taimur): style emty view
     const emptyView = (
       <div>
         <p>No archived items. You can archive items in the 'Your items' section. This removes them from your page

@@ -4,7 +4,6 @@ class ViewItem extends Component {
 
   render() {
 		const item = this.props.item
-		// TODO(Taimur) add remaining???
     return (
     	<div className='view-item'>
 	    	<div className='name'>{item.name}</div>

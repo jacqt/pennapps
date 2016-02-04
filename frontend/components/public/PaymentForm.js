@@ -36,6 +36,7 @@ class PaymentForm extends Component {
             <div id="cvv"></div>
 
             <input type="submit" className='paybutton' value={"Pay "+item.price.price_formatted}/>
+            <div id='paymenterror'>Sorry - there was an error :(</div>
           </form>
         </div>
       </div>
@@ -109,7 +110,7 @@ class PaymentForm extends Component {
                 that.props.onSuccess()
               }
               else {
-                // error
+                $('#paymenterror').show();
                 $('#paymentForm').removeClass('loading')
               }
             })

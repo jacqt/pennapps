@@ -621,4 +621,8 @@ input:focus {outline:none;}
 	background: rgb(110,201,20);
 }
 
+#paymenterror {
+	display: none;
+}
+
 </style>
