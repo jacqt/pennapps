@@ -36,7 +36,12 @@ class PaymentForm extends Component {
             <div id="cvv"></div>
 
             <input type="submit" className='paybutton' value={"Pay "+item.price.price_formatted}/>
-            <div id='paymenterror'>Sorry - there was an error :(</div>
+            <div id='paymenterror' className="ui negative message transition hidden">
+              <i className="close icon"></i>
+              <div className="header">
+                Something went wrong...
+              </div>
+              <p>Please check your details and try again.</p></div>
           </form>
         </div>
       </div>

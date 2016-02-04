@@ -15,7 +15,7 @@ class LandingPage extends Component {
 		const nickname = name.replace(/\s+/g, '')
 
 		this.setState({ signupLoading: true })
-		window.setTimeout(() => dispatch(Actions.signup(email, password, password, name, nickname)), 2000)
+		window.setTimeout(() => dispatch(Actions.signup(email, password, password, name, nickname)), 1000)
 	}
 	login(email, password) {
 		const { dispatch } = this.props
@@ -39,6 +39,8 @@ class LandingPage extends Component {
   render() {
     return (
       <div>
+      {this.isError('signup') ? <div className='errorbanner'>Something went wrong. Are you sure you entered all your details correctly?</div> : null}
+      {this.isError('login') ? <div className='errorbanner'>Something went wrong. Are you sure you entered the right details?</div> : null}
       <div className='masthead ui'>
       	<div className='ui large top menu'>
       		<div className='ui container'>
@@ -54,7 +56,6 @@ class LandingPage extends Component {
                 <div className='field'>
                   <input type="text" tabIndex='5' className='loginfield' name="login-email" placeholder="Email address"/>
                 </div>
-                {this.isError('login') ? 'ERROR TODO(Taimur)' : null}
               </div>
       			</div>
       		</div>
@@ -74,12 +75,11 @@ class LandingPage extends Component {
       			<button tabIndex='4' className="ui button signupbutton" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
       			Get Started
       			</button>
-						{this.isError('signup') ? 'ERROR TODO(Taimur)' : null}
       		</div>
       	</div>
       </div>
       <div className='ui row row2'>
-      <h2>Oatpay lets you accept online payments for your society events. TODO(Taimur)</h2>
+      <h2>Oatpay saves you from the pain of bank transfers and collecting cash.</h2>
       </div>
       </div>
     )
