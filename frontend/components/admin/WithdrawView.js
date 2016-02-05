@@ -19,7 +19,7 @@ class WithdrawPanel extends Component {
         <div className='six wide column left aligned'>
           <h1>Withdraw Funds</h1>
           <p>Almost there! Just enter your bank account number and sort code, then click below. Your funds should arrive in 1-2 days.</p>
-          <form className="ui form">
+          <form className="ui form withdraw">
             <div className="field">
               <input type="text" placeholder="Account Number" valueLink={linkState(this, 'accountNumber')}/>
             </div>

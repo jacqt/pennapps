@@ -74,6 +74,11 @@ h2 {
 	font-size: 1.4em;
 }
 
+.dashboard-actions .active {
+	border-right: 5px solid gray;
+	padding-right: 5px;
+}
+
 .dashboard-actions a {
 	color: inherit;
 }
@@ -619,6 +624,20 @@ button.cancel:hover {
 	background: rgb(230,230,230) url('img/email.png') no-repeat 10px 11px;
 }
 
+#card-number.braintree-hosted-fields-invalid {
+	background: rgba(208,2,27,0.17) url('img/card.png') no-repeat 10px 11px;
+	border-bottom: 1px solid rgba(208,2,27,0.3);
+}
+
+#cvv.braintree-hosted-fields-invalid {
+	background: rgba(208,2,27,0.17) url('img/secure.png') no-repeat 10px 11px;
+}
+
+#expiration-date.braintree-hosted-fields-invalid {
+	border-right: 1px solid rgba(208,2,27,0.3);
+	background: rgba(208,2,27,0.17) url('img/date.png') no-repeat 10px 11px;
+}
+
 #name, #email {
 	display: block;
 	max-width: 350px;
@@ -650,6 +669,20 @@ input:focus {outline:none;}
 	margin-top: 18px;
 	line-height: 130%;
 	-webkit-font-smoothing:antialiased;
+}
+
+/* -------------------------------------------------WITHDRAW FORM*/
+
+.form.withdraw {
+	border: 1px solid rgb(220,220,220);
+	padding: 20px;
+	max-width: 250px;
+	border-radius: 5px;
+	text-align:center;
+}
+
+.form.withdraw button {
+	width: 100%;
 }
 
 </style>
