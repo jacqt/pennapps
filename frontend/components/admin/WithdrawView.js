@@ -16,19 +16,21 @@ class WithdrawPanel extends Component {
   render() {
     return (
       <div className='twelve wide column left aligned'>
-        <h1>Withdraw Funds</h1>
-        <p>Almost there! Just enter your bank account number and sort code, then click below. Your funds should arrive in 1-2 days.</p>
-        <form className="ui form">
-          <div className="field">
-            <input type="text" placeholder="Account Number" valueLink={linkState(this, 'accountNumber')}/>
-          </div>
-          <div className="field">
-            <input type="text" placeholder="Sort Code" valueLink={linkState(this, 'sortCode')}/>
-          </div>
-          <button className="ui button" type="button" onClick={() => this.withdraw()}>
-            Withdraw Funds
-          </button>
-        </form>
+        <div className='six wide column left aligned'>
+          <h1>Withdraw Funds</h1>
+          <p>Almost there! Just enter your bank account number and sort code, then click below. Your funds should arrive in 1-2 days.</p>
+          <form className="ui form">
+            <div className="field">
+              <input type="text" placeholder="Account Number" valueLink={linkState(this, 'accountNumber')}/>
+            </div>
+            <div className="field">
+              <input type="text" placeholder="Sort Code" valueLink={linkState(this, 'sortCode')}/>
+            </div>
+            <button className="ui button" type="button" onClick={() => this.withdraw()}>
+              Withdraw Funds
+            </button>
+          </form>
+        </div>
       </div>
     )
   }
