@@ -11,7 +11,17 @@ class SocietySerializer < ActiveModel::Serializer
       "auth_token": auth_token,
       "email": object.email,
       "balance": balance,
+      "sort_code": sort_code,
+      "account_number": account_number,
     }
+  end
+
+  def sort_code
+    serialization_options[:admin] ? object.sort_code : nil
+  end
+
+  def account_number
+    serialization_options[:admin] ? object.account_number : nil
   end
 
   def auth_token
