@@ -24,19 +24,38 @@ p {
 .header {
 	height: 70px;
 	border-radius: 0 !important;
-	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%) !important;
+	background-image: linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%) !important;
 	border: 0 !important;
 	margin-bottom: 20px !important;
 	box-shadow: none !important;
-	color: white;
+	color: white !important;
 }
 
 .ui.menu .item:before {
 	background: none;
 }
 
-.logo {
+.header .logo.item {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
 	border: 0 !important;
+	font-size: 1.4em;
+	color: white !important;
+}
+
+.header .right.item {
+	padding-right: 0 !important;
+}
+
+.header .right.item a {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	color: white !important;
+}
+
+.header .right.item a:hover {
+	background: none;
+	color: rgba(255,255,255,0.82) !important;
 }
 
 h1,h2 {
@@ -262,7 +281,6 @@ button.cancel:hover {
 	width: auto;
 	height: auto;
 	max-width: 22px;
-	max-height: 35px;
 	margin-right: 6px !important;
 }
 
@@ -276,7 +294,7 @@ button.cancel:hover {
 
 @media only screen and (max-device-width: 415px){
 	.masthead {
-		min-height: 800px;
+		min-height: 800px !important;
 	}
 }
 
