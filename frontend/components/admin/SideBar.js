@@ -15,7 +15,7 @@ class SideBar extends Component {
           Archived Items
         </Link><br/>
         <Link to={`/${me.nickname}`} target="_blank">
-          View Page
+          View Your Page
         </Link><br/>
         <Link to={'/'} query={ {withdraw: true} } className={classNames({'active': this.props.active === 'withdraw'})}>
           Withdraw Funds
