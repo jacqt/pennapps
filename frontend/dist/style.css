@@ -258,6 +258,14 @@ button.cancel:hover {
 	padding-bottom: 8px;
 }
 
+.oat {
+	width: auto;
+	height: auto;
+	max-width: 22px;
+	max-height: 35px;
+	margin-right: 6px !important;
+}
+
 .masthead {
 	height: 85%;
 	min-height: 620px;

@@ -44,7 +44,7 @@ class LandingPage extends Component {
       <div className='masthead ui'>
       	<div className='ui large top menu'>
       		<div className='ui container'>
-      			<div className='logo item'>oatpay</div>
+      			<div className='logo item'><img src='img/oat.png' className='oat'/>oatpay</div>
       			<div className='right item'>
               <div className='ui form login'>
                 <button tabIndex='7' className="ui button loginbutton" onClick={() => this.login($('input[name="login-email"]').val(),$('input[name="login-password"]').val())}>
