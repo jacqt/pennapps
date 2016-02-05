@@ -613,7 +613,7 @@ button.cancel:hover {
 #email {
 	border-radius: 0;
 	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px; 
+	border-bottom-left-radius: 5px;
 	border-top: 1px solid rgba(0,0,0,0.15);
 	padding-left: 34px;
 	background: rgb(230,230,230) url('img/email.png') no-repeat 10px 11px;
@@ -626,7 +626,7 @@ button.cancel:hover {
 
 input:focus {outline:none;}
 
-.paymentModal input[type='submit'] {
+.paymentModal button {
 	display: block;
 	margin: 0 auto;
 	width: 100%;
@@ -638,9 +638,10 @@ input:focus {outline:none;}
 	font-size: 15px;
 	border-radius: 5px;
 	margin-top: 15px;
+  outline:none;
 }
 
-.paymentModal input[type='submit']:hover {
+.paymentModal button:hover {
 	background: rgb(110,201,20);
 }
 

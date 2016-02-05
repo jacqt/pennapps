@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom'
 
 import * as ajax from '../../lib/ajax'
 
+/*
+ * BRAINTREE SDK reference:
+ * https://developers.braintreepayments.com/reference/client-reference/javascript-v2-reference
+ */
 class PaymentForm extends Component {
   constructor(props) {
     super(props)
@@ -23,7 +27,7 @@ class PaymentForm extends Component {
           <h2>{user.name}</h2>
           <h1>{item.name}</h1>
           <hr/>
-          <form className='ui form'id="paymentForm">
+          <form className='ui form' id="paymentForm">
             <input id="name" placeholder='Name'/>
 
             <input id="email" placeholder='Email'/>
@@ -35,7 +39,9 @@ class PaymentForm extends Component {
             <div id="expiration-date"></div>
             <div id="cvv"></div>
 
-            <input type="submit" className='paybutton' value={"Pay "+item.price.price_formatted}/>
+            <button className="paybutton">
+              {"Pay "+item.price.price_formatted}
+            </button>
             <div id='paymenterror' className="ui negative message transition hidden">
               <i className="close icon"></i>
               <div className="header">
@@ -55,6 +61,9 @@ class PaymentForm extends Component {
           this.props.onClose()
         }
       }).modal('show')
+      // TODO(Taimur) not sure how to do this in jQ
+      $('#name').change(() => $(this).removeClass('error'))
+      $('#email').change(() => $(this).removeClass('error'))
 
       ajax.getClientToken().then((res) => {
         const that = this
@@ -106,8 +115,23 @@ class PaymentForm extends Component {
             $('#paymentForm').removeClass('loading')
           },
           onPaymentMethodReceived: (nonce, type, details) => {
+            const nameElement = $('#name')
+            const emailElement = $('#email')
+            const name = nameElement.val()
+            const email = emailElement.val()
+            if (!name) {
+              nameElement.addClass('error')
+              // TODO(Taimur) show #paymenterror? also can you make the hosted fields error style look better?
+              return
+            }
+            if (!email) {
+              emailElement.addClass('error')
+              // TODO(Taimur) show #paymenterror?
+              return
+            }
             $('#paymentForm').addClass('loading')
-            ajax.pay($('#name').val(), $('#email').val(), item.id, nonce.nonce)
+
+            ajax.pay(name, email, item.id, nonce.nonce)
             .then(res => {
               console.log(res)
               if (res.data && res.data.payment) {

@@ -4,9 +4,6 @@ import * as cookie from 'js-cookie'
 
 import LandingPage from './public/LandingPage'
 import AdminPanel from './admin/AdminPanel'
-import ArchivePanel from './admin/ArchivePanel'
-import PaymentsPanel from './admin/PaymentsPanel'
-import WithdrawPanel from './admin/WithdrawPanel'
 
 import * as Actions from '../actions/userActions'
 
@@ -25,24 +22,14 @@ class App extends Component {
     const me = this.props.user
 
     if (me) {
-      const query = this.props.location.query
-      if (query.itemId) {
-        return <PaymentsPanel itemId={this.props.location.query.itemId}/>
-      }
-      if (query.archive) {
-        return <ArchivePanel/>
-      }
-      if (query.withdraw) {
-        return <WithdrawPanel/>
-      }
-      else {
-        return <AdminPanel/>
-      }
+      return <AdminPanel route={this.props.location.query}/>
+    }
+    else if (this.props.isFetching) {
+      return <div/> // don't render landing page before login
     }
     else {
-      // don't render landing page before login
-      if (this.props.isFetching) return <div/>
-      else return <LandingPage/>
+      console.log(this.props.location)
+      return <LandingPage/>
     }
   }
 }

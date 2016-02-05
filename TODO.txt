@@ -1,0 +1,16 @@
+dvd:
+* can you buy if remaining === 0?
+* remaining === -2 after setting it to 0 with two purchases
+* email confirmations
+* accepting account no and sort code
+* things like Verified by Visa
+
+
+taimur:
+* style .dashboard-actions .active
+
+lukas:
+* 2 stores?
+* type checking
+* payment errors
+
