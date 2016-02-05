@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
       @item.society.save!
       render json: { data: { payment: @payment } }
     else
-      render json: { status: "failure" }, status: 400
+      render json: { status: "failure", errors: result.errors }, status: 400
     end
   end
 
