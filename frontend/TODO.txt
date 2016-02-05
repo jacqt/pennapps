@@ -1,8 +1,0 @@
-dvd:
-* can you buy if remaining === 0?
-* email confirmations
-* accepting account no and sort code
-
-taimur:
-* grey out if remaining === 0
-* show remaining?

@@ -613,7 +613,7 @@ button.cancel:hover {
 #email {
 	border-radius: 0;
 	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px; 
+	border-bottom-left-radius: 5px;
 	border-top: 1px solid rgba(0,0,0,0.15);
 	padding-left: 34px;
 	background: rgb(230,230,230) url('img/email.png') no-repeat 10px 11px;
