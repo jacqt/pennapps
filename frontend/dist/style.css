@@ -95,7 +95,7 @@ h2 {
 
 .dashboard-actions .active {
 	border-right: 5px solid gray;
-	padding-right: 5px;
+	padding-right: 7px;
 }
 
 .dashboard-actions a {
@@ -104,7 +104,7 @@ h2 {
 
 .dashboard-actions a:hover {
 	border-right: 5px solid gray;
-	padding-right: 5px;
+	padding-right: 7px;
 	transition: 50ms;
 }
 
@@ -167,8 +167,6 @@ h2 {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	color: rgb(95,95,95);
-	-webkit-font-smoothing:antialiased;
-	letter-spacing: -2px;
 }
 
 .dashboard-item .remaining {
@@ -178,6 +176,7 @@ h2 {
 
 .dashboard-item .top {
 	height: 155px;
+	font-family:'Lato', sans-serif;
 }
 
 .dashboard-item hr {
@@ -514,11 +513,12 @@ button.cancel:hover {
 .cover {
 	height: 250px;
 	padding-top: 100px;
-	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%);
+	background-image:linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%);
 }
 
 .cover h1 {
 	color: white;
+	text-shadow: 1px 2px 0px #326DEA;
 	font-size: 2em;
 	text-transform: none;
 }
@@ -533,12 +533,13 @@ button.cancel:hover {
 	width:230px;
 	vertical-align: top;
 	height: 230px;
-	font-family: 'Foundry';
+	font-family: 'Lato', sans-serif;
 	background:rgb(237,237,237);
 	border-radius: 7px;
 	text-align: center;
 	margin: 0 auto;
-	margin-right: 30px;
+	margin-left: 15px;
+	margin-right: 15px;
 	margin-bottom: 30px;
 	padding: 15px;
 }
@@ -557,8 +558,6 @@ button.cancel:hover {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	color: rgb(55,55,55);
-	-webkit-font-smoothing:antialiased;
-	letter-spacing: -2px;
 }
 
 .view-item .remaining {
@@ -639,13 +638,14 @@ button.cancel:hover {
 .paymentModal h1 {
 	text-transform: none;
 	color: rgb(60,60,60);
-	font-size: 24px;
+	font-size: 26px;
 	margin:8px;
 	margin-bottom: 25px;
 }
 
 .paymentModal h2 {
 	margin: 5px;
+	font-size: 1.2em;
 	color: gray;
 	text-transform: none;
 }
