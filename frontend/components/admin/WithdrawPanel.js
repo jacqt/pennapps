@@ -5,7 +5,7 @@ import * as Actions from '../../actions/userActions'
 
 import { withdraw } from '../../lib/ajax'
 
-class ArchivePanel extends Component {
+class WithdrawPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,4 +34,4 @@ function mapStateToProps(state) {
   return state.user;
 }
 
-export default connect(mapStateToProps)(ArchivePanel)
+export default connect(mapStateToProps)(WithdrawPanel)

@@ -5,3 +5,4 @@ dvd:
 
 taimur:
 * grey out if remaining === 0
+* show remaining?
