@@ -45,12 +45,16 @@ ActiveRecord::Schema.define(version: 20160124021715) do
     t.string   "password_digest"
     t.string   "nickname"
     t.string   "auth_token"
+    t.string   "sort_code"
+    t.string   "account_number"
     t.integer  "balance_cents",   default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["account_number"], name: "index_societies_on_account_number", using: :btree
     t.index ["balance_cents"], name: "index_societies_on_balance_cents", using: :btree
     t.index ["email"], name: "index_societies_on_email", unique: true, using: :btree
     t.index ["nickname"], name: "index_societies_on_nickname", unique: true, using: :btree
+    t.index ["sort_code"], name: "index_societies_on_sort_code", using: :btree
   end
 
   add_foreign_key "items", "societies"

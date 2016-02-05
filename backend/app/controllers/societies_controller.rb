@@ -41,7 +41,7 @@ class SocietiesController < ApplicationController
   private
 
   def society_params
-    params.require(:society).permit(:name, :email, :password, :password_confirmation, :nickname)
+    params.require(:society).permit(:name, :email, :password, :password_confirmation, :nickname, :sort_code, :account_number)
   end
 
   def set_society

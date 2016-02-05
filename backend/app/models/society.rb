@@ -6,4 +6,7 @@ class Society < ApplicationRecord
 
   validates :email, presence: true
   validates :name, presence: true
+
+  validates_uniqueness_of :email
+  validates_uniqueness_of :nickname
 end
