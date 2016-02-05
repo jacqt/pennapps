@@ -23,7 +23,7 @@ class PaymentForm extends Component {
           <h2>{user.name}</h2>
           <h1>{item.name}</h1>
           <hr/>
-          <form className='ui form'id="paymentForm">
+          <form className='ui form' id="paymentForm">
             <input id="name" placeholder='Name'/>
 
             <input id="email" placeholder='Email'/>
