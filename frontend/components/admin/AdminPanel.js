@@ -15,7 +15,7 @@ class AdminPanel extends Component {
     let mainComponent = null
     let activeTab = null
     if (route.itemId) {
-      mainComponent = <PaymentsView itemId={this.props.location.query.itemId}/>
+      mainComponent = <PaymentsView itemId={route.itemId}/>
       activeTab = 'payment'
     }
     else if (route.archive) {
