@@ -8,7 +8,6 @@ dvd:
 
 taimur:
 * style .dashboard-actions .active
-* payment loading
 
 lukas:
 * 2 stores?
