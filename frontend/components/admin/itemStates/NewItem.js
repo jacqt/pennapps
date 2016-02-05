@@ -7,7 +7,7 @@ class NewItem extends Component {
     return (
     	<div className='dashboard-item'>
         <div className='top'>
-        New Item
+        Add a New Item!
     		<ItemEditor ref='editor'/>
         <button onClick={() => this.refs.editor.submit(this.props.action)}>+ Add Item</button>
   		  </div>

@@ -18,8 +18,8 @@ class ItemEditor extends Component {
   render() {
     return (
     	<div>
-    	  <input type='text' placeholder='Item name' valueLink={linkState(this, 'name')}/>
-        <input type='number' step="0.01" placeholder='Item price' valueLink={linkState(this, 'price')}/>
+    	  <input type='text' placeholder='Name (eg. "Formal Hall")' valueLink={linkState(this, 'name')}/>
+        <input type='number' step="0.01" placeholder='Price (GBP)' valueLink={linkState(this, 'price')}/>
         <input type='number' placeholder='Capacity' valueLink={linkState(this, 'capacity')}/>
       </div>
     )

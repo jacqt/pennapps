@@ -241,6 +241,14 @@ button.cancel:hover {
 
 /*------------------------------------------------------- LANDING PAGE */
 
+#root {
+	height: 100%;
+}
+
+.landingwrapper {
+	height: 100%;
+}
+
 .errorbanner {
 	background: rgb(208,2,27);
 	color: white;
@@ -251,9 +259,17 @@ button.cancel:hover {
 }
 
 .masthead {
-	height: 500px;
+	height: 85%;
+	min-height: 620px;
+	text-align:center;
 	background: blue;
-	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%);
+	background-image: linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%);
+}
+
+@media only screen and (max-device-width: 415px){
+	.masthead {
+		min-height: 800px;
+	}
 }
 
 .masthead .logo {
@@ -263,8 +279,21 @@ button.cancel:hover {
 
 .masthead h1 {
 	color: white;
+	text-shadow: 1px 2px 0px #326DEA;
 	text-align: center;
 	font-size: 2.1em;
+	margin-bottom: 5px;
+	text-transform: none;
+	-webkit-font-smoothing:antialiased;
+}
+
+.masthead h2 {
+	color: rgba(255,255,255,1);
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: normal;
+	margin-top: 15px;
+	text-shadow: 1px 1px 1px rgba(50,109,234,0.6);
 	text-transform: none;
 	-webkit-font-smoothing:antialiased;
 }
@@ -328,7 +357,7 @@ button.cancel:hover {
 	border-radius: 0;
 	border-bottom-right-radius: 7px;
 	border-top-right-radius: 7px;
-	padding-top: 12px;
+	padding-top: 11px;
 	padding-bottom: 11px;
 	background: rgb(126,211,33);
 	color: white;
@@ -337,10 +366,39 @@ button.cancel:hover {
 	display: inline-block;
 }
 
+.ui.text.container {
+	max-width: 800px !important;
+}
+
+.demo {
+	background: white;
+	border-radius: 5px;
+	color: rgb(80,80,80);
+	margin-top: 10px;
+	font-weight: bold;
+	border: none;
+	box-shadow: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+}
+
+.demo:hover {
+	background: rgba(255,255,255,0.9);
+}
+
+.convinced {
+	color: white;
+	font-size: 1.1em;
+	margin-top: 40px;
+	-webkit-font-smoothing:antialiased;
+}
+
 .masthead .signup {
 	max-width: 440px;
 	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: 45px;
 }
 
 .masthead .signup .field {
@@ -392,16 +450,20 @@ button.cancel:hover {
 }
 
 .row2 {
-	background: rgb(230,230,230);
-	text-align:center;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	background: rgb(248,248,248);
+	text-align:center !important;
+	height: 15%;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	min-height: 80px;
 }
 
 .row2 h2 {
-	font-size: 1.6em;
+	font-size: 1.8em;
 	text-transform: none;
 	color: rgba(0,0,0,0.7);
+	-webkit-font-smoothing:antialiased;
 	font-weight: normal;
 }
 
