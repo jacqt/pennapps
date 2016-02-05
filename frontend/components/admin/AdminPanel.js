@@ -18,11 +18,11 @@ class AdminPanel extends Component {
       mainComponent = <PaymentsView itemId={this.props.location.query.itemId}/>
       activeTab = 'payment'
     }
-    if (route.archive) {
+    else if (route.archive) {
       mainComponent = <ArchiveView/>
       activeTab = 'archive'
     }
-    if (route.withdraw) {
+    else if (route.withdraw) {
       mainComponent = <WithdrawView/>
       activeTab = 'withdraw'
     }
