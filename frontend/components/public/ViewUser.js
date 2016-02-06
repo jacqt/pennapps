@@ -16,8 +16,11 @@ class ViewUser extends Component {
       success: false,
     }
   }
-  componentDidMount() {
+  fetchUser() {
     this.props.dispatch(Actions.requestUser(this.props.params.nickname))
+  }
+  componentDidMount() {
+    this.fetchUser()
   }
   componentWillReceiveProps(nextProps) {
     const itemId = this.props.params.itemId
@@ -71,6 +74,7 @@ class ViewUser extends Component {
     )
   }
   paymentSuccessful() {
+    this.fetchUser()
     this.setState({success: true})
     window.setTimeout(() => this.setState({success: false}), 5000)
   }
