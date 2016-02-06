@@ -13,7 +13,7 @@ class ViewItem extends Component {
     		<div className='top'>
 	    		<div className='name'>{item.name}</div>
 	    		<div className='price'>{item.price.price_formatted}</div>
-	    		<div className='remaining'>Remaining: {item.remaining}/{item.capacity}</div>
+	    		<div className='remaining'>Sold {item.capacity - item.remaining} of {item.capacity}</div>
           <a href={link} target="_blank" className='link'>Link to item</a>
 	    	</div>
   			<hr/>

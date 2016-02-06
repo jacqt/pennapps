@@ -11,7 +11,7 @@ class ViewItem extends Component {
         { item.remaining === 0
         ? <div className='soldOut'>Sold Out  :(</div>
         : <div>
-            <div className='remaining'>Remaining: {item.remaining}/{item.capacity}</div>
+            <div className='remaining'>{item.remaining} remaining</div>
             <button onClick={() => this.props.onPayClicked()} className="buy">
               <img src="/img/done.png" className="tick"/>
               Pay Now

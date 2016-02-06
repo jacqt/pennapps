@@ -24,19 +24,38 @@ p {
 .header {
 	height: 70px;
 	border-radius: 0 !important;
-	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%) !important;
+	background-image: linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%) !important;
 	border: 0 !important;
 	margin-bottom: 20px !important;
 	box-shadow: none !important;
-	color: white;
+	color: white !important;
 }
 
 .ui.menu .item:before {
 	background: none;
 }
 
-.logo {
+.header .logo.item {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
 	border: 0 !important;
+	font-size: 1.4em;
+	color: white !important;
+}
+
+.header .right.item {
+	padding-right: 0 !important;
+}
+
+.header .right.item a {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	color: white !important;
+}
+
+.header .right.item a:hover {
+	background: none;
+	color: rgba(255,255,255,0.82) !important;
 }
 
 h1,h2 {
@@ -74,13 +93,18 @@ h2 {
 	font-size: 1.4em;
 }
 
+.dashboard-actions .active {
+	border-right: 5px solid gray;
+	padding-right: 7px;
+}
+
 .dashboard-actions a {
 	color: inherit;
 }
 
 .dashboard-actions a:hover {
 	border-right: 5px solid gray;
-	padding-right: 5px;
+	padding-right: 7px;
 	transition: 50ms;
 }
 
@@ -143,8 +167,6 @@ h2 {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	color: rgb(95,95,95);
-	-webkit-font-smoothing:antialiased;
-	letter-spacing: -2px;
 }
 
 .dashboard-item .remaining {
@@ -154,6 +176,7 @@ h2 {
 
 .dashboard-item .top {
 	height: 155px;
+	font-family:'Lato', sans-serif;
 }
 
 .dashboard-item hr {
@@ -236,6 +259,14 @@ button.cancel:hover {
 
 /*------------------------------------------------------- LANDING PAGE */
 
+#root {
+	height: 100%;
+}
+
+.landingwrapper {
+	height: 100%;
+}
+
 .errorbanner {
 	background: rgb(208,2,27);
 	color: white;
@@ -245,10 +276,25 @@ button.cancel:hover {
 	padding-bottom: 8px;
 }
 
+.oat {
+	width: auto;
+	height: auto;
+	max-width: 22px;
+	margin-right: 6px !important;
+}
+
 .masthead {
-	height: 500px;
+	height: 85%;
+	min-height: 620px;
+	text-align:center;
 	background: blue;
-	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%);
+	background-image: linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%);
+}
+
+@media only screen and (max-device-width: 415px){
+	.masthead {
+		min-height: 800px !important;
+	}
 }
 
 .masthead .logo {
@@ -258,8 +304,21 @@ button.cancel:hover {
 
 .masthead h1 {
 	color: white;
+	text-shadow: 1px 2px 0px #326DEA;
 	text-align: center;
 	font-size: 2.1em;
+	margin-bottom: 5px;
+	text-transform: none;
+	-webkit-font-smoothing:antialiased;
+}
+
+.masthead h2 {
+	color: rgba(255,255,255,1);
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: normal;
+	margin-top: 15px;
+	text-shadow: 1px 1px 1px rgba(50,109,234,0.6);
 	text-transform: none;
 	-webkit-font-smoothing:antialiased;
 }
@@ -323,7 +382,7 @@ button.cancel:hover {
 	border-radius: 0;
 	border-bottom-right-radius: 7px;
 	border-top-right-radius: 7px;
-	padding-top: 12px;
+	padding-top: 11px;
 	padding-bottom: 11px;
 	background: rgb(126,211,33);
 	color: white;
@@ -332,10 +391,39 @@ button.cancel:hover {
 	display: inline-block;
 }
 
+.ui.text.container {
+	max-width: 800px !important;
+}
+
+.demo {
+	background: white;
+	border-radius: 5px;
+	color: rgb(80,80,80);
+	margin-top: 10px;
+	font-weight: bold;
+	border: none;
+	box-shadow: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+}
+
+.demo:hover {
+	background: rgba(255,255,255,0.9);
+}
+
+.convinced {
+	color: white;
+	font-size: 1.1em;
+	margin-top: 40px;
+	-webkit-font-smoothing:antialiased;
+}
+
 .masthead .signup {
 	max-width: 440px;
 	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: 45px;
 }
 
 .masthead .signup .field {
@@ -387,16 +475,20 @@ button.cancel:hover {
 }
 
 .row2 {
-	background: rgb(230,230,230);
-	text-align:center;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	background: rgb(248,248,248);
+	text-align:center !important;
+	height: 15%;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	min-height: 80px;
 }
 
 .row2 h2 {
-	font-size: 1.6em;
+	font-size: 1.8em;
 	text-transform: none;
 	color: rgba(0,0,0,0.7);
+	-webkit-font-smoothing:antialiased;
 	font-weight: normal;
 }
 
@@ -421,11 +513,12 @@ button.cancel:hover {
 .cover {
 	height: 250px;
 	padding-top: 100px;
-	background-image: linear-gradient(-134deg, #3D78FF 0%, #41C4D5 100%);
+	background-image:linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%);
 }
 
 .cover h1 {
 	color: white;
+	text-shadow: 1px 2px 0px #326DEA;
 	font-size: 2em;
 	text-transform: none;
 }
@@ -440,12 +533,13 @@ button.cancel:hover {
 	width:230px;
 	vertical-align: top;
 	height: 230px;
-	font-family: 'Foundry';
+	font-family: 'Lato', sans-serif;
 	background:rgb(237,237,237);
 	border-radius: 7px;
 	text-align: center;
 	margin: 0 auto;
-	margin-right: 30px;
+	margin-left: 15px;
+	margin-right: 15px;
 	margin-bottom: 30px;
 	padding: 15px;
 }
@@ -464,8 +558,6 @@ button.cancel:hover {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	color: rgb(55,55,55);
-	-webkit-font-smoothing:antialiased;
-	letter-spacing: -2px;
 }
 
 .view-item .remaining {
@@ -546,13 +638,14 @@ button.cancel:hover {
 .paymentModal h1 {
 	text-transform: none;
 	color: rgb(60,60,60);
-	font-size: 24px;
+	font-size: 26px;
 	margin:8px;
 	margin-bottom: 25px;
 }
 
 .paymentModal h2 {
 	margin: 5px;
+	font-size: 1.2em;
 	color: gray;
 	text-transform: none;
 }
@@ -619,6 +712,20 @@ button.cancel:hover {
 	background: rgb(230,230,230) url('img/email.png') no-repeat 10px 11px;
 }
 
+#card-number.braintree-hosted-fields-invalid {
+	background: rgba(208,2,27,0.17) url('img/card.png') no-repeat 10px 11px;
+	border-bottom: 1px solid rgba(208,2,27,0.3);
+}
+
+#cvv.braintree-hosted-fields-invalid {
+	background: rgba(208,2,27,0.17) url('img/secure.png') no-repeat 10px 11px;
+}
+
+#expiration-date.braintree-hosted-fields-invalid {
+	border-right: 1px solid rgba(208,2,27,0.3);
+	background: rgba(208,2,27,0.17) url('img/date.png') no-repeat 10px 11px;
+}
+
 #name, #email {
 	display: block;
 	max-width: 350px;
@@ -650,6 +757,20 @@ input:focus {outline:none;}
 	margin-top: 18px;
 	line-height: 130%;
 	-webkit-font-smoothing:antialiased;
+}
+
+/* -------------------------------------------------WITHDRAW FORM*/
+
+.form.withdraw {
+	border: 1px solid rgb(220,220,220);
+	padding: 20px;
+	max-width: 250px;
+	border-radius: 5px;
+	text-align:center;
+}
+
+.form.withdraw button {
+	width: 100%;
 }
 
 </style>

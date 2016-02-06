@@ -8,14 +8,14 @@ class SideBar extends Component {
     const me = this.props.user
     return (
       <div className='dashboard-actions'>
-        <Link to={`/${me.nickname}`} target="_blank">
-          View Page
+        <Link to={'/'} className={classNames({'active': this.props.active === 'items'})}>
+          Your Items
         </Link><br/>
         <Link to={'/'} query={ {archive: true} } className={classNames({'active': this.props.active === 'archive'})}>
           Archived Items
         </Link><br/>
-        <Link to={'/'} className={classNames({'active': this.props.active === 'items'})}>
-          Your Items
+        <Link to={`/${me.nickname}`} target="_blank">
+          View Your Page
         </Link><br/>
         <Link to={'/'} query={ {withdraw: true} } className={classNames({'active': this.props.active === 'withdraw'})}>
           Withdraw Funds

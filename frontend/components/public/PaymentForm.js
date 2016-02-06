@@ -86,7 +86,7 @@ class PaymentForm extends Component {
                 "color": "rgb(106,191,13)"
               },
               ".invalid": {
-                "color": "rgb(208,2,27)"
+                "color": "rgb(208,2,27)",
               },
 
               // Media queries

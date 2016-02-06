@@ -38,13 +38,13 @@ class LandingPage extends Component {
 	}
   render() {
     return (
-      <div>
+      <div className='landingwrapper'>
       {this.isError('signup') ? <div className='errorbanner'>Something went wrong. Are you sure you entered all your details correctly?</div> : null}
       {this.isError('login') ? <div className='errorbanner'>Something went wrong. Are you sure you entered the right details?</div> : null}
       <div className='masthead ui'>
       	<div className='ui large top menu'>
       		<div className='ui container'>
-      			<div className='logo item'>oatpay</div>
+      			<div className='logo item'><img src='img/oat.png' className='oat'/>oatpay</div>
       			<div className='right item'>
               <div className='ui form login'>
                 <button tabIndex='7' className="ui button loginbutton" onClick={() => this.login($('input[name="login-email"]').val(),$('input[name="login-password"]').val())}>
@@ -61,7 +61,8 @@ class LandingPage extends Component {
       		</div>
       	</div>
       	<div className='ui text container centered'>
-      		<h1>Start accepting online payments in 60 seconds.</h1>
+      		<h1>Start accepting online payments for your society.</h1>
+          <h2>Say goodbye to bank transfers, collecting cash, & spreadsheets.</h2>
       		<div className={'ui form signup ' + (this.state.signupLoading ? 'loading' : '')}>
       			<div className='field'>
       				<input type="text" name="name" className='signupfield' placeholder="Society name" tabIndex='1'/>
@@ -76,6 +77,8 @@ class LandingPage extends Component {
       			Get Started
       			</button>
       		</div>
+          <div className='convinced centere'>Not convinced?</div>
+          <button className='demo centered'>Check out a demo!</button>
       	</div>
       </div>
       <div className='ui row row2'>
