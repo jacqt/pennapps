@@ -139,6 +139,7 @@ class PaymentForm extends Component {
                 that.props.onSuccess()
               }
               else {
+                // TODO(Taimur) use res.errors ???
                 $('#paymenterror').show();
                 $('#paymentForm').removeClass('loading')
               }
