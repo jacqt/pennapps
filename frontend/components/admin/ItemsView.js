@@ -69,7 +69,7 @@ class ItemsView extends Component {
 }
 
 function mapStateToProps(state) {
-  return state.user;
+  return state.user
 }
 
 export default connect(mapStateToProps)(ItemsView)

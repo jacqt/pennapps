@@ -6,6 +6,7 @@ import Header from './Header'
 import SideBar from './SideBar'
 import ItemsView from './ItemsView'
 import ArchiveView from './ArchiveView'
+import EditUser from './EditUser'
 import PaymentsView from './PaymentsView'
 import WithdrawView from './WithdrawView'
 
@@ -21,6 +22,10 @@ class AdminPanel extends Component {
     else if (route.archive) {
       mainComponent = <ArchiveView/>
       activeTab = 'archive'
+    }
+    else if (route.edit) {
+      mainComponent = <EditUser/>
+      activeTab = 'edit'
     }
     else if (route.withdraw) {
       mainComponent = <WithdrawView/>
