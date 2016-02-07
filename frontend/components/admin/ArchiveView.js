@@ -26,15 +26,18 @@ class ArchiveView extends Component {
     })
     const emptyView = (
       <div>
-        <p>No archived items. You can archive items in the 'Your items' section. This removes them from your page
-        but still allows you to see a record of payments. If you delete an archived item, it is lost forever along with
-        its payment record.</p>
+        <p>No archived items. You can archive items in the 'Your items' section. This removes them from your page but still allows you to see a record of payments.</p>
       </div>
     )
     return (
       <div className='twelve wide column left aligned'>
         <h1>Archived Items</h1>
-        {archivedItems.length === 0 ? emptyView : archivedItems}
+        {archivedItems.length === 0 ? emptyView :
+          <div>
+            <p>If you delete an archived item, it is lost forever along with its payment record.</p>
+            {archivedItems}
+          </div>
+        }
       </div>
     )
   }

@@ -33,14 +33,14 @@ class LandingPage extends Component {
 	    }
 	  })
   }
-	isError(type) {
+	isErrorOfType(type) {
 		return this.props.error && this.props.error.type === type
 	}
   render() {
     return (
       <div className='landingwrapper'>
-      {this.isError('signup') ? <div className='errorbanner'>Something went wrong. Are you sure you entered all your details correctly?</div> : null}
-      {this.isError('login') ? <div className='errorbanner'>Something went wrong. Are you sure you entered the right details?</div> : null}
+      {this.isErrorOfType('signup') ? <div className='errorbanner'>Something went wrong. Are you sure you entered all your details correctly?</div> : null}
+      {this.isErrorOfType('login') ? <div className='errorbanner'>Something went wrong. Are you sure you entered the right details?</div> : null}
       <div className='masthead ui'>
       	<div className='ui large top menu'>
       		<div className='ui container'>
@@ -54,7 +54,7 @@ class LandingPage extends Component {
                   <input type="password" className='loginfield' tabIndex='6' name="login-password" placeholder="Password"/>
                 </div>
                 <div className='field'>
-                  <input type="text" tabIndex='5' className='loginfield' name="login-email" placeholder="Email address"/>
+                  <input type="email" tabIndex='5' className='loginfield' name="login-email" placeholder="Email address"/>
                 </div>
               </div>
       			</div>
@@ -78,7 +78,7 @@ class LandingPage extends Component {
       			</button>
       		</div>
           <div className='convinced centere'>Not convinced?</div>
-          <button className='demo centered'>Check out a demo!</button>
+          <button className='demo centered'>Check out a demo! TODO(Taimur): link to existing payment page (open in new tab)</button>
       	</div>
       </div>
       <div className='ui row row2'>

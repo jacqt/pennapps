@@ -45,9 +45,12 @@ class ViewUser extends Component {
         <p>invalid URL</p>
       )
     }
-    const items = user.items.map(item => {
+    const items = user.items.filter(item => !item.archived).map(item => {
       return (<ViewItem item={item} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
     })
+    const emptyView = (
+      <p>No items available yet. Check back later. TODO(Taimur)</p>
+    )
     let success = null
     if (this.state.success) {
       success = (
@@ -64,7 +67,7 @@ class ViewUser extends Component {
           </div>
         </div>
         <div className='ui container centered item-list'>
-        {items}
+        {items.length ? items : emptyView}
         </div>
         { openedItem
         ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()} onSuccess={() => this.paymentSuccessful()}/>

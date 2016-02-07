@@ -1,12 +1,13 @@
 dvd:
+* consistent error objects: {status: 'failure', error: 'string for user'}
 * can you buy if remaining === 0?
 * remaining === -2 after setting it to 0 with two purchases
 * email confirmations
-* accepting account no and sort code
-* things like Verified by Visa
-
+* do we need 3D Secure? (https://developers.braintreepayments.com/guides/3d-secure/client-side/javascript/v2)
+* what nicknames are allowed? right now we just run 'name.replace(/\s+/g, '')'
 
 taimur:
+* View your page link somewhere else???
 * header
 	- colour
 * landing page
@@ -15,4 +16,5 @@ lukas:
 * 2 stores?
 * type checking
 * payment errors
+* convert rails active record errors
 
