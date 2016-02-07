@@ -28,6 +28,8 @@ class PaymentForm extends Component {
           <h1>{item.name}</h1>
           <hr/>
           <form className='ui form' id="paymentForm">
+            <div id='paymenterror' className="ui negative message hidden transition">
+              <p>There was a problem processing your payment :(</p></div>
             <input id="name" placeholder='Name'/>
 
             <input id="email" placeholder='Email'/>
@@ -42,12 +44,7 @@ class PaymentForm extends Component {
             <button className="paybutton">
               {"Pay "+item.price.price_formatted}
             </button>
-            <div id='paymenterror' className="ui negative message transition hidden">
-              <i className="close icon"></i>
-              <div className="header">
-                Something went wrong...
-              </div>
-              <p>Please check your details and try again.</p></div>
+            
           </form>
         </div>
       </div>
@@ -61,9 +58,12 @@ class PaymentForm extends Component {
           this.props.onClose()
         }
       }).modal('show')
-      // TODO(Taimur) not sure how to do this in jQ
-      $('#name').change(() => $(this).removeClass('error'))
-      $('#email').change(() => $(this).removeClass('error'))
+      $('#name').change(function(){
+        $(this).removeClass('error');
+      });
+      $('#email').change(function(){
+        $(this).removeClass('error');
+      });
 
       ajax.getClientToken().then((res) => {
         const that = this
@@ -119,18 +119,16 @@ class PaymentForm extends Component {
             const emailElement = $('#email')
             const name = nameElement.val()
             const email = emailElement.val()
-            if (!name) {
-              nameElement.addClass('error')
-              // TODO(Taimur) show #paymenterror? also can you make the hosted fields error style look better?
-              return
-            }
-            if (!email) {
-              emailElement.addClass('error')
-              // TODO(Taimur) show #paymenterror?
+            if(!name || !email){
+              if (!name) {
+                nameElement.addClass('error')
+              }
+              if (!email) {
+                emailElement.addClass('error')
+              }
               return
             }
             $('#paymentForm').addClass('loading')
-
             ajax.pay(name, email, item.id, nonce.nonce)
             .then(res => {
               console.log(res)
@@ -139,8 +137,8 @@ class PaymentForm extends Component {
                 that.props.onSuccess()
               }
               else {
-                // TODO(Taimur) use res.errors ???
-                $('#paymenterror').show();
+                $('#paymenterror').removeClass('hidden').addClass('visible');
+                $('#paymenterror').append(res.errors)
                 $('#paymentForm').removeClass('loading')
               }
             })
