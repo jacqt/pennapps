@@ -23,23 +23,25 @@ class EditUser extends Component {
     this.setState(this.getStateByProps(nextProps))
   }
   render() {
-    // TODO(Taimur) styling, show errors???
     return (
       <div className='twelve wide column left aligned'>
-        <h1>Update User</h1>
+        <h1>Account Settings</h1>
         <form className="ui form withdraw">
           <div className="field">
+            <label>URL Nickname (oatpay.com/Nickname)</label>
             <input type="text" placeholder="URL name" valueLink={linkState(this, 'nickname')}/>
           </div>
           <div className="field">
+            <label>Account Number</label>
             <input type="text" placeholder="Account Number" valueLink={linkState(this, 'accountNumber')}/>
           </div>
           <div className="field">
+            <label>Sort Code</label>
             <input type="text" placeholder="Sort Code" valueLink={linkState(this, 'sortCode')}/>
           </div>
-          {this.state.error ? <p>ERROR</p> : null}
+          {this.state.error ? <div className="ui negative message"><i className="close icon"></i>Something went wrong :( Please try again.</div> : null}
           <button className="ui button" type="button" onClick={() => this.update()}>
-            Update
+            Update Details
           </button>
         </form>
       </div>

@@ -14,16 +14,19 @@ class WithdrawPanel extends Component {
     const me = this.props.user
     let content = (
       <div>
-        <p>Please go to 'Edit User' and enter your bank details first. TODO(Taimur)</p>
+        <p>We need to get your bank details before you can withdraw your money - please go to 'Account Settings' and enter your bank details first!</p>
       </div>
     )
     if (me.sort_code && me.account_number) {
       content = (
         <div>
-          <p>Almost there! Just click below. Your funds should arrive in 1-2 days.</p>
-          <button className="ui button" type="button" onClick={() => this.withdraw()}>
+          <p id='withdrawtext'>Almost there! Just click below. Your funds should arrive in 1-2 days.</p>
+          <button id='withdrawbutton' className="ui button" type="button" onClick={() => this.withdraw()}>
             Withdraw Funds
           </button>
+<div className="ui positive message hidden successmessage">
+  <p><b>Cha-ching!</b> Your money should arrive in 1-2 days.</p>
+</div>
         </div>
       )
     }
@@ -41,7 +44,10 @@ class WithdrawPanel extends Component {
     const me = this.props.user
     withdraw(me.email, me.auth_token)
     .then(res => {
-      console.log(res) // TODO(Taimur): show success
+      console.log(res)
+      $('#withdrawtext').hide();
+      $('#withdrawbutton').hide();
+      $('.successmessage').show(); // TODO(Taimur): show success
     })
     .catch(console.log)
   }

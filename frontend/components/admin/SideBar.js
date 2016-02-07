@@ -18,7 +18,7 @@ class SideBar extends Component {
           View Your Page
         </Link><br/>
         <Link to={'/'} query={ {edit: true} } className={classNames({'active': this.props.active === 'edit'})}>
-          Edit User
+          Account Settings
         </Link><br/>
         <Link to={'/'} query={ {withdraw: true} } className={classNames({'active': this.props.active === 'withdraw'})}>
           Withdraw Funds
