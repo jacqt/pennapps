@@ -4,16 +4,23 @@ import { connect } from 'react-redux'
 import * as _ from 'underscore'
 
 import { updateUser } from '../../lib/ajax'
+import * as Actions from '../../actions/userActions'
 
 class EditUser extends Component {
   constructor(props) {
     super(props)
+    this.state = this.getStateByProps(props)
+  }
+  getStateByProps(props) {
     const me = props.user
-    this.state = {
+    return {
       nickname: me.nickname,
       accountNumber: me.account_number,
       sortCode: me.sort_code,
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState(this.getStateByProps(nextProps))
   }
   render() {
     // TODO(Taimur) styling, show errors???
@@ -30,6 +37,7 @@ class EditUser extends Component {
           <div className="field">
             <input type="text" placeholder="Sort Code" valueLink={linkState(this, 'sortCode')}/>
           </div>
+          {this.state.error ? <p>ERROR</p> : null}
           <button className="ui button" type="button" onClick={() => this.update()}>
             Update
           </button>
@@ -39,10 +47,19 @@ class EditUser extends Component {
   }
   update() {
     const me = this.props.user
-    updateUser(me.email, me.auth_token, me.nickname, {
+    const delta = {
       nickname: this.state.nickname,
       account_number: this.state.accountNumber,
       sort_code: this.state.sortCode,
+    }
+    updateUser(me.email, me.auth_token, me.nickname, delta).then(res => {
+      if (res.error) {
+        this.setState({ error: res.error })
+      }
+      else {
+        this.setState({ error: undefined })
+      }
+      this.props.dispatch(Actions.reLogin(me.email, me.auth_token))
     })
   }
 }

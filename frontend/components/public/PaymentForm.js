@@ -139,7 +139,7 @@ class PaymentForm extends Component {
                 that.props.onSuccess()
               }
               else {
-                // TODO(Taimur) use res.errors ???
+                // TODO(Taimur) res.errors is the error object david returns, this will probably contain info what the error was (talk to David)
                 $('#paymenterror').show();
                 $('#paymentForm').removeClass('loading')
               }
