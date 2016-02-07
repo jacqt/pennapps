@@ -29,7 +29,7 @@ class PaymentForm extends Component {
           <hr/>
           <form className='ui form' id="paymentForm">
             <div id='paymenterror' className="ui negative message hidden transition">
-              <p>There was a problem processing your payment :(</p></div>
+              <p>Something went wrong :( </p></div>
             <input id="name" placeholder='Name'/>
 
             <input id="email" placeholder='Email'/>

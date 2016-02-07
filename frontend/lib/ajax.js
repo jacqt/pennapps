@@ -78,6 +78,21 @@ export function requestUser(nickname) {
   return processResponse(fetch(requestUrl))
 }
 
+export function updateUser(email, authToken, nickname, delta) {
+  const f = objectToFormData({
+    email,
+    auth_token: authToken,
+    society: delta,
+  })
+
+  const requestUrl = API_BASE + '/society/?nickname=' + nickname
+
+  return processResponse(fetch(requestUrl, {
+    method: 'post',
+    body: f,
+  }))
+}
+
 export function addItem(email, authToken, name, price, capacity) {
   const f = objectToFormData({
     email,
@@ -170,12 +185,10 @@ export function pay(name, email, itemId, nonce) {
   }))
 }
 
-export function withdraw(email, authToken, accountNumber, sortCode) {
+export function withdraw(email, authToken) {
   const f = objectToFormData({
     email,
     auth_token: authToken,
-    account_number: accountNumber,
-    sort_code: sortCode,
   })
 
   const requestUrl = API_BASE + '/request_withdrawal/'
