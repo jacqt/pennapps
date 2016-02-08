@@ -41,9 +41,8 @@ class LandingPage extends Component {
 				login: 'Login',
 				signup: 'Signup',
 			}
-			// TODO(Taimur) errors OK?
 			error = (
-				<div className='errorbanner'>{typeMap[e.type]} error: {e.message}</div>
+				<div className='errorbanner'>{typeMap[e.type]} Something went wrong: {e.message}</div>
 			)
 		}
     return (

@@ -47,7 +47,7 @@ class WithdrawPanel extends Component {
       console.log(res)
       $('#withdrawtext').hide();
       $('#withdrawbutton').hide();
-      $('.successmessage').show(); // TODO(Taimur): show success
+      $('.successmessage').show();
     })
     .catch(console.log)
   }
