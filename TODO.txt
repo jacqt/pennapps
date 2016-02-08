@@ -1,5 +1,4 @@
 dvd:
-* consistent error objects: {status: 'failure', error: 'string for user'}
 * can you buy if remaining === 0?
 * remaining === -2 after setting it to 0 with two purchases
 * don't allow negative prices/quantities
@@ -7,6 +6,7 @@ dvd:
 * email confirmations
 * do we need 3D Secure? (https://developers.braintreepayments.com/guides/3d-secure/client-side/javascript/v2)
 * what nicknames are allowed? right now we just run 'name.replace(/\s+/g, '')'
+* switch BT to production
 
 taimur:
 * View your page link somewhere else???
