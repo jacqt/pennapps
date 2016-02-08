@@ -33,14 +33,22 @@ class LandingPage extends Component {
 	    }
 	  })
   }
-	isErrorOfType(type) {
-		return this.props.error && this.props.error.type === type
-	}
   render() {
+		let error = null
+		if (this.props.error) {
+			const e = this.props.error
+			const typeMap = {
+				login: 'Login',
+				signup: 'Signup',
+			}
+			// TODO(Taimur) errors OK?
+			error = (
+				<div className='errorbanner'>{typeMap[e.type]} error: {e.message}</div>
+			)
+		}
     return (
       <div className='landingwrapper'>
-      {this.isErrorOfType('signup') ? <div className='errorbanner'>Something went wrong. Are you sure you entered all your details correctly?</div> : null}
-      {this.isErrorOfType('login') ? <div className='errorbanner'>Something went wrong. Are you sure you entered the right details?</div> : null}
+			{error}
       <div className='masthead ui'>
       	<div className='ui large top menu'>
       		<div className='ui container'>

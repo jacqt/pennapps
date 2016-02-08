@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as _ from 'underscore'
 
 import { updateUser } from '../../lib/ajax'
+import { railsErrorsToString } from '../../lib/utils'
 import * as Actions from '../../actions/userActions'
 
 class EditUser extends Component {
@@ -39,7 +40,8 @@ class EditUser extends Component {
             <label>Sort Code</label>
             <input type="text" placeholder="Sort Code" valueLink={linkState(this, 'sortCode')}/>
           </div>
-          {this.state.error ? <div className="ui negative message"><i className="close icon"></i>Something went wrong :( Please try again.</div> : null}
+          {this.state.error ? <div className="ui negative message"><i className="close icon"></i>Error: {this.state.error}</div> : null}
+          {this.state.success ? <p>SUCCESS (TODO(Taimur))</p>: null}
           <button className="ui button" type="button" onClick={() => this.update()}>
             Update Details
           </button>
@@ -55,11 +57,11 @@ class EditUser extends Component {
       sort_code: this.state.sortCode,
     }
     updateUser(me.email, me.auth_token, me.nickname, delta).then(res => {
-      if (res.error) {
-        this.setState({ error: res.error })
+      if (res.status === 'failure') {
+        this.setState({ error: railsErrorsToString(res.errors), success: false })
       }
       else {
-        this.setState({ error: undefined })
+        this.setState({ error: undefined, success: true })
       }
       this.props.dispatch(Actions.reLogin(me.email, me.auth_token))
     })

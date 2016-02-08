@@ -8,7 +8,7 @@ import {
   REMOVE_ITEM,
 } from '../constants/actionTypes'
 
-import { getUserFromData } from '../lib/utils'
+import { getUserFromData, railsErrorsToString } from '../lib/utils'
 
 import * as cookie from 'js-cookie'
 
@@ -31,7 +31,7 @@ export default function user(state = defaultUserState, action) {
         error: null,
       })
     case RECEIVE_LOGIN:
-      if (action.res.error || action.res.status === 'failure') {
+      if (action.res.status === 'failure') {
         if (cookie.get('email')) {
           // delete old cookie
           cookie.remove('email')
@@ -41,20 +41,12 @@ export default function user(state = defaultUserState, action) {
             error: null,
           })
         }
-        if (action.login) {
-          return Object.assign({}, state, {
-            isFetching: false,
-            user: null,
-            error: { type: 'login' }
-          })
-        }
-        else { // action.signup === true
-          return Object.assign({}, state, {
-            isFetching: false,
-            user: null,
-            error: { type: 'signup' }
-          })
-        }
+        const type = action.login ? 'login' : 'signup'
+        return Object.assign({}, state, {
+          isFetching: false,
+          user: null,
+          error: { type, message: railsErrorsToString(action.res.errors) }
+        })
       }
       const user = getUserFromData(action.res.data)
       cookie.set('email', user.email)
