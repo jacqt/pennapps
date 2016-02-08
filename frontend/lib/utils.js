@@ -15,6 +15,7 @@ export function railsErrorsToString(errors) {
   if (!errors) return
   let key = Object.keys(errors)[0]
   const value = errors[key]
+  // TODO(Taimur): mapping correct?
   const map = {
     name: 'Name',
     email: 'E-mail',

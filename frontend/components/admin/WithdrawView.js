@@ -8,6 +8,7 @@ class WithdrawPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      done: false,
     }
   }
   render() {
@@ -18,17 +19,23 @@ class WithdrawPanel extends Component {
       </div>
     )
     if (me.sort_code && me.account_number) {
-      content = (
-        <div>
-          <p id='withdrawtext'>Almost there! Just click below. Your funds should arrive in 1-2 days.</p>
-          <button id='withdrawbutton' className="ui button" type="button" onClick={() => this.withdraw()}>
-            Withdraw Funds
-          </button>
-<div className="ui positive message hidden successmessage">
-  <p><b>Cha-ching!</b> Your money should arrive in 1-2 days.</p>
-</div>
-        </div>
-      )
+      if (this.state.done) {
+        content = (
+          <div className="ui positive message successmessage">
+            <p><b>Cha-ching!</b> Your money should arrive in 1-2 days.</p>
+          </div>
+        )
+      }
+      else {
+        content = (
+          <div>
+            <p id='withdrawtext'>Almost there! Just click below. Your funds should arrive in 1-2 days.</p>
+            <button id='withdrawbutton' className="ui button" type="button" onClick={() => this.withdraw()}>
+              Withdraw Funds
+            </button>
+          </div>
+        )
+      }
     }
 
     return (
@@ -43,12 +50,7 @@ class WithdrawPanel extends Component {
   withdraw() {
     const me = this.props.user
     withdraw(me.email, me.auth_token)
-    .then(res => {
-      console.log(res)
-      $('#withdrawtext').hide();
-      $('#withdrawbutton').hide();
-      $('.successmessage').show();
-    })
+    .then(res => this.setState({ done: true }))
     .catch(console.log)
   }
 }
