@@ -40,8 +40,8 @@ class EditUser extends Component {
             <label>Sort Code</label>
             <input type="text" placeholder="Sort Code" valueLink={linkState(this, 'sortCode')}/>
           </div>
-          {this.state.error ? <div className="ui negative message"><i className="close icon"></i>Error: {this.state.error}</div> : null}
-          {this.state.success ? <p>SUCCESS (TODO(Taimur))</p>: null}
+          {this.state.error ? <div className="ui error message">Something went wrong: {this.state.error}</div> : null}
+          {this.state.success ? <div className="ui success message">Success! Your settings have been updated.</div> : null}
           <button className="ui button" type="button" onClick={() => this.update()}>
             Update Details
           </button>

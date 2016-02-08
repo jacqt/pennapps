@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import * as Actions from '../../actions/userActions'
 
@@ -41,9 +42,8 @@ class LandingPage extends Component {
 				login: 'Login',
 				signup: 'Signup',
 			}
-			// TODO(Taimur) errors OK?
 			error = (
-				<div className='errorbanner'>{typeMap[e.type]} error: {e.message}</div>
+				<div className='errorbanner'>{typeMap[e.type]} Something went wrong: {e.message}</div>
 			)
 		}
     return (
@@ -86,7 +86,7 @@ class LandingPage extends Component {
       			</button>
       		</div>
           <div className='convinced centere'>Not convinced?</div>
-          <button className='demo centered'>Check out a demo! TODO(Taimur): link to existing payment page (open in new tab)</button>
+          <Link to='' target="_blank"><button className='demo centered'>Check out a demo!</button></Link>
       	</div>
       </div>
       <div className='ui row row2'>

@@ -40,7 +40,6 @@ class ViewUser extends Component {
       return <div/>
     }
     if (!user) {
-      // TODO(Taimur)
       return (
         <p>invalid URL</p>
       )
@@ -49,12 +48,13 @@ class ViewUser extends Component {
       return (<ViewItem item={item} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
     })
     const emptyView = (
-      <p>No items available yet. Check back later. TODO(Taimur)</p>
+      <div><br/><p>Awh shucks! This society doesn&apos;t seem to have any items right now - check back later.</p><br/>
+      <img src='http://www.jonathankettleborough.com/wp-content/uploads/2012/12/Please-sir-may-I-have-some-more.jpg'/></div>
     )
     let success = null
     if (this.state.success) {
       success = (
-        <div className='paymentnotice paymentsuccess'> ! Your payment has been accepted.</div>
+        <div className='paymentnotice paymentsuccess'>Your payment has been accepted!</div>
       )
     }
     const openedItem = this.state.openedItem
