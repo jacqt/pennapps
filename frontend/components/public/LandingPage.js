@@ -37,13 +37,8 @@ class LandingPage extends Component {
   render() {
 		let error = null
 		if (this.props.error) {
-			const e = this.props.error
-			const typeMap = {
-				login: 'Login',
-				signup: 'Signup',
-			}
 			error = (
-				<div className='errorbanner'>{typeMap[e.type]} Something went wrong: {e.message}</div>
+				<div className='errorbanner'>Something went wrong: {this.props.error.message}</div>
 			)
 		}
     return (
