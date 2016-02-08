@@ -79,13 +79,14 @@ class ViewUser extends Component {
   paymentSuccessful() {
     this.fetchUser()
     this.setState({success: true})
-    window.setTimeout(() => this.setState({success: false}), 5000)
   }
   onPayClicked(item) {
     this.setState({ openedItem: item })
+    this.props.history.replaceState(null, '/' + this.props.params.nickname + '/' + item.id)
   }
   onModalClose() {
     this.setState({ openedItem: null })
+    this.props.history.replaceState(null, '/' + this.props.params.nickname)
   }
 }
 
