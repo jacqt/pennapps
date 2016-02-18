@@ -17,5 +17,7 @@ taimur:
 lukas:
 * payment errors
 * convert rails active record errors
-* _.sortBy(_, 'created_at'_
+* _.sortBy(_, 'created_at')
+* infinite capacity
+
 

@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import * as _ from 'underscore'
 
 import ViewItem from './ViewItem'
-import PaymentForm from './PaymentForm'
 
 import * as Actions from '../../actions/publicUserActions'
+import * as ajax from '../../lib/ajax'
 
 class ViewUser extends Component {
   constructor(props) {
@@ -15,6 +15,17 @@ class ViewUser extends Component {
       openedItem: null,
       success: false,
     }
+    this.stripeHandler = StripeCheckout.configure({
+      key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+      image: '/img/oat.png',
+      locale: 'auto',
+      token: (token) => {
+        ajax.pay(token.email, this.state.openedItem.id, token.id)
+        .then(res => {
+          this.setState({ success: true })
+        })
+      }
+    });
   }
   fetchUser() {
     this.props.dispatch(Actions.requestUser(this.props.params.nickname))
@@ -25,13 +36,13 @@ class ViewUser extends Component {
   componentWillReceiveProps(nextProps) {
     const itemId = nextProps.params.itemId
     if (!itemId) return
-    if (this.state.openedItem && this.state.openedItem.id === itemId) return
+    if (this.state.openedItem && this.state.openedItem.id == itemId) return
     const user = nextProps.user
     if (!user) return
     const items = user.items
     const index = _.findIndex(items, (item) => item.id == itemId)
     if (index === -1) return
-    this.setState({ openedItem: items[index] })
+    this.onPayClicked(items[index])
   }
   render() {
     const user = this.props.user
@@ -67,26 +78,19 @@ class ViewUser extends Component {
           </div>
         </div>
         <div className='ui container centered item-list'>
-        {items.length ? items : emptyView}
+          {items.length ? items : emptyView}
         </div>
-        { openedItem
-        ? <PaymentForm user={user} item={openedItem} onClose={() => this.onModalClose()} onSuccess={() => this.paymentSuccessful()}/>
-        : null
-        }
       </div>
     )
   }
-  paymentSuccessful() {
-    this.fetchUser()
-    this.setState({success: true})
-  }
   onPayClicked(item) {
+    this.stripeHandler.open({
+      name: item.name,
+      description: null,
+      amount: item.price.price_cents,
+    })
     this.setState({ openedItem: item })
     this.props.history.replaceState(null, '/' + this.props.params.nickname + '/' + item.id)
-  }
-  onModalClose() {
-    this.setState({ openedItem: null })
-    this.props.history.replaceState(null, '/' + this.props.params.nickname)
   }
 }
 
