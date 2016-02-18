@@ -15,6 +15,11 @@ taimur:
 * landing page
 
 lukas:
+<<<<<<< b3c06e6678ba8cbecfa23c96129ba8b0e775836e
+=======
+* payment errors
+* convert rails active record errors
+>>>>>>> added stripe integration (frontend)
 * _.sortBy(_, 'created_at')
 * infinite capacity
 
