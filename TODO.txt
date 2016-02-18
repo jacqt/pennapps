@@ -15,8 +15,6 @@ taimur:
 * landing page
 
 lukas:
-* payment errors
-* convert rails active record errors
 * _.sortBy(_, 'created_at')
 * infinite capacity
 
