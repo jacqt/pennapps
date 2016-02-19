@@ -77,6 +77,12 @@ h2 {
 	font-size: 2.8em;
 	vertical-align:bottom;
 	height: 25px;
+	display: inline-block;
+}
+
+button.viewpage {
+	margin-left: 20px !important;
+	display: inline-block;
 }
 
 .dashboard-balance {

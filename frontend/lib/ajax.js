@@ -167,10 +167,9 @@ export function getClientToken() {
   return processResponse(fetch(requestUrl))
 }
 
-export function pay(name, email, itemId, nonce) {
+export function pay(email, itemId, nonce) {
   const f = objectToFormData({
     payment: {
-      name: name,
       email: email,
     },
     id: itemId,
