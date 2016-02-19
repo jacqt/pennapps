@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import Header from './Header'
 import SideBar from './SideBar'
@@ -44,6 +45,10 @@ class AdminPanel extends Component {
           <div className='ui two column stackable grid bottom aligned'>
             <div className='twelve wide column left aligned'>
               <div className='dashboard-name'>{me.name}</div>
+              <Link to={`/${me.nickname}`} target="_blank"><button className="ui basic right labeled icon button viewpage">
+                <i className="right arrow icon"></i>
+                View Your Page
+              </button></Link>
             </div>
             <div className='four wide column right aligned'>
               <h2>Balance</h2>

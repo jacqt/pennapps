@@ -1,5 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining
+  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining, :created_at, :updated_at
 
   def price
     {
@@ -9,7 +9,7 @@ class ItemSerializer < ActiveModel::Serializer
   end
 
   def remaining
-    object.capacity - object.payments.count
+    object.capacity == 0 ? -1 : object.capacity - object.payments.count
   end
 
   def payments
