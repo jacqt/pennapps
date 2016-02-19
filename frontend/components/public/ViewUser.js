@@ -93,6 +93,7 @@ class ViewUser extends Component {
     })
     this.setState({ openedItem: item })
     this.props.history.replaceState(null, '/' + this.props.params.nickname + '/' + item.id)
+    this.fetchUser()
   }
   onModalClose() {
     this.props.history.replaceState(null, '/' + this.props.params.nickname)
