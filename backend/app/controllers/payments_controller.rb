@@ -18,13 +18,13 @@ class PaymentsController < ApplicationController
 
     @payment = @item.payments.build(payment_params)
 
-    if result.success? and @payment.valid?
+    if result.success?
       @payment.save!
       @item.society.balance += @item.price
       @item.society.save!
       render json: { data: { payment: @payment } }
     else
-      render json: { status: "failure", errors: result.errors }, status: 400
+      render json: { errors: result.errors }, status: 400
     end
   end
 
