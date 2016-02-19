@@ -23,6 +23,7 @@ class ViewUser extends Component {
         ajax.pay(token.email, this.state.openedItem.id, token.id)
         .then(res => {
           this.setState({ success: true })
+          this.fetchUser()
         })
       }
     });
@@ -93,7 +94,6 @@ class ViewUser extends Component {
     })
     this.setState({ openedItem: item })
     this.props.history.replaceState(null, '/' + this.props.params.nickname + '/' + item.id)
-    this.fetchUser()
   }
   onModalClose() {
     this.props.history.replaceState(null, '/' + this.props.params.nickname)
