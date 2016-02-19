@@ -7,6 +7,10 @@ class PaymentsController < ApplicationController
     @item = Item.find(params[:id])
     nonce = params[:payment_method_nonce]
 
+    if @item.payments_count > @item.capacity
+      render json: { errors: { "item": "is sold out" } }, status: 400 and return
+    end
+
     result = Braintree::Transaction.sale(
       :amount => @item.price.format(symbol: false),
       :payment_method_nonce => nonce
