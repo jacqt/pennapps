@@ -1,5 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining
+  attributes :id, :name, :price, :archived, :capacity, :payments, :remaining, :created_at, :updated_at
 
   def price
     {
