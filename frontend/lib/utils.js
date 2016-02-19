@@ -1,5 +1,6 @@
 
 export function getUserFromData(data) {
+  if (!data || !data.society) return null
   return Object.assign(data.society, {
     items: data.items
   })
