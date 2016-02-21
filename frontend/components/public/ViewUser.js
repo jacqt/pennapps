@@ -56,7 +56,7 @@ class ViewUser extends Component {
         <p>invalid URL</p>
       )
     }
-    const items = user.items.filter(item => !item.archived).map(item => {
+    const items = _.sortBy(user.items, 'created_at').filter(item => !item.archived).map(item => {
       return (<ViewItem item={item} key={item.id} onPayClicked={() => this.onPayClicked(item)}/>)
     })
     const emptyView = (

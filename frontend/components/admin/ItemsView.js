@@ -20,7 +20,7 @@ class ItemsView extends Component {
   render() {
     const me = this.props.user
 
-    const items = me.items.filter(item => !item.archived).map(item => {
+    const items = _.sortBy(me.items, 'created_at').filter(item => !item.archived).map(item => {
       if (this.state.editing.indexOf(item.id) > -1) {
         return <EditItem oldItem={item} title={'Save'} key={item.id} action={(name, price, capacity) => this.onUpdate(name, price, capacity, item.id)} abort={() => this.onAbortEditClicked(item.id)}/>
       }

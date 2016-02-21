@@ -16,7 +16,7 @@ class ArchiveView extends Component {
   }
   render() {
     const me = this.props.user
-    const archivedItems = me.items.filter(item => item.archived).map(item => {
+    const archivedItems = _.sortBy(me.items, 'created_at').filter(item => item.archived).map(item => {
       if (this.state.askForDelete.indexOf(item.id) > -1) {
         return <DialogItem key={item.id} question={'Are you sure you want to delete this item? This can\'t be undone.'} confirmTitle={'Delete'} confirm={() => this.onDelete(item.id)} abort={() => this.onAbortDeleteClicked(item.id)}/>
       }
