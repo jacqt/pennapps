@@ -23,6 +23,7 @@ class ViewUser extends Component {
         ajax.pay(token.email, this.state.openedItem.id, token.id)
         .then(res => {
           this.setState({ success: true })
+          this.fetchUser()
         })
       }
     });
@@ -85,7 +86,11 @@ class ViewUser extends Component {
             </div>
           </div>
         </div>
+        <div className='ui container centered item-list'>
+          {items.length ? items : emptyView}
+        </div>
         <div className='footer'>The Oatpay payment platform is powered by <a href="https://stripe.com/about" target="_blank">Stripe</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
+
       </div>
     )
   }

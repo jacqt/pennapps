@@ -10,6 +10,8 @@ class SocietySerializer < ActiveModel::Serializer
       "nickname": object.nickname,
       "auth_token": auth_token,
       "email": object.email,
+      "created_at": object.created_at,
+      "updated_at": object.updated_at,
       "balance": balance,
       "sort_code": sort_code,
       "account_number": account_number,
