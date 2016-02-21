@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as _ from 'underscore'
+import classNames from 'classnames'
+import { Link } from 'react-router'
 
 class PaymentsView extends Component {
   constructor(props) {
@@ -25,24 +27,21 @@ class PaymentsView extends Component {
     return (
       <div className='twelve wide column left aligned'>
         <h1>Item Details</h1>
-        <table className="ui celled table">
-          <thead>
-            <tr><th>Name</th>
-            <th>Price</th>
-            <th>Capacity</th>
-            <th>Remaining</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{item.name}</td>
-              <td>{item.price.price_formatted}</td>
-              <td>{item.capacity}</td>
-              <td>{item.remaining}</td>
-            </tr>
-          </tbody>
-        </table>
-
+        <div className="ui card">
+        <div className="content">
+          <div className="header">{item.name}</div>
+          <div className="meta">{item.price.price_formatted}</div>
+          <div className="description">
+            Sold {item.capacity-item.remaining} of {item.capacity}
+          </div>
+        </div>
+        <Link to={'/'} className={classNames({'active': this.props.active === 'items'})}>
+        <div className="ui bottom attached button">
+          <i className="left arrow icon"></i>
+          Back to Your Items
+        </div>
+        </Link>
+      </div>
         <h1>Item Payments</h1>
         <table className="ui celled table">
           <thead>

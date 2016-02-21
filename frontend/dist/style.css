@@ -42,7 +42,7 @@ p {
 	-webkit-font-smoothing:antialiased;
 }
 
-.header {
+.ui.header {
 	height: 70px;
 	border-radius: 0 !important;
 	background-image: linear-gradient(-134deg, #3978FF 0%, #57A2FF 100%) !important;
@@ -181,7 +181,7 @@ button.viewpage {
 }
 
 .dashboard-item .name {
-	color: rgb(95,95,95);
+	color: rgb(65,65,65);
 	line-height: 1.2em;
 	font-size: 1.65em;
 	margin: 0 auto;
@@ -190,10 +190,10 @@ button.viewpage {
 }
 
 .dashboard-item .price {
-	font-size: 2.2em;
+	font-size: 2em;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	color: rgb(95,95,95);
+	color: rgb(65,65,65);
 }
 
 .dashboard-item .remaining {
@@ -460,6 +460,10 @@ button.cancel:hover {
 	margin-top: 45px;
 }
 
+.loading:before {
+	border-radius: 7px !important;
+}
+
 .masthead .signup .field {
 	margin: 0 auto;
 	margin-bottom: 1px;
@@ -562,6 +566,10 @@ button.cancel:hover {
 	text-shadow: 1px 2px 0px #326DEA;
 	font-size: 2em;
 	text-transform: none;
+}
+
+.cover h1::selection {
+	color: white;
 }
 
 .item-list {
