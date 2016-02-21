@@ -167,11 +167,8 @@ export function getClientToken() {
   return processResponse(fetch(requestUrl))
 }
 
-<<<<<<< HEAD
-export function pay(email, itemId, nonce) {
-=======
+
 export function pay(email, itemId, stripeToken) {
->>>>>>> d7e473f784842e3362ae385822815a0488ac9eb4
   const f = objectToFormData({
     payment: {
       email: email,
