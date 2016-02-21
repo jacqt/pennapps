@@ -14,9 +14,6 @@ class SideBar extends Component {
         <Link to={'/'} query={ {archive: true} } className={classNames({'active': this.props.active === 'archive'})}>
           Archived Items
         </Link><br/>
-        <Link to={`/${me.nickname}`} target="_blank">
-          View Your Page
-        </Link><br/>
         <Link to={'/'} query={ {edit: true} } className={classNames({'active': this.props.active === 'edit'})}>
           Account Settings
         </Link><br/>

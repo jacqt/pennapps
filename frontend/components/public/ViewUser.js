@@ -17,7 +17,7 @@ class ViewUser extends Component {
     }
     this.stripeHandler = StripeCheckout.configure({
       key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
-      image: '/img/oat.png',
+      image: '/img/stripe.png',
       locale: 'auto',
       token: (token) => {
         ajax.pay(token.email, this.state.openedItem.id, token.id)
@@ -70,16 +70,22 @@ class ViewUser extends Component {
     }
     const openedItem = this.state.openedItem
     return (
-      <div>
-        {success}
-      	<div className='ui cover'>
-          <div className='ui text container center aligned middle'>
-            <h1>{user.name}</h1>
+      <div className='wrapper'>
+
+        <div className='wrap'>
+          <div className='main'>
+            {success}
+          	<div className='ui cover'>
+              <div className='ui text container center aligned middle'>
+                <h1>{user.name}</h1>
+              </div>
+            </div>
+            <div className='ui container centered item-list'>
+              {items.length ? items : emptyView}
+            </div>
           </div>
         </div>
-        <div className='ui container centered item-list'>
-          {items.length ? items : emptyView}
-        </div>
+        <div className='footer'>The Oatpay payment platform is powered by <a href="https://stripe.com/about" target="_blank">Stripe</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
       </div>
     )
   }
