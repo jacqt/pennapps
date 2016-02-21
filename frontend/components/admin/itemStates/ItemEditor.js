@@ -5,15 +5,17 @@ class ItemEditor extends Component {
   constructor(props) {
     super(props)
     const item = props.item
-    this.state = item ? {
-      name: item.name,
-      price: (item.price.price_cents/100).toFixed(2),
-      capacity: item.capacity,
-    } : {
+
+    this.defaultState = {
       name: '',
       price: null,
       capacity: null,
     }
+    this.state = item ? {
+      name: item.name,
+      price: (item.price.price_cents/100).toFixed(2),
+      capacity: item.capacity,
+    } : Object.assign({}, this.defaultState)
   }
   render() {
     return (
@@ -26,6 +28,9 @@ class ItemEditor extends Component {
   }
   submit(cb) {
     cb(this.state.name, this.state.price*100, this.state.capacity)
+  }
+  clear() {
+    this.setState(Object.assign({}, this.defaultState))
   }
 }
 

@@ -9,10 +9,14 @@ class NewItem extends Component {
         <div className='top'>
         Add a New Item!
     		<ItemEditor ref='editor'/>
-        <button onClick={() => this.refs.editor.submit(this.props.action)}>+ Add Item</button>
+        <button onClick={() => this.onAdd()}>+ Add Item</button>
   		  </div>
       </div>
     )
+  }
+  onAdd() {
+    this.refs.editor.submit(this.props.action)
+    this.refs.editor.clear()
   }
 }
 
