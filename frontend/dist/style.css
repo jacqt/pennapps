@@ -544,6 +544,7 @@ button.cancel:hover {
 
 .footer {
 	text-align:center;
+	line-height: 150%;
 	-webkit-font-smoothing:antialiased;
 }
 
