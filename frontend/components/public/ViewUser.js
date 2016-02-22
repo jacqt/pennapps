@@ -19,6 +19,7 @@ class ViewUser extends Component {
       key: 'pk_test_jRHpsFAki5kcssFeKYLLnTtj',
       image: '/img/stripe.png',
       locale: 'auto',
+      currency: 'GBP',
       token: (token) => {
         ajax.pay(token.email, this.state.openedItem.id, token.id)
         .then(res => {

@@ -21,7 +21,14 @@ class PaymentsView extends Component {
       return (
         <tr>
           <td>{transaction.email}</td>
-          <td>{moment(transaction.created_at).format('YYYY MM DD')}</td>
+          <td>{moment(transaction.created_at).calendar(null, {
+    sameDay: '[Today]',
+    nextDay: '[Tomorrow]',
+    nextWeek: 'dddd',
+    lastDay: '[Yesterday]',
+    lastWeek: '[Last] dddd',
+    sameElse: 'Do MMM YYYY'
+  })}</td>
         </tr>
       )
     })
