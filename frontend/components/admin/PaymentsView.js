@@ -18,7 +18,6 @@ class PaymentsView extends Component {
     const payments = item.payments.transactions.map(transaction => {
       return (
         <tr>
-          <td>{transaction.name}</td>
           <td>{transaction.email}</td>
           <td>{transaction.created_at}</td>
         </tr>
@@ -46,7 +45,6 @@ class PaymentsView extends Component {
         <table className="ui celled table">
           <thead>
             <tr>
-              <th>Name</th>
               <th>Email</th>
               <th>Payment Date</th>
             </tr>

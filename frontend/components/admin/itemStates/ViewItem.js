@@ -7,13 +7,16 @@ class ViewItem extends Component {
   render() {
     const item = this.props.item
     const link = DOMAIN + '/' + this.props.userName + '/' + item.id
+    const number_sold = item.payments.transactions.length
     return (
     	<div className='dashboard-item'>
     		<div className='inner'>
     		<div className='top'>
 	    		<div className='name'>{item.name}</div>
 	    		<div className='price'>{item.price.price_formatted}</div>
-	    		<div className='remaining'>Sold {item.capacity - item.remaining} of {item.capacity}</div>
+	    		<div className='remaining'>
+            {item.remaining >= 0 ? 'Sold '+number_sold+' of '+item.capacity : 'Sold '+number_sold}
+          </div>
           <a href={link} target="_blank" className='link'>Link to item</a>
 	    	</div>
   			<hr/>

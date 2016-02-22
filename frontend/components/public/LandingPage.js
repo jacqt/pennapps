@@ -89,7 +89,9 @@ class LandingPage extends Component {
       	</div>
       </div>
       <div className='ui row row2'>
-      <h2>Oatpay saves you from the pain of bank transfers and collecting cash.</h2>
+      <h2>Some of our happy users:</h2>
+      <img src='img/omi-logo.png' className='society-logo omi'/>
+      <img src='img/isoc-logo.png' className='society-logo isoc'/>
       </div>
       </div>
     )
