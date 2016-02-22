@@ -29,7 +29,7 @@ class App extends Component {
     }
     else {
       console.log(this.props.location)
-      return <LandingPage/>
+      return <LandingPage referer={this.props.location.query.ref}/>
     }
   }
 }

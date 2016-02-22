@@ -41,6 +41,10 @@ class LandingPage extends Component {
 				<div className='errorbanner'>Something went wrong: {this.props.error.message}</div>
 			)
 		}
+		let heading = 'Start accepting online payments for your society.'
+		if (this.props.referer === 'fb') {
+			heading = 'Start accepting online payments.' // TODO(Taimur)
+		}
     return (
       <div className='landingwrapper'>
 			{error}
@@ -64,7 +68,7 @@ class LandingPage extends Component {
       		</div>
       	</div>
       	<div className='ui text container centered'>
-      		<h1>Start accepting online payments for your society.</h1>
+      		<h1>{heading}</h1>
           <h2>Say goodbye to bank transfers, collecting cash, & spreadsheets.</h2>
       		<div className={'ui form signup ' + (this.state.signupLoading ? 'loading' : '')}>
       			<div className='field'>
