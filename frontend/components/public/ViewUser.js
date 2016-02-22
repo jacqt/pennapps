@@ -18,6 +18,7 @@ class ViewUser extends Component {
     this.stripeHandler = StripeCheckout.configure({
       key: 'pk_test_jRHpsFAki5kcssFeKYLLnTtj',
       image: '/img/stripe.png',
+      description: '+25p card fee',
       locale: 'auto',
       currency: 'GBP',
       token: (token) => {
@@ -93,9 +94,9 @@ class ViewUser extends Component {
   }
   onPayClicked(item) {
     this.stripeHandler.open({
-      name: item.name,
-      description: null,
-      amount: item.price.price_cents,
+      name: item.name+' - '+item.price.price_formatted,
+      description: '+25p card fee',
+      amount: item.price.price_cents + 25,
       allowRememberMe: false,
       closed: this.onModalClose.bind(this),
     })
