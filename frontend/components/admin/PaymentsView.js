@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as _ from 'underscore'
+//import * as moment from 'moment'
+const moment = require('moment')
 import classNames from 'classnames'
 import { Link } from 'react-router'
 
@@ -20,7 +22,7 @@ class PaymentsView extends Component {
         <tr>
           <td>{transaction.name}</td>
           <td>{transaction.email}</td>
-          <td>{transaction.created_at}</td>
+          <td>{moment(transaction.created_at).format('YYYY MM DD')}</td>
         </tr>
       )
     })
