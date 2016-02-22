@@ -1,29 +1,12 @@
 dvd:
 * can you buy if remaining === 0?
 * remaining === -2 after setting it to 0 with two purchases
+* remaining was -1 after creating an item with 0 capacity
 * don't allow negative prices/quantities
 * verify email (format at least)
 * email confirmations
-* do we need 3D Secure? (https://developers.braintreepayments.com/guides/3d-secure/client-side/javascript/v2)
 * what nicknames are allowed? right now we just run 'name.replace(/\s+/g, '')'
-* switch BT to production
+* switch stripe to production
 
-taimur:
-* View your page link somewhere else???
-* header
-	- colour
-* landing page
-
-lukas:
-<<<<<<< 479cf3c68500e67339f3a4eb0bbd7a183d091ea1
-<<<<<<< b3c06e6678ba8cbecfa23c96129ba8b0e775836e
-=======
-* payment errors
-* convert rails active record errors
->>>>>>> added stripe integration (frontend)
-=======
->>>>>>> keep url in sync
-* _.sortBy(_, 'created_at')
-* infinite capacity
 
 
