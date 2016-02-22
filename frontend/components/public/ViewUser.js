@@ -95,7 +95,7 @@ class ViewUser extends Component {
       name: item.name,
       description: null,
       amount: item.price.price_cents,
-      allowRememberMe: false,
+      allowRememberMe: true,
       closed: this.onModalClose.bind(this),
     })
     this.setState({ openedItem: item })
