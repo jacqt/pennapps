@@ -12,6 +12,7 @@ class LandingPage extends Component {
 		}
 	}
 	signup(name, email, password) {
+    fbq('track', 'CompleteRegistration');
 		const { dispatch } = this.props
 		const nickname = name.replace(/\s+/g, '')
 
@@ -95,14 +96,14 @@ class LandingPage extends Component {
 
       <div className='ui row grid stackable life-easier'>
         <div className="ui eight wide column green-gradient">
-          <div className='ui container'>
+          <div className='ui container centered'>
             <h3>Oatpay makes life easier for societies</h3>
             <p>Students are really bad at paying for things on time. This is annoying when your society’s selling event tickets/stash/anything. Why not make it easier for everyone by accepting debit cards? </p>
             <p>It takes literally 30 seconds to setup an account and add your first item/event. Your society gets its own Oatpay URL which you can send around, and students can pay for the items with their debit cards. </p>
           </div>
         </div>
         <div className="ui eight wide column red-gradient">
-          <div className='ui container'>
+          <div className='ui container centered'>
             <h3>Oatpay makes life easier for students</h3>
             <p>Bank transfers are the worst thing ever. Who has time to login to online banking, dig out the card-reading machine thing, setup a new payee, enter the verification codes, and then scream in frustration when you get an error code? No one.</p>
             <p>Oatpay saves you from this pain. You just visit the payment page (hopefully linked from the Facebook event/email), enter your debit card details, and you’re done. </p>
@@ -127,6 +128,9 @@ class LandingPage extends Component {
           <Link to='http://oxfordmicro.org/' target="_blank"><img src='img/omi-logo.png' className='society-logo omi'/></Link>
           <Link to='http://ouisoc.org/' target="_blank"><img src='img/isoc-logo.png' className='society-logo isoc'/></Link>
         </div>
+      </div>
+      <div className='ui row row-footer'>
+      <div className='ui text container centered'> &copy; 2016, Oatpay Ltd. Actually we are not sure how copyright works. Company No. 09995457.</div>
       </div>
       </div>
     )
