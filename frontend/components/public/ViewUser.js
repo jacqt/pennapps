@@ -36,11 +36,14 @@ class ViewUser extends Component {
     this.fetchUser()
   }
   componentWillReceiveProps(nextProps) {
+    const user = nextProps.user
+    if (!user) return
+    if (document.title !== user.name) {
+      document.title = user.name
+    }
     const itemId = nextProps.params.itemId
     if (!itemId) return
     if (this.state.openedItem && this.state.openedItem.id == itemId) return
-    const user = nextProps.user
-    if (!user) return
     const items = user.items
     const index = _.findIndex(items, (item) => item.id == itemId)
     if (index === -1) return
