@@ -122,7 +122,7 @@ class LandingPage extends Component {
       </div>
 
       <div className='ui row row-happy-users'>
-      <h2 className='ui text container centered'>Some of our happy users</h2>
+      <h2 className='ui text container centered'>Some of our happy users...</h2>
         <div className='ui container society-logos centered'>
           <Link to='http://oxfordmicro.org/' target="_blank"><img src='img/omi-logo.png' className='society-logo omi'/></Link>
           <Link to='http://ouisoc.org/' target="_blank"><img src='img/isoc-logo.png' className='society-logo isoc'/></Link>

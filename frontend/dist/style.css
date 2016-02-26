@@ -525,13 +525,14 @@ button.cancel:hover {
 	justify-content: center;
     align-items: center;
 	min-height: 80px;
-	padding-bottom:20px;
-	padding-top:20px;
+	padding-bottom:40px;
+	padding-top:30px;
 }
 
 .row-happy-users h2 {
-	font-size: 1.4em;
+	font-size: 1.4em !important;
 	text-transform: none;
+	font-family: 'Foundry' !important;
 	color: rgba(0,0,0,0.5);
 	font-weight: normal;
 	display:block;
@@ -598,12 +599,13 @@ color:#FFF;
 }
 
 .life-easier h3 {
-	border-bottom:1px solid #FFF;
+	border-bottom:1px solid rgba(255,255,255,0.5);
 	padding-bottom: 20px;
+	font-size: 1.6em;
 }
 
 .catch-fees {
-
+	border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .catch-fees .container {
