@@ -91,7 +91,9 @@ class LandingPage extends Component {
       </div>
 
       <div className='ui row row2'>
-
+        <p className='ui container text'>
+          Oatpay was created by a group of Oxford and Cambridge students who were sick of having to do bank transfers to pay for things. It's a completely free service that we hope will benefit students and societies alike.
+        </p>
       </div>
 
       <div className='ui row grid stackable life-easier'>
@@ -125,14 +127,13 @@ class LandingPage extends Component {
       <div className='ui row faq'>
         <div className='ui container centered'>
           <h3>Frequently Asked Questions</h3>
-          <p className='faq-subtitle'>We apologise in advance for the large amount of text on this page. Oatpay is a very simple website, but whenever money/payments are concerned, students are (naturally) dubious/curious. So we’ve attempted to answer every question we could think anyone would ask about how it works.</p>
           <ol className='ui container'>
             <li>
               <div className='faq-question'><p>Is this legit?</p></div>
               <div className='faq-answer'>
               <p>
-                Yes. Payments are processed using Stripe (www.stripe.com) - go check it out if you’re concerned. 
-                The names and colleges of the guys who made this website are also at the bottom of this page - you can hunt us down with pitchforks if it ends up being non-legit.
+                Yes. Payments are processed using Stripe (<Link to='https://stripe.com'>www.stripe.com</Link>) - go check it out if you’re concerned. 
+                The names and Facebook links of the guys who made this website are also at the bottom of this page - you can hunt us down with pitchforks if it ends up being non-legit.
               </p>
               </div>
             </li>
@@ -142,7 +143,7 @@ class LandingPage extends Component {
               <div className='faq-question'><p>When and how will the money go into my society's bank account?</p></div>
               <div className='faq-answer'>
               <p>
-                Good question. It takes around 10 working days from when the payment is made for the money to be available to withdraw. To withdraw money, just click the 'Withdraw' button on your account page. The money will be in your account within two working days from that point.
+                Good question. It takes around 7 working days from when the payment is made for the money to be available to withdraw. To withdraw money, just click the 'Withdraw' button on your account page. The money will be in your account within two working days from that point.
               </p>
               </div>
             </li>
@@ -160,7 +161,7 @@ class LandingPage extends Component {
         </div>
       </div>
       <div className='ui row row-footer'>
-      <div className='ui text container centered'> &#169; 2016 Oatpay Ltd. Actually we're not sure how copyright works. Company No. 09995457.</div>
+      <div className='ui text container centered'> Built with love by <Link to='https://www.facebook.com/Refrigerated'>Taimur</Link>, <Link to='https://www.facebook.com/lukaskoebis'>Lukas</Link>, <Link to='https://www.facebook.com/profile.php?id=100009654736330'>David</Link> & <Link to='https://www.facebook.com/ali.abdaal'>Ali</Link>.<br />&#169; 2016 Oatpay Ltd. Company No. 09995457. Registered in England and Wales.<br /></div>
       </div>
       </div>
     )

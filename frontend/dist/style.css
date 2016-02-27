@@ -319,7 +319,6 @@ button.cancel:hover {
 }
 
 .masthead {
-	height: 85%;
 	min-height: 700px;
 	text-align:center;
 	background: blue;
@@ -570,7 +569,17 @@ button.cancel:hover {
 }
 
 .row2 {
-	background-color:red;
+background-color: #fbfbfb;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    text-align: center;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+}
+
+.row2 p {
+	color:#606060;
+	font-size:1.3em !important;
 }
 
 .row3 {
@@ -664,7 +673,6 @@ padding-bottom: 50px;
 	border-bottom: 1px dashed #A1A1A2;
     padding-bottom: 5px;
     margin-bottom: 5px;
-}
 }
 
 .row-footer {
