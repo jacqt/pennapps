@@ -16,7 +16,7 @@ class ViewUser extends Component {
       success: false,
     }
     this.stripeHandler = StripeCheckout.configure({
-      key: 'pk_test_jRHpsFAki5kcssFeKYLLnTtj',
+      key: 'pk_live_Yyfb5pPUaFbblIDNA6kuEV3q',
       image: '/img/stripe.png',
       locale: 'auto',
       currency: 'GBP',
@@ -95,10 +95,10 @@ class ViewUser extends Component {
     )
   }
   onPayClicked(item) {
-    const fee = 25 + Math.ceil(item.price.price_cents * 0.02)
+    const fee = 20 + Math.ceil(item.price.price_cents * 0.017)
     this.stripeHandler.open({
       name: item.name+' - '+item.price.price_formatted,
-      description: '+25p +2% card fee',
+      description: '+20p +1.7% card fee',
       amount: item.price.price_cents + fee,
       allowRememberMe: true,
       closed: this.onModalClose.bind(this),
