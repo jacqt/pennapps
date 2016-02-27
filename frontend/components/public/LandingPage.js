@@ -86,7 +86,7 @@ class LandingPage extends Component {
       			</button>
       		</div>
           <div className='convinced centere'>Not convinced?</div>
-          <Link to='https://oatpay.com/CambridgeUniversityIslamicSociety' target="_blank"><button className='demo centered'>Check out a demo!</button></Link>
+          <Link to='https://oatpay.com/CambridgeUniversityFlowerArrangingSociety' target="_blank"><button className='demo centered'>Check out a demo!</button></Link>
       	</div>
       </div>
 
