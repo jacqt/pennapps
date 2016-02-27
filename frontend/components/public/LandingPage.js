@@ -122,6 +122,36 @@ class LandingPage extends Component {
         </div>
       </div>
 
+      <div className='ui row faq'>
+        <div className='ui container centered'>
+          <h3>Frequently Asked Questions</h3>
+          <p className='faq-subtitle'>We apologise in advance for the large amount of text on this page. Oatpay is a very simple website, but whenever money/payments are concerned, students are (naturally) dubious/curious. So we’ve attempted to answer every question we could think anyone would ask about how it works.</p>
+          <ol className='ui container'>
+            <li>
+              <div className='faq-question'><p>Is this legit?</p></div>
+              <div className='faq-answer'>
+              <p>
+                Yes. Payments are processed using Stripe (www.stripe.com) - go check it out if you’re concerned. 
+                The names and colleges of the guys who made this website are also at the bottom of this page - you can hunt us down with pitchforks if it ends up being non-legit.
+              </p>
+              </div>
+            </li>
+
+            
+            <li>
+              <div className='faq-question'><p>When and how will the money go into my society's bank account?</p></div>
+              <div className='faq-answer'>
+              <p>
+                Good question. It takes around 10 working days from when the payment is made for the money to be available to withdraw. To withdraw money, just click the 'Withdraw' button on your account page. The money will be in your account within two working days from that point.
+              </p>
+              </div>
+            </li>
+
+
+          </ol>
+        </div>
+      </div>
+
       <div className='ui row row-happy-users'>
       <h2 className='ui text container centered'>Some of our happy users...</h2>
         <div className='ui container society-logos centered'>
@@ -130,7 +160,7 @@ class LandingPage extends Component {
         </div>
       </div>
       <div className='ui row row-footer'>
-      <div className='ui text container centered'> &#169; 2016, Oatpay Ltd. Actually we are not sure how copyright works. Company No. 09995457.</div>
+      <div className='ui text container centered'> &#169; 2016 Oatpay Ltd. Actually we're not sure how copyright works. Company No. 09995457.</div>
       </div>
       </div>
     )
