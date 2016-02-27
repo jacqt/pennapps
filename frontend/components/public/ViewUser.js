@@ -39,7 +39,7 @@ class ViewUser extends Component {
     const user = nextProps.user
     if (!user) return
     if (document.title !== user.name) {
-      document.title = user.name
+      document.title = user.name+' - Oatpay'
     }
     const itemId = nextProps.params.itemId
     if (!itemId) return
