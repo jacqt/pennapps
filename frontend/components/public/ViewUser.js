@@ -95,10 +95,11 @@ class ViewUser extends Component {
     )
   }
   onPayClicked(item) {
+    const fee = 25 + Math.ceil(item.price.price_cents * 0.02)
     this.stripeHandler.open({
       name: item.name+' - '+item.price.price_formatted,
-      description: '+25p card fee',
-      amount: item.price.price_cents + 25,
+      description: '+25p +2% card fee',
+      amount: item.price.price_cents + fee,
       allowRememberMe: true,
       closed: this.onModalClose.bind(this),
     })
