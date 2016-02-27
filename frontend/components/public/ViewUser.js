@@ -90,7 +90,7 @@ class ViewUser extends Component {
             </div>
           </div>
         </div>
-        <div className='footer'>The Oatpay payment platform is powered by <a href="https://stripe.com/about" target="_blank">Stripe</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
+        <div className='footer'>The <Link to='https://oatpay.com'>Oatpay</Link> payment platform is powered by <a href="https://stripe.com/about" target="_blank">Stripe</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
       </div>
     )
   }
