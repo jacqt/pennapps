@@ -23,8 +23,13 @@ class ViewUser extends Component {
       token: (token) => {
         ajax.pay(token.email, this.state.openedItem.id, token.id)
         .then(res => {
-          this.setState({ success: true })
-          this.fetchUser()
+          if (res.errors) {
+            alert('Error: ' + res.errors)
+          }
+          else {
+            this.setState({ success: true })
+            this.fetchUser()
+          }
         })
       }
     });
