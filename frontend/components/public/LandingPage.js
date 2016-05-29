@@ -116,7 +116,7 @@ class LandingPage extends Component {
       <div className='ui row catch-fees'>
         <div className='ui container centered'>
           <h3>The only catch - card processing fees</h3>
-          <p>{'Okay, here comes the annoying bit. It costs a small amount (20p + 1.7%) to process card payments. So if you’re a society that wants to sell a formal ticket for £12, your members will pay £12.40 by card instead.'}</p>
+          <p>{'Okay, here comes the annoying bit. It costs a small amount (20p + 1.9%) to process card payments. So if you’re a society that wants to sell a formal ticket for £12, your members will pay £12.43 by card instead.'}</p>
           <p>{'We’ve done some informal surveys and students have differing views on this. Some say “meh it’s 40p who cares”, while others are adamant that they would prefer to waste 5 minutes of their life doing a bank transfer than spend an excess 40p.'}</p>
           <p>{'The solution to this dilemma is simple. Give your students the option! If they want, they can save time and effort by using Oatpay, and pay the card transaction fee. If they’d rather not pay the 40p, they’re very welcome to bank transfer or pay in cash (which is probably what they’re doing anyway).'}</p>
           <p>{'There’s literally nothing to lose. Might as well give Oatpay a shot.'}</p>
@@ -143,7 +143,7 @@ class LandingPage extends Component {
               <div className='faq-question'><p>When and how will the money go into my society's bank account?</p></div>
               <div className='faq-answer'>
               <p>
-                Good question. It takes around 7 working days from when the payment is made for the money to be available to withdraw. To withdraw money, just click the 'Withdraw' button on your account page. The money will be in your account within two working days from that point.
+                Good question. It takes around 1 working day from when the payment is made for the money to be available to withdraw. To withdraw money, just click the 'Withdraw' button on your account page. The money will be in your account within two working days from that point.
               </p>
               </div>
             </li>
@@ -161,7 +161,7 @@ class LandingPage extends Component {
         </div>
       </div>
       <div className='ui row row-footer'>
-      <div className='ui text container centered'> Built with love by <Link to='https://www.facebook.com/Refrigerated'>Taimur</Link>, <Link to='https://www.facebook.com/lukaskoebis'>Lukas</Link>, <Link to='https://www.facebook.com/profile.php?id=100009654736330'>David</Link> & <Link to='https://www.facebook.com/ali.abdaal'>Ali</Link>.<br />&#169; 2016 Oatpay Ltd. Company No. 09995457. Registered in England and Wales.<br /></div>
+      <div className='ui text container centered'> Built with love by <a href='https://www.facebook.com/Refrigerated'>Taimur</a>, <a href='https://www.facebook.com/lukaskoebis'>Lukas</a>, <a href='https://www.facebook.com/dvdhsu'>David</a> & <a href='https://www.facebook.com/ali.abdaal'>Ali</a>.<br />&#169; 2016 Oatpay Ltd. Company No. 09995457. Registered in England and Wales.<br /></div>
       </div>
       </div>
     )
