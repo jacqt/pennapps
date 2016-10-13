@@ -30,7 +30,9 @@ class ViewUser extends Component {
     });
   }
   fetchUser() {
-    this.props.dispatch(Actions.requestUser(this.props.params.nickname))
+    let nickname = this.props.params.nickname
+    if (nickname) nickname = nickname.toLocaleLowerCase()
+    this.props.dispatch(Actions.requestUser(nickname))
   }
   componentDidMount() {
     this.fetchUser()
