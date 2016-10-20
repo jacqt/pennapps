@@ -1,8 +1,10 @@
 
 export function getUserFromData(data) {
-  if (!data || !data.society) return null
-  return Object.assign(data.society, {
-    items: data.items
+  if (!data || !data.user) return null
+  return Object.assign(data.user, {
+    items: data.items,
+    auth_token: data.authentication_token,
+    balance: data.balance
   })
 }
 

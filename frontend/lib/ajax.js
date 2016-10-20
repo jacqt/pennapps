@@ -43,6 +43,16 @@ export function signup(email, password, passwordConfirmation, name, nickname) {
   }))
 }
 
+export function facebookCreateOrLogin(facebook_token) {
+  const f = new FormData();
+  f.append('facebook_token', encodeURIComponent(facebook_token));
+  const requestUrl = API_BASE + '/auth/login/'
+  return processResponse(fetch(requestUrl, {
+    method: 'post',
+    body: f,
+  }));
+}
+
 export function login(email, password) {
   const f = new FormData()
   f.append('email', email)
@@ -58,7 +68,7 @@ export function login(email, password) {
 export function reLogin(email, authToken) {
   const f = new FormData()
   f.append('email', email)
-  f.append('auth_token', authToken)
+  f.append('authentication_token', authToken)
 
   const requestUrl = API_BASE + '/auth/login_with_token/'
 
@@ -81,7 +91,7 @@ export function requestUser(nickname) {
 export function updateUser(email, authToken, nickname, delta) {
   const f = objectToFormData({
     email,
-    auth_token: authToken,
+    authentication_token: authToken,
     society: delta,
   })
 
@@ -96,7 +106,7 @@ export function updateUser(email, authToken, nickname, delta) {
 export function addItem(email, authToken, name, price, capacity) {
   const f = objectToFormData({
     email,
-    auth_token: authToken,
+    authentication_token: authToken,
     item: {
       name,
       price,
@@ -115,7 +125,7 @@ export function addItem(email, authToken, name, price, capacity) {
 export function removeItem(email, authToken, id) {
   const f = new FormData()
   f.append('email', email)
-  f.append('auth_token', authToken)
+  f.append('authentication_token', authToken)
 
   const requestUrl = API_BASE + '/items/' + id
 
@@ -128,7 +138,7 @@ export function removeItem(email, authToken, id) {
 export function updateItem(email, authToken, id, name, price, capacity) {
   const f = objectToFormData({
     email,
-    auth_token: authToken,
+    authentication_token: authToken,
     item: {
       name,
       price,
@@ -147,7 +157,7 @@ export function updateItem(email, authToken, id, name, price, capacity) {
 export function archiveItem(email, authToken, id, archived) {
   const f = objectToFormData({
     email,
-    auth_token: authToken,
+    authentication_token: authToken,
     item: {
       archived
     }
@@ -187,7 +197,7 @@ export function pay(email, itemId, stripeToken) {
 export function withdraw(email, authToken) {
   const f = objectToFormData({
     email,
-    auth_token: authToken,
+    authentication_token: authToken,
   })
 
   const requestUrl = API_BASE + '/request_withdrawal/'

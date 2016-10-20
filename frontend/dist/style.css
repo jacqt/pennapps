@@ -1,4 +1,52 @@
-<style type="text/css">
+/* ------------------------------------------ GENERAL CSS */
+
+
+button.big.ui.positive.cashew.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0FA669;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
+
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 1.35em;
+}
+
+.cashew.icon {
+  height: 30px !important;
+  width: 40px !important;
+  opacity: 1!important;
+}
+
+.cashew.icon img {
+  height: 30px;
+  width: 40px;
+}
+
+.cashew.button. loading:before {
+  border-radius: 500rem !important;
+}
+
+.society-photo-url {
+  height: 130px;
+  width: 130px;
+  border-radius: 65px;
+}
+
+div.society-item {
+  height: 280px;
+}
+
+a.item.logout-of-society {
+  margin-right: 15px;
+}
+
+
+
 
 /* ------------------------------------------ FOOTER */
 html, body {height: 100% !important;}
@@ -472,7 +520,7 @@ button.cancel:hover {
 }
 
 .loading:before {
-	border-radius: 7px !important;
+	/* border-radius: 7px !important; */
 }
 
 .masthead .signup .field {
@@ -1007,5 +1055,3 @@ input:focus {outline:none;}
 .form.withdraw button {
 	width: 100%;
 }
-
-</style>

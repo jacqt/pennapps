@@ -24,12 +24,12 @@ class LoginButton extends Component {
     });
   }
 
-  loginToCashew(facebook_token) {
+  loginToCashew(facebookToken) {
     const { dispatch } = this.props
     const nickname = name.replace(/\s+/g, '')
 
     window.setTimeout(() => {
-      dispatch(Actions.signupWithFacebookToken());
+      dispatch(Actions.signupWithFacebookToken(facebookToken));
     }, 1000);
   }
 
@@ -153,7 +153,7 @@ class LandingPage extends Component {
             <h1>{heading}</h1>
             <h2>Oatpay lets your society accept online card payments in around 30 seconds. </h2>
             
-            <LoginButton />
+            <LoginButton dispatch={this.props.dispatch} />
             <div className='convinced centere'>Not convinced?</div>
             <Link to='https://oatpay.com/CambridgeUniversityFlowerArrangingSociety' target="_blank"><button className='demo centered'>Check out a demo!</button></Link>
           </div>

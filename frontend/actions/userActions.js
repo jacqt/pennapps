@@ -3,12 +3,22 @@ import {
   REQUEST_LOGIN,
   RECEIVE_LOGIN,
   LOGOUT,
+  LOGOUT_OF_SOCIETY,
   ADD_ITEM,
   EDIT_ITEM,
   REMOVE_ITEM,
 } from '../constants/actionTypes.js'
 
 import * as ajax from '../lib/ajax.js'
+
+export function signupWithFacebookToken(token) {
+  return (dispatch) => {
+    dispatch({ type: REQUEST_SIGNUP });
+    return ajax.facebookCreateOrLogin(token)
+      .then(res => dispatch(receiveSignup(res)))
+      .catch(console.log)
+  };
+}
 
 export function signup(email, password, passwordConfirmation, name, nickName) {
   return dispatch => {
@@ -29,6 +39,10 @@ export function login(email, password) {
 }
 export function logout() {
   return { type: LOGOUT }
+}
+
+export function logoutOfSociety() {
+  return { type: LOGOUT_OF_SOCIETY }
 }
 export function reLogin(email, authToken) {
   return dispatch => {

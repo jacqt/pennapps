@@ -3,6 +3,7 @@ import {
   REQUEST_LOGIN,
   RECEIVE_LOGIN,
   LOGOUT,
+  LOGOUT_OF_SOCIETY,
   ADD_ITEM,
   EDIT_ITEM,
   REMOVE_ITEM,
@@ -31,7 +32,7 @@ export default function user(state = defaultUserState, action) {
         error: null,
       })
     case RECEIVE_LOGIN:
-      if (action.res.status === 'failure') {
+      if (action.res.status === 'authentication failure') {
         if (cookie.get('email')) {
           // delete old cookie
           cookie.remove('email')
@@ -49,8 +50,12 @@ export default function user(state = defaultUserState, action) {
         })
       }
       const user = getUserFromData(action.res.data)
-      cookie.set('email', user.email)
-      cookie.set('auth_token', user.auth_token)
+      if (user) {
+        cookie.set('email', user.email);
+        if (!cookie.get('auth_token')) {
+          cookie.set('auth_token', user.auth_token);
+        }
+      }
       return Object.assign({}, state, {
         isFetching: false,
         user,
@@ -58,6 +63,15 @@ export default function user(state = defaultUserState, action) {
     case LOGOUT:
       cookie.remove('email')
       cookie.remove('auth_token')
+      return Object.assign({}, state, {
+        isFetching: false,
+        user: null,
+        error: null,
+      })
+    case LOGOUT_OF_SOCIETY:
+      const owner_email = cookie.get('owner_email');
+      cookie.set('email', owner_email)
+      window.location.href = '/';
       return Object.assign({}, state, {
         isFetching: false,
         user: null,
