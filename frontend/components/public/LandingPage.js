@@ -4,6 +4,83 @@ import { Link } from 'react-router'
 
 import * as Actions from '../../actions/userActions'
 
+class LoginButton extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      signupLoading: false,
+    }
+  }
+  
+  loginWithFacebook() {
+    return new Promise((resolve, reject) => {
+      FB.login((response) => {
+        if (response.authResponse) {
+          resolve(response.authResponse.accessToken);
+        } else {
+          reject("User cancelled login");
+        }
+      }, 'email,public_profile,user_friends');
+    });
+  }
+
+  loginToCashew(facebook_token) {
+    const { dispatch } = this.props
+    const nickname = name.replace(/\s+/g, '')
+
+    window.setTimeout(() => {
+      dispatch(Actions.signupWithFacebookToken());
+    }, 1000);
+  }
+
+  signup() {
+    // fbq('track', 'CompleteRegistration');
+    this.setState({ signupLoading: true })
+
+    this.loginWithFacebook()
+      .then((token) => this.loginToCashew(token))
+      .catch(e => this.setState({signupLoading: false}))
+  }
+
+  render() {
+    let buttonClassName = 'big ui positive cashew button';
+    if (this.state.signupLoading) {
+      buttonClassName += ' loading';
+    }
+    return (
+      <button className={buttonClassName} onClick= { () => this.signup() }>
+        <i className={"cashew icon"}>
+          <img src={'img/cashew-icon-white.png'} />
+        </i>
+        SIGN IN WITH CASHEW
+      </button>
+
+    );
+  }
+}
+
+
+class SignUpForm extends Component {
+  render() {
+    return (
+      <div className={'ui form signup ' + (this.state.signupLoading ? 'loading' : '')}>
+        <div className='field'>
+          <input type="text" name="name" className='signupfield' placeholder="Society name" tabIndex='1'/>
+        </div>
+        <div className='field'>
+          <input type="text" name="email" className='signupfield' placeholder="Email address" tabIndex='2'/>
+        </div>
+        <div className='field'>
+          <input type="password" className='signupfield' name="password" placeholder="Password" tabIndex='3'/>
+        </div>
+        <button tabIndex='4' className="ui button signupbutton" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
+          Get Started
+        </button>
+      </div>
+    );
+  }
+}
+
 class LandingPage extends Component {
   constructor(props) {
     super(props)
@@ -11,6 +88,7 @@ class LandingPage extends Component {
       signupLoading: false,
     }
   }
+
   signup(name, email, password) {
     fbq('track', 'CompleteRegistration');
     const { dispatch } = this.props
@@ -19,10 +97,12 @@ class LandingPage extends Component {
     this.setState({ signupLoading: true })
     window.setTimeout(() => dispatch(Actions.signup(email, password, password, name, nickname)), 1000)
   }
+
   login(email, password) {
     const { dispatch } = this.props
     dispatch(Actions.login(email, password))
   }
+
   componentDidMount() {
     $(".loginfield").keyup(e => {
       if(event.keyCode == 13) {
@@ -35,6 +115,7 @@ class LandingPage extends Component {
       }
     })
   }
+
   render() {
     let error = null
     if (this.props.error) {
@@ -71,20 +152,8 @@ class LandingPage extends Component {
           <div className='ui text container centered'>
             <h1>{heading}</h1>
             <h2>Oatpay lets your society accept online card payments in around 30 seconds. </h2>
-            <div className={'ui form signup ' + (this.state.signupLoading ? 'loading' : '')}>
-              <div className='field'>
-                <input type="text" name="name" className='signupfield' placeholder="Society name" tabIndex='1'/>
-              </div>
-              <div className='field'>
-                <input type="text" name="email" className='signupfield' placeholder="Email address" tabIndex='2'/>
-              </div>
-              <div className='field'>
-                <input type="password" className='signupfield' name="password" placeholder="Password" tabIndex='3'/>
-              </div>
-              <button tabIndex='4' className="ui button signupbutton" onClick={() => this.signup($('input[name="name"]').val(),$('input[name="email"]').val(),$('input[name="password"]').val())}>
-                Get Started
-              </button>
-            </div>
+            
+            <LoginButton />
             <div className='convinced centere'>Not convinced?</div>
             <Link to='https://oatpay.com/CambridgeUniversityFlowerArrangingSociety' target="_blank"><button className='demo centered'>Check out a demo!</button></Link>
           </div>
