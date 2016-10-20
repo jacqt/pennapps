@@ -4,7 +4,8 @@ export function getUserFromData(data) {
   return Object.assign(data.user, {
     items: data.items,
     auth_token: data.authentication_token,
-    balance: data.balance
+    balance: data.balance,
+    items: data.items,
   })
 }
 
