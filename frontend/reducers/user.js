@@ -10,6 +10,7 @@ import {
 } from '../constants/actionTypes'
 
 import { getUserFromData, railsErrorsToString } from '../lib/utils'
+import { DOMAIN } from '../lib/urls'
 
 import * as cookie from 'js-cookie'
 
@@ -71,7 +72,7 @@ export default function user(state = defaultUserState, action) {
     case LOGOUT_OF_SOCIETY:
       const owner_email = cookie.get('owner_email');
       cookie.set('email', owner_email)
-      window.location.href = '/';
+      window.location.href = DOMAIN;
       return Object.assign({}, state, {
         isFetching: false,
         user: null,

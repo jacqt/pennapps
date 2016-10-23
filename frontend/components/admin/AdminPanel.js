@@ -4,6 +4,7 @@ import * as cookie from 'js-cookie'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
+import { DOMAIN } from '../../lib/urls'
 import Header from './Header'
 import SideBar from './SideBar'
 import ItemsView from './ItemsView'
@@ -18,7 +19,7 @@ class AdminPanel extends Component {
     console.log('Logging as a society', society);
     cookie.set('owner_email', this.props.user.email)
     cookie.set('email', society.email)
-    window.location.href = '/';
+    window.location.href = DOMAIN;
   }
 
   renderSocietyCard(society) {

@@ -6,6 +6,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 
+import { PREFIX } from './lib/urls'
 import reducer from './reducers'
 import history from './history'
 
@@ -25,9 +26,9 @@ const store = createStoreWithMiddleware(reducer)
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App}/>
-      <Route path="/:nickname" component={ViewUser}/>
-      <Route path="/:nickname/:itemId" component={ViewUser}/>
+      <Route path={PREFIX + "/"} component={App}/>
+      <Route path={PREFIX + "/:nickname"} component={ViewUser}/>
+      <Route path={PREFIX + "/:nickname/:itemId"} component={ViewUser}/>
     </Router>
   </Provider>,
   document.getElementById('root')

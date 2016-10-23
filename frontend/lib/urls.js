@@ -3,8 +3,10 @@
 //
 const DOMAIN = 'https://getcashew.com/oatpay'
 const API_BASE = 'https://api.getcashew.com/v1'
+const PREFIX='/oatpay'
 
 export default {
   DOMAIN,
   API_BASE,
+  PREFIX
 }
