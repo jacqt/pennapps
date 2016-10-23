@@ -17,7 +17,7 @@ class ViewUser extends Component {
     }
     this.stripeHandler = StripeCheckout.configure({
       key: 'pk_live_Y55dq0Dd5cCoQNPn3dfsuqeu',
-      image: '/img/stripe.png',
+      image: 'img/stripe.png',
       locale: 'auto',
       currency: 'GBP',
       token: (token) => {

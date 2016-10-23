@@ -13,7 +13,7 @@ class ViewItem extends Component {
         : <div>
             <div className='remaining'>{item.remaining > 0 ? item.remaining+' remaining' : 'Available'}</div>
             <button onClick={() => this.props.onPayClicked()} className="buy">
-              <img src="/img/done.png" className="tick"/>
+              <img src="img/done.png" className="tick"/>
               Pay Now
             </button>
           </div>
