@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { PREFIX } from '../../../lib/urls.js'
 
 class ArchivedItem extends Component {
   render() {
@@ -11,7 +12,7 @@ class ArchivedItem extends Component {
 	    		<div className='name'>{item.name}</div>
 	    		<div className='price'>{item.price.price_formatted}</div>
 	    		<div className='remaining'>Sold {item.capacity-item.remaining} of {item.capacity}</div>
-          <Link className='link' to={'/'} query={{itemId : item.id}}>View Payments</Link>
+          <Link className='link' to={PREFIX + '/'} query={{itemId : item.id}}>View Payments</Link>
 	    	</div>
   			<hr/>
   			<div className='item-action delete' onClick={() => this.props.onDelete()}><a href='#'>Delete</a></div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 import { DOMAIN } from '../../../lib/urls'
+import { PREFIX } from '../../../lib/urls.js'
 
 class ViewItem extends Component {
   render() {
@@ -22,7 +23,7 @@ class ViewItem extends Component {
   			<hr/>
         <div className='item-action delete' onClick={() => this.props.onArchive()}><a href='#'>Archive</a></div>
   			<div className='item-action edit' onClick={() => this.props.onEdit()}><a href='#'>Edit</a></div>
-        <div className='item-action edit'><Link to={'/'} query={{itemId : item.id}}>Payments</Link></div>
+        <div className='item-action edit'><Link to={PREFIX + '/'} query={{itemId : item.id}}>Payments</Link></div>
   			</div>
   		</div>
     )

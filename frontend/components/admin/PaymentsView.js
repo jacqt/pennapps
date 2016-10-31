@@ -5,6 +5,7 @@ import * as _ from 'underscore'
 const moment = require('moment')
 import classNames from 'classnames'
 import { Link } from 'react-router'
+import { PREFIX } from '../../lib/urls.js'
 
 class PaymentsView extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class PaymentsView extends Component {
             Sold {item.capacity-item.remaining} of {item.capacity}
           </div>
         </div>
-        <Link to={'/'} className={classNames({'active': this.props.active === 'items'})}>
+        <Link to={PREFIX + '/'} className={classNames({'active': this.props.active === 'items'})}>
         <div className="ui bottom attached button">
           <i className="left arrow icon"></i>
           Back to Your Items
