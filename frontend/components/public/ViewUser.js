@@ -15,18 +15,35 @@ class ViewUser extends Component {
       openedItem: null,
       success: false,
     }
-    this.stripeHandler = StripeCheckout.configure({
-      key: 'pk_live_Y55dq0Dd5cCoQNPn3dfsuqeu',
-      image: '/img/stripe.png',
-      locale: 'auto',
-      currency: 'GBP',
-      token: (token) => {
-        ajax.pay(token.email, this.state.openedItem.id, token.id)
-        .then(res => {
-          this.setState({ success: true })
-          this.fetchUser()
-        })
-      }
+    ajax.getClientToken().then(response => {
+      const clientToken = response.client_token;
+      console.log("Got a client token", response, clientToken);
+      braintree.setup(clientToken, 'custom', {
+        id: "my-sample-form",
+        onPaymentMethodReceived: (method) => {
+          const { nonce, details, type } = method;
+          $('.ui.modal').modal('hide');
+          ajax.pay("testing@gmail.com", this.state.openedItem.id, nonce)
+            .then(res => {
+              this.setState({ success: true })
+              this.fetchUser()
+            })
+        },
+        hostedFields: {
+          number: {
+            selector: "#card-number"
+          },
+          cvv: {
+            selector: "#cvv"
+          },
+          expirationDate: {
+            selector: "#expiration-date"
+          },
+          postalCode: {
+            selector: "#postal-code"
+          },
+        }
+      });
     });
   }
   fetchUser() {
@@ -91,20 +108,17 @@ class ViewUser extends Component {
           </div>
         </div>
         <div className='footer'>The <Link to='https://oatpay.com'>Oatpay</Link> payment platform is powered by <a href="https://stripe.com/about" target="_blank">Stripe</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
+
       </div>
     )
   }
   onPayClicked(item) {
     const fee = 20 + Math.ceil(item.price.price_cents * 0.017)
-    this.stripeHandler.open({
-      name: item.name+' - '+item.price.price_formatted,
-      description: '+20p +1.7% card fee',
-      amount: item.price.price_cents + fee,
-      allowRememberMe: true,
-      closed: this.onModalClose.bind(this),
-    })
     this.setState({ openedItem: item })
     this.props.history.replaceState(null, '/' + this.props.params.nickname + '/' + item.id)
+    $('.ui.modal').modal('show')
+    $('#item-title').text(item.name)
+    $('#item-price').text(item.price.price_formatted)
   }
   onModalClose() {
     this.props.history.replaceState(null, '/' + this.props.params.nickname)
