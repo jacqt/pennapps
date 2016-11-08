@@ -135,7 +135,7 @@ class ViewUser extends Component {
     this.props.history.replaceState(null, '/' + this.props.params.nickname + '/' + item.id)
     $('.ui.modal').modal('show')
     $('#item-title').text(item.name)
-    $('#item-price').text(item.price.price_formatted + "+ 3.65% + 20p")
+    $('#item-price').text(item.price.price_formatted)
     this.setUpBraintree();
   }
   onModalClose() {
