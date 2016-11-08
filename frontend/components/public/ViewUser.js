@@ -15,9 +15,16 @@ class ViewUser extends Component {
       openedItem: null,
       success: false,
     }
+  }
+
+  setUpBraintree() {
     ajax.getClientToken().then(response => {
       const clientToken = response.client_token;
       console.log("Got a client token", response, clientToken);
+      if (this.braintreeHandler) {
+        return;
+      }
+      this.braintreeHandler = true;
       braintree.setup(clientToken, 'custom', {
         id: "my-sample-form",
         onPaymentMethodReceived: (method) => {
@@ -51,6 +58,7 @@ class ViewUser extends Component {
       });
     });
   }
+
   fetchUser() {
     this.props.dispatch(Actions.requestUser(this.props.params.nickname))
   }
@@ -128,6 +136,7 @@ class ViewUser extends Component {
     $('.ui.modal').modal('show')
     $('#item-title').text(item.name)
     $('#item-price').text(item.price.price_formatted)
+    this.setUpBraintree();
   }
   onModalClose() {
     this.props.history.replaceState(null, '/' + this.props.params.nickname)
