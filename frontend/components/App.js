@@ -20,7 +20,9 @@ class App extends Component {
   }
   render() {
     console.log(this.props.location.query);
+    const email = this.props.location.query.email;
     const me = this.props.user
+    cookie.set('user_email', email);
 
     console.log()
     if (me) {

@@ -7,6 +7,7 @@ import ViewItem from './ViewItem'
 
 import * as Actions from '../../actions/publicUserActions'
 import * as ajax from '../../lib/ajax'
+import * as cookie from 'js-cookie'
 
 class ViewUser extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class ViewUser extends Component {
         onPaymentMethodReceived: (method) => {
           const { nonce, details, type } = method;
           $('.ui.modal').modal('hide');
-          ajax.pay("dummyaccount@dummy.ox.ac.uk", this.state.openedItem.id, nonce)
+          ajax.pay(cookie.get('user_email').toString(), this.state.openedItem.id, nonce)
             .then(res => {
               if (res.ok) {
                 this.setState({ success: true })
@@ -124,8 +125,6 @@ class ViewUser extends Component {
             </div>
           </div>
         </div>
-        <div className='footer'>Powered by <a href="https://www.braintreepayments.com/" target="_blank">Braintree</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
-
       </div>
     )
   }
