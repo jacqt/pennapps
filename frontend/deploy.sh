@@ -14,7 +14,7 @@ TAR_DEST="~/oatpay-tars"
 SITE_DIR="/srv/braintree_client/static_site"
 
 echo -e "Generating bundle.js ...$LIGHTBLUE"
-# npm run deploy
+npm run deploy
 echo -e "$GREEN Generated bundle.js $NORMAL"
 
 echo -e "Generating tar package...$LIGHTBLUE"
