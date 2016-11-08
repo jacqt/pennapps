@@ -116,7 +116,7 @@ class ViewUser extends Component {
             </div>
           </div>
         </div>
-        <div className='footer'>The <Link to='https://oatpay.com'>Oatpay</Link> payment platform is powered by <a href="https://www.braintreepayments.com/" target="_blank">Braintree</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
+        <div className='footer'>Powered by <a href="https://www.braintreepayments.com/" target="_blank">Braintree</a>, the industry leader in online payments processing. Your details are secured using AES-256 encryption.</div>
 
       </div>
     )

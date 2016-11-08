@@ -34,7 +34,7 @@ class App extends Component {
       return <LandingPage referer={this.props.location.query.ref}/>
     } else {
       console.log("!!!");
-      window.location = "/StHugh'sBallc"
+      window.location = "/StHugh'sBall"
     }
   }
 }
