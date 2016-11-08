@@ -30,7 +30,7 @@ class ViewUser extends Component {
         onPaymentMethodReceived: (method) => {
           const { nonce, details, type } = method;
           $('.ui.modal').modal('hide');
-          ajax.pay("testing@gmail.com", this.state.openedItem.id, nonce)
+          ajax.pay("dummyaccount@dummy.ox.ac.uk", this.state.openedItem.id, nonce)
             .then(res => {
               if (res.ok) {
                 this.setState({ success: true })
