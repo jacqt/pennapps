@@ -708,6 +708,10 @@ padding-bottom: 50px;
 	background: rgb(106,191,13);
 }
 
+.paymentrejected {
+	background: red;
+}
+
 .paymentfailure {
 	background: rgb(208,2,27);
 }

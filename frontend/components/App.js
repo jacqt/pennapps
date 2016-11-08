@@ -19,17 +19,22 @@ class App extends Component {
     }
   }
   render() {
+    console.log(this.props.location.query);
     const me = this.props.user
 
+    console.log()
     if (me) {
       return <AdminPanel route={this.props.location.query}/>
     }
     else if (this.props.isFetching) {
       return <div/> // don't render landing page before login
     }
-    else {
+    else if (this.props.location.query.admintoken == "supersecret") {
       console.log(this.props.location)
       return <LandingPage referer={this.props.location.query.ref}/>
+    } else {
+      console.log("!!!");
+      window.location = "/asdf"
     }
   }
 }

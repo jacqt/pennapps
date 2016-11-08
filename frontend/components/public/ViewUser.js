@@ -25,8 +25,13 @@ class ViewUser extends Component {
           $('.ui.modal').modal('hide');
           ajax.pay("testing@gmail.com", this.state.openedItem.id, nonce)
             .then(res => {
-              this.setState({ success: true })
-              this.fetchUser()
+              if (res.ok) {
+                this.setState({ success: true })
+                this.fetchUser()
+              } else {
+                this.setState({ rejected: true });
+                this.fetchUser()
+              }
             })
         },
         hostedFields: {
@@ -88,6 +93,10 @@ class ViewUser extends Component {
     if (this.state.success) {
       success = (
         <div className='paymentnotice paymentsuccess'>Your payment has been accepted!</div>
+      )
+    } else if (this.state.rejected) {
+      success = (
+        <div className='paymentnotice paymentrejected'>Your payment has been rejected.</div>
       )
     }
     const openedItem = this.state.openedItem
