@@ -33,7 +33,7 @@ class ViewUser extends Component {
           $('.ui.modal').modal('hide');
           ajax.pay(cookie.get('user_email').toString(), this.state.openedItem.id, nonce)
             .then(res => {
-              if (res.ok) {
+              if (res.data && res.data.payment) {
                 this.setState({ success: true })
                 this.fetchUser()
               } else {
