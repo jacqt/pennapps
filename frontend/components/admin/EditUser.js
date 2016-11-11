@@ -29,7 +29,7 @@ class EditUser extends Component {
         <h1>Account Settings</h1>
         <form className="ui form withdraw">
           <div className="field">
-            <label>URL Nickname (oatpay.com/Nickname)</label>
+            <label>URL Nickname</label>
             <input type="text" placeholder="URL name" valueLink={linkState(this, 'nickname')}/>
           </div>
           <div className="field">
